@@ -17,25 +17,25 @@
                     </Grid.ColumnDefinitions>
                     <Rectangle Fill="Transparent"
                                Grid.ColumnSpan="2"/>
-                    <Ellipse Name="Circle"
-                             Grid.Column="0"
-                             Stroke="DarkGray"
-                             Width="50"
-                             Height="50"
-                             HorizontalAlignment="Center"
-                             VerticalAlignment="Center"
-                             Fill="Red"
+                    <Ellipse x:Name="Circle"
+                    	Grid.Column="0"
+                    	Stroke="#FF42AAAA"
+                    	Width="50"
+                    	Height="50"
+                    	HorizontalAlignment="Center"
+                    	VerticalAlignment="Center"
+                             Fill="#FF42AAAA"
                              />
                     <Path x:Name="Sign"
-                          Grid.Column="0"
-                          Data="M 0,20 H 40 M 20,0 V 40 Z"
-                          Stroke="#FF666666"
-                          Width="40"
-                          Height="40"
-                          StrokeThickness="5"
-                          HorizontalAlignment="Center"
-                          VerticalAlignment="Center"
-                          RenderTransformOrigin="0.5,0.5"
+                    	Grid.Column="0"
+                    	Data="M 0,20 H 40 M 20,0 V 40 Z"
+                          Stroke="#FF132B68"
+                    	Width="40"
+                    	Height="40"
+                    	StrokeThickness="5"
+                    	HorizontalAlignment="Center"
+                    	VerticalAlignment="Center"
+                    	RenderTransformOrigin="0.5,0.3"
                           >
                         <Path.RenderTransform>
                             <RotateTransform Angle="0"/>
@@ -51,18 +51,40 @@
                 <!--Change the sign to minus when toggled-->
                 <Trigger Property="IsChecked"
                          Value="True">
-                    <Setter Property="Data"
+                    <!--<Setter Property="Data"
                             TargetName="Sign"
-                            Value="M 0,20 H 40 Z"/>
+                            Value="M 0,20 H 40 Z"/>-->
+                    <Trigger.EnterActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetName="Sign"
+                         Storyboard.TargetProperty=
+                           "(Path.RenderTransform).(RotateTransform.Angle)"
+                         To="135"
+                         Duration="0:0:0.1"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.EnterActions>
+                    <Trigger.ExitActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetName="Sign"
+                         Storyboard.TargetProperty=
+                           "(Path.RenderTransform).(RotateTransform.Angle)"
+                         To="0"
+                         Duration="0:0:0.1"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.ExitActions>
                 </Trigger>
                 <!-- MouseOver, Pressed behaviours-->
                 <Trigger Property="IsMouseOver"
                          Value="true">
                     <Setter Property="Stroke"
-                            Value="#FF3C7FB1"
+                            Value="#FF032946"
                             TargetName="Circle"/>
                     <Setter Property="Stroke"
-                            Value="#222"
+                            Value="#FF032946"
                             TargetName="Sign"/>
                 </Trigger>
                 <Trigger Property="IsPressed"
@@ -80,7 +102,7 @@
             </ControlTemplate.Triggers>
         </ControlTemplate>
         <ControlTemplate x:Key="SimpleExpanderTemp"
-                         TargetType="{x:Type Expander}">
+                         TargetType="{x:Type Expander}" >
             <DockPanel>
                 <ToggleButton x:Name="ExpanderButton"
                               DockPanel.Dock="Top"
@@ -88,17 +110,49 @@
                               Content="{TemplateBinding Header}"
                               IsChecked="{Binding Path=IsExpanded, RelativeSource={RelativeSource TemplatedParent}}"
                               OverridesDefaultStyle="True"
+                              Width="60"
+                              HorizontalAlignment="Left"
                               Padding="1.5,0">
                 </ToggleButton>
                 <ContentPresenter x:Name="ExpanderContent"
                                   Visibility="Collapsed"
-                                  DockPanel.Dock="Bottom"/>
+                                  DockPanel.Dock="Bottom">
+                    <!--Pri izbacivanju animacije, ovo ukloniti-->
+                    <ContentPresenter.LayoutTransform>
+                        <ScaleTransform ScaleY="0"/>
+                    </ContentPresenter.LayoutTransform>
+                </ContentPresenter>
             </DockPanel>
             <ControlTemplate.Triggers>
                 <Trigger Property="IsExpanded" Value="True">
                     <Setter TargetName="ExpanderContent"
                             Property="Visibility"
                             Value="Visible"/>
+                </Trigger>
+                <!--Pri izbacivanju animacije, ovo ukloniti-->
+                <Trigger Property="IsExpanded" Value="True">
+                    <Trigger.EnterActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetName="ExpanderContent"
+                             Storyboard.TargetProperty=
+                               "(ContentPresenter.LayoutTransform).(ScaleTransform.ScaleY)"
+                             To="1"
+                             Duration="0:0:0.1"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.EnterActions>
+                    <Trigger.ExitActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetName="ExpanderContent"
+                             Storyboard.TargetProperty=
+                               "(ContentPresenter.LayoutTransform).(ScaleTransform.ScaleY)"
+                             To="0"
+                             Duration="0:0:0.1"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.ExitActions>
                 </Trigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>

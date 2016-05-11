@@ -1,0 +1,64 @@
+﻿<Page x:Class="HCIZadatak.Validation.Page4"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:HCIZadatak.Validation"
+      xmlns:xtd="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
+      mc:Ignorable="d"
+      Title="Page4" FontSize="20" Height="700" Width="700">
+
+    <Grid>
+        <Grid.CommandBindings>
+            <CommandBinding Command="New" CanExecute="Zavrsi_CanExecute" Executed="Zavrsi_Executed" />
+        </Grid.CommandBindings>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,100" >
+            <StackPanel VerticalAlignment="Center" Orientation="Vertical" Width="300">
+                <Label Content="Odaberite tip lokala:"/>
+                <Grid Margin="0,10,0,0">
+                    <TextBox Name="txtFilter" Width="218" HorizontalAlignment="Left" TextChanged="txtFlter_TextChanged"/>
+                    <Button Content="Novi tip" Width="80" HorizontalAlignment="Right"/>
+                </Grid>
+                <DataGrid SelectionUnit="FullRow" Name="tipovilist" Height="450" Width="300" Margin="0,1,0,0" IsReadOnly="True" AutoGenerateColumns="False" SelectedItem="{Binding Path=Tip,Mode=OneWayToSource,UpdateSourceTrigger=PropertyChanged}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Oznaka tipa" Width="145" Binding="{Binding Oznaka}"/>
+                        <DataGridTextColumn Header="Ime tipa" Width="145" Binding="{Binding Ime}"/>
+                    </DataGrid.Columns>
+                    <DataGrid.RowDetailsTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+                                <Image Source="{Binding Ikona}" Margin="10" Height="80"/>
+                                <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Aquamarine">
+                                    <Label Content="Opis:" FontWeight="Bold" FontSize="15"/>
+                                    <TextBlock Text="{Binding Opis}" TextWrapping="Wrap" FontSize="15"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGrid.RowDetailsTemplate>
+                </DataGrid>
+                <StackPanel Orientation="Horizontal" Background="Gray" Margin="1,0,0,0">
+                    <Label Content="Odabrani tip:" Margin="0,0,10,0"/>
+                    <Label Content="{Binding ElementName=tipovilist, Path=SelectedItem, Mode=OneWay}" Foreground="#00CC00"/>
+
+                </StackPanel>
+            </StackPanel>
+            <StackPanel VerticalAlignment="Center" Orientation="Vertical" Width="300" Margin="60,0,0,0">
+                <Label Content="Tagujte lokal"/>
+                <Grid Margin="0,10,0,0">
+                    <TextBox Name="etiketaFilter" Width="178" HorizontalAlignment="Left" TextChanged="txtFlter_TextChanged"/>
+                    <Button Content="Nova etiketa" Width="120" HorizontalAlignment="Right" Height="31" VerticalAlignment="Top"/>
+                </Grid>
+                <xtd:CheckListBox Height="250" Name="etiketaCheckList" ItemSelectionChanged="etiketaCheckList_ItemSelectionChanged" >
+                </xtd:CheckListBox>
+                <Label Content="Odabrane etikete:"></Label>
+                <DataGrid Name="proba" Height="200" GridLinesVisibility="None" RowBackground="{Binding Boja}">
+                </DataGrid>
+            </StackPanel>
+        </StackPanel>
+        <Grid VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="400" Margin="0,0,0,30">
+            <Button x:Name="zavrsibtn" Content="Završi" HorizontalAlignment="Right" VerticalAlignment="Top" Width="80" Command="New" />
+            <Button x:Name="nazadbtn" Content="&lt;&lt;" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Click="nazadbtn_Click"/>
+        </Grid>
+    </Grid>
+</Page>

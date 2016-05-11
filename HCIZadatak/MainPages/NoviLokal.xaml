@@ -1,0 +1,480 @@
+﻿<UserControl x:Class="HCIZadatak.Validation.NoviLokal"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HCIZadatak.Validation"
+             mc:Ignorable="d" 
+             d:DesignHeight="700" FontSize="20" Width="1395.444">
+
+    <UserControl.Resources>
+        <Storyboard x:Key="MouseEnter1">
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="textBlock1" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1.2"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="textBlock1" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1.2"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="MouseEnter2">
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="textBlock2" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1.2"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="textBlock2" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1.2"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="MouseEnter3">
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="textBlock3" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1.2"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="textBlock3" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1.2"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="MouseEnter4">
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="textBlock4" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1.2"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="textBlock4" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1.2"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="MouseEnter5">
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="textBlock5" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1.2"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="textBlock5" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1.2"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="MouseEnter6">
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="textBlock6" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1.2"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="textBlock6" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1.2"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="MouseEnter7">
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="textBlock7" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1.2"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="textBlock7" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1.2"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="MouseEnter8">
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="textBlock8" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1.2"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="textBlock8" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1.2"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="MouseEnter9">
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="textBlock9" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1.2"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="textBlock9" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1.2"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="MouseEnter10">
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="textBlock10" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1.2"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="textBlock10" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1.2"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="MouseEnter11">
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="textBlock11" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1.2"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="textBlock11" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1.2"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="MouseEnter12">
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="textBlock12" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1.2"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="textBlock12" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1.2"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="MouseEnter13">
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="textBlock13" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1.2"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="textBlock13" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1.2"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="MouseLeave1">
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="textBlock1" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="1.2"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="textBlock1" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="1.2"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="MouseLeave2">
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="textBlock2" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="1.2"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="textBlock2" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="1.2"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="MouseLeave3">
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="textBlock3" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="1.2"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="textBlock3" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="1.2"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="MouseLeave4">
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="textBlock4" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="1.2"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="textBlock4" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="1.2"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="MouseLeave5">
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="textBlock5" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="1.2"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="textBlock5" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="1.2"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="MouseLeave6">
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="textBlock6" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="1.2"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="textBlock6" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="1.2"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="MouseLeave7">
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="textBlock7" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="1.2"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="textBlock7" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="1.2"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="MouseLeave8">
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="textBlock8" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="1.2"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="textBlock8" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="1.2"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="MouseLeave9">
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="textBlock9" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="1.2"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="textBlock9" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="1.2"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="MouseLeave10">
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="textBlock10" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="1.2"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="textBlock10" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="1.2"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="MouseLeave11">
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="textBlock11" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="1.2"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="textBlock11" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="1.2"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="MouseLeave12">
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="textBlock12" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="1.2"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="textBlock12" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="1.2"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="MouseLeave13">
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="textBlock13" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="1.2"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="textBlock13" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="1.2"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </UserControl.Resources>
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="Mouse.MouseEnter" SourceName="textBlock1">
+            <BeginStoryboard Storyboard="{StaticResource MouseEnter1}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="Mouse.MouseEnter" SourceName="textBlock2">
+            <BeginStoryboard Storyboard="{StaticResource MouseEnter2}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="Mouse.MouseEnter" SourceName="textBlock3">
+            <BeginStoryboard Storyboard="{StaticResource MouseEnter3}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="Mouse.MouseEnter" SourceName="textBlock4">
+            <BeginStoryboard Storyboard="{StaticResource MouseEnter4}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="Mouse.MouseEnter" SourceName="textBlock5">
+            <BeginStoryboard Storyboard="{StaticResource MouseEnter5}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="Mouse.MouseEnter" SourceName="textBlock6">
+            <BeginStoryboard Storyboard="{StaticResource MouseEnter6}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="Mouse.MouseEnter" SourceName="textBlock7">
+            <BeginStoryboard Storyboard="{StaticResource MouseEnter7}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="Mouse.MouseEnter" SourceName="textBlock8">
+            <BeginStoryboard Storyboard="{StaticResource MouseEnter8}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="Mouse.MouseEnter" SourceName="textBlock9">
+            <BeginStoryboard Storyboard="{StaticResource MouseEnter9}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="Mouse.MouseEnter" SourceName="textBlock10">
+            <BeginStoryboard Storyboard="{StaticResource MouseEnter10}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="Mouse.MouseEnter" SourceName="textBlock11">
+            <BeginStoryboard Storyboard="{StaticResource MouseEnter11}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="Mouse.MouseEnter" SourceName="textBlock12">
+            <BeginStoryboard Storyboard="{StaticResource MouseEnter12}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="Mouse.MouseEnter" SourceName="textBlock13">
+            <BeginStoryboard Storyboard="{StaticResource MouseEnter13}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="Mouse.MouseLeave" SourceName="textBlock1">
+            <BeginStoryboard x:Name="loginMouseLeave_BeginStoryboard" Storyboard="{StaticResource MouseLeave1}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="Mouse.MouseLeave" SourceName="textBlock1">
+            <BeginStoryboard Storyboard="{StaticResource MouseLeave1}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="Mouse.MouseLeave" SourceName="textBlock2">
+            <BeginStoryboard Storyboard="{StaticResource MouseLeave2}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="Mouse.MouseLeave" SourceName="textBlock3">
+            <BeginStoryboard Storyboard="{StaticResource MouseLeave3}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="Mouse.MouseLeave" SourceName="textBlock4">
+            <BeginStoryboard Storyboard="{StaticResource MouseLeave4}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="Mouse.MouseLeave" SourceName="textBlock5">
+            <BeginStoryboard Storyboard="{StaticResource MouseLeave5}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="Mouse.MouseLeave" SourceName="textBlock6">
+            <BeginStoryboard Storyboard="{StaticResource MouseLeave6}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="Mouse.MouseLeave" SourceName="textBlock7">
+            <BeginStoryboard Storyboard="{StaticResource MouseLeave7}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="Mouse.MouseLeave" SourceName="textBlock8">
+            <BeginStoryboard Storyboard="{StaticResource MouseLeave8}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="Mouse.MouseLeave" SourceName="textBlock9">
+            <BeginStoryboard Storyboard="{StaticResource MouseLeave9}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="Mouse.MouseLeave" SourceName="textBlock10">
+            <BeginStoryboard Storyboard="{StaticResource MouseLeave10}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="Mouse.MouseLeave" SourceName="textBlock11">
+            <BeginStoryboard Storyboard="{StaticResource MouseLeave11}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="Mouse.MouseLeave" SourceName="textBlock12">
+            <BeginStoryboard Storyboard="{StaticResource MouseLeave12}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="Mouse.MouseLeave" SourceName="textBlock13">
+            <BeginStoryboard Storyboard="{StaticResource MouseLeave13}"/>
+        </EventTrigger>
+
+    </UserControl.Triggers>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="8*"/>
+            <ColumnDefinition Width="17*"/>
+        </Grid.ColumnDefinitions>
+        <Border BorderBrush="Black" BorderThickness="0,0,2,0" >
+            <Grid>
+                <!--<Frame Grid.Column="0" x:Name="frame" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Source="/HCIZadatak;component/NoviLokalPages/GuidePage.xaml"/>-->
+                <TextBlock Text="Dodavanje novog lokala" HorizontalAlignment="Center" VerticalAlignment="Top" Width="325" Margin="0,20,0,0" FontSize="30"/>
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Height="364" Width="250">
+                    <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Oznaka lokala" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5" PreviewMouseDown="textBlock_PreviewMouseDown">
+                        <TextBlock.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </TextBlock.RenderTransform>
+                    </TextBlock>
+                    <TextBlock RenderTransformOrigin="0.5,0.5" x:Name="textBlock2" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Ime lokala" VerticalAlignment="Center" PreviewMouseDown="textBlock_PreviewMouseDown">
+                        <TextBlock.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </TextBlock.RenderTransform>
+                    </TextBlock>
+                    <TextBlock RenderTransformOrigin="0.5,0.5" x:Name="textBlock3" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Opis lokala" VerticalAlignment="Center" PreviewMouseDown="textBlock_PreviewMouseDown">
+                        <TextBlock.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </TextBlock.RenderTransform>
+                    </TextBlock>
+                    <TextBlock RenderTransformOrigin="0.5,0.5" x:Name="textBlock4" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Dostupnost za invalide" VerticalAlignment="Center" PreviewMouseDown="textBlock_PreviewMouseDown">
+                        <TextBlock.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </TextBlock.RenderTransform>
+                    </TextBlock>
+                    <TextBlock RenderTransformOrigin="0.5,0.5" x:Name="textBlock5" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Dozvoljeno pušenje" VerticalAlignment="Center" PreviewMouseDown="textBlock_PreviewMouseDown">
+                        <TextBlock.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </TextBlock.RenderTransform>
+                    </TextBlock>
+                    <TextBlock RenderTransformOrigin="0.5,0.5" x:Name="textBlock6" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Mogućnost rezervacije" VerticalAlignment="Center" PreviewMouseDown="textBlock_PreviewMouseDown">
+                        <TextBlock.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </TextBlock.RenderTransform>
+                    </TextBlock>
+                    <TextBlock RenderTransformOrigin="0.5,0.5" x:Name="textBlock7" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Rang cena" VerticalAlignment="Center" PreviewMouseDown="textBlock_PreviewMouseDown">
+                        <TextBlock.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </TextBlock.RenderTransform>
+                    </TextBlock>
+                    <TextBlock RenderTransformOrigin="0.5,0.5" x:Name="textBlock8" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Služenje alkohola" VerticalAlignment="Center" PreviewMouseDown="textBlock_PreviewMouseDown">
+                        <TextBlock.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </TextBlock.RenderTransform>
+                    </TextBlock>
+                    <TextBlock RenderTransformOrigin="0.5,0.5" x:Name="textBlock9" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Kapacitet lokala" VerticalAlignment="Center" PreviewMouseDown="textBlock_PreviewMouseDown">
+                        <TextBlock.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </TextBlock.RenderTransform>
+                    </TextBlock>
+                    <TextBlock RenderTransformOrigin="0.5,0.5" x:Name="textBlock10" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Datum otvaranja lokala" VerticalAlignment="Center" PreviewMouseDown="textBlock_PreviewMouseDown">
+                        <TextBlock.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </TextBlock.RenderTransform>
+                    </TextBlock>
+                    <TextBlock RenderTransformOrigin="0.5,0.5" x:Name="textBlock11" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Ikonica lokala" VerticalAlignment="Center" PreviewMouseDown="textBlock_PreviewMouseDown">
+                        <TextBlock.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </TextBlock.RenderTransform>
+                    </TextBlock>
+                    <TextBlock RenderTransformOrigin="0.5,0.5" x:Name="textBlock12" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Tip lokala" VerticalAlignment="Center" PreviewMouseDown="textBlock_PreviewMouseDown">
+                        <TextBlock.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </TextBlock.RenderTransform>
+                    </TextBlock>
+                    <TextBlock RenderTransformOrigin="0.5,0.5" x:Name="textBlock13" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Tagujte lokal" VerticalAlignment="Center" PreviewMouseDown="textBlock_PreviewMouseDown">
+                        <TextBlock.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </TextBlock.RenderTransform>
+                    </TextBlock>
+
+                </StackPanel>
+                <Grid VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="250" Margin="0,0,0,30">
+                    <Button x:Name="odustanibtn" Content="Odustani" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Click="odustanibtn_Click"/>
+                </Grid>
+            </Grid>
+        </Border>
+        <Frame Grid.Column="1" x:Name="frame1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" NavigationUIVisibility="Hidden"/>
+
+    </Grid>
+</UserControl>

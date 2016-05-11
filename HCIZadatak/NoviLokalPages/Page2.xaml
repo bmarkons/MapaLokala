@@ -1,0 +1,43 @@
+﻿<Page x:Class="HCIZadatak.Validation.Page2"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:HCIZadatak.Validation"
+      mc:Ignorable="d"
+      Title="Page2" FontSize="20" Height="700" Width="400">
+    <Page.Resources>
+        <local:BooleanToStringValueConverter x:Key="BooleanToStringValueConverter" />
+    </Page.Resources>
+    <Grid>
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Height="469" Width="400" >
+            <CheckBox Height="45" Padding="15,0,0,0" Content="Lokal dostupan za invalide" VerticalContentAlignment="Center" IsChecked="{Binding Path=Hendikep,Mode=OneWayToSource,UpdateSourceTrigger=PropertyChanged}"/>
+            <CheckBox Height="45" Padding="15,0,0,0" Content="Dozvoljeno pušenje" VerticalContentAlignment="Center" IsChecked="{Binding Path=Pusenje,Mode=OneWayToSource,UpdateSourceTrigger=PropertyChanged}"/>
+            <CheckBox Height="45" Padding="15,0,0,0" Content="Postoji mogućnost rezervacije" VerticalContentAlignment="Center" IsChecked="{Binding Path=Rezervacije,Mode=OneWayToSource,UpdateSourceTrigger=PropertyChanged}"/>
+
+            <Label x:Name="cenelabel" Content="Rang cena:" Margin="0,20,0,0"/>
+            <StackPanel Orientation="Vertical" Margin="40,0,0,0">
+                <RadioButton x:Name="niske" GroupName="cene" Content="Niske" VerticalContentAlignment="Center" IsChecked="{Binding Path=Cena, Converter={StaticResource BooleanToStringValueConverter}, ConverterParameter=Niske}"/>
+                <RadioButton x:Name="srednje" GroupName="cene" Content="Srednje" VerticalContentAlignment="Center" IsChecked="{Binding Path=Cena, Converter={StaticResource BooleanToStringValueConverter}, ConverterParameter=Srednje}"/>
+                <RadioButton x:Name="visoke" GroupName="cene" Content="Visoke" VerticalContentAlignment="Center" IsChecked="{Binding Path=Cena, Converter={StaticResource BooleanToStringValueConverter}, ConverterParameter=Visoke}"/>
+                <RadioButton x:Name="vvisoke" GroupName="cene" Content="Izuzetno visoke" VerticalContentAlignment="Center" IsChecked="{Binding Path=Cena, Converter={StaticResource BooleanToStringValueConverter}, ConverterParameter=Luksuzne}"/>
+            </StackPanel>
+            <Label x:Name="alkohollabel" Content="Alkohol se služi:" Margin="0,20,0,0"/>
+            <StackPanel Orientation="Vertical" Margin="40,0,0,0">
+                <RadioButton GroupName="alkohol" Content="Da" VerticalContentAlignment="Center" IsChecked="{Binding Path=Alkohol, Converter={StaticResource BooleanToStringValueConverter}, ConverterParameter=Da}"/>
+                <RadioButton GroupName="alkohol" Content="Ne" VerticalContentAlignment="Center" IsChecked="{Binding Path=Alkohol, Converter={StaticResource BooleanToStringValueConverter}, ConverterParameter=Ne}"/>
+                <RadioButton GroupName="alkohol" Content="Samo do 23:00" VerticalContentAlignment="Center" IsChecked="{Binding Path=Alkohol, Converter={StaticResource BooleanToStringValueConverter}, ConverterParameter=Do23h}"/>
+            </StackPanel>
+            <!--<Grid Margin="0,70,0,0">
+                <Button x:Name="daljebtn" Content="&gt;&gt;" HorizontalAlignment="Right" VerticalAlignment="Top" Width="80" Click="daljebtn_Click" />
+                <Button x:Name="nazadbtn" Content="&lt;&lt;" HorizontalAlignment="Left" Width="80" Click="nazadbtn_Click"/>
+            </Grid>-->
+
+
+        </StackPanel>
+        <Grid VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="400" Margin="0,0,0,30">
+            <Button x:Name="daljebtn" Content="&gt;&gt;"  Width="80" FontSize="20" Click="daljebtn_Click" HorizontalAlignment="Right" />
+            <Button x:Name="nazadbtn" Content="&lt;&lt;" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Click="nazadbtn_Click"/>
+        </Grid>
+    </Grid>
+</Page>

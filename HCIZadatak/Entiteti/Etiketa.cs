@@ -13,7 +13,7 @@ namespace HCIZadatak.Entiteti
     [Serializable]
     public class Etiketa : INotifyPropertyChanged
     {
-        #region PropertyChangedNotifier
+        #region PropertyChangedNotifierd
         protected virtual void OnPropertyChanged(string name)
         {
             if (PropertyChanged != null)

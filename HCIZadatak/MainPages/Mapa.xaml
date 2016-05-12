@@ -16,9 +16,15 @@
             <Border CornerRadius="10,10,10,10" BorderThickness="10,10,10,10" BorderBrush="#076350" HorizontalAlignment="Left" Margin="0,10,0,20">
                 <StackPanel Orientation="Vertical" Background="#076350">
                     <StackPanel Orientation="Horizontal" Margin="5,5,5,5">
-                        <Button Name="novilokalbtn" Width="119" Margin="0,0,2,0" Padding="5,5,5,5" Content="Novi lokal" Click="novilokalbtn_Click"/>
-                        <Button Name="novitipbtn" Width="119" Margin="0,0,2,0" Padding="6,6,6,6" Content="Novi tip" Click="novitipbtn_Click"/>
-                        <Button Name="novaetiketabtn" Width="119" Margin="0,0,2,0" Padding="5,5,5,5" Content="Nova etiketa" Click="novaetiketabtn_Click"/>
+                        <Button Name="novilokalbtn" Margin="0,0,10,0" Padding="1,5"  Click="novilokalbtn_Click" Background="Transparent" ToolTip="Novi lokal">
+                            <Image Width="48" Height="48" Source="../Images/newlokal.png"/>
+                        </Button>
+                        <Button Name="novitipbtn" Margin="0,0,10,0" Padding="6" Click="novitipbtn_Click" Background="Transparent" ToolTip="Novi tip lokala">
+                            <Image Width="48" Height="48" Source="../Images/newtip.png"/>
+                        </Button>
+                        <Button Name="novaetiketabtn" Margin="0,0,10,0" Padding="1" Click="novaetiketabtn_Click" Background="Transparent" ToolTip="Nova etiketa">
+                            <Image Width="48" Height="48" Source="../Images/newtag.png"/>
+                        </Button>
                     </StackPanel>
                     <TabControl Margin="2,2,2,2">
 

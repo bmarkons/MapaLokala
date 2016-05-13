@@ -5,5 +5,5 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCIZadatak"
         mc:Ignorable="d"
-        Title="Mapa Lokala" WindowState="Maximized" MinWidth="1300" MinHeight="750">
+        Title="Mapa Lokala" WindowState="Maximized" MinWidth="1300" MinHeight="750" >
 </Window>

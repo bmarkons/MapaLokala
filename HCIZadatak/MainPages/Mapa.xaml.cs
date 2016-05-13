@@ -28,7 +28,7 @@ namespace HCIZadatak.Validation
         {
             get
             {
-                if(current == null)
+                if (current == null)
                 {
                     current = new Mapa();
                 }
@@ -122,6 +122,16 @@ namespace HCIZadatak.Validation
                 }
             }
             e.Handled = true;
+        }
+
+        private void lokaliDG_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            DataGrid lokaliDG = sender as DataGrid;
+            Lokal selected = (Lokal)lokaliDG.SelectedItem;
+            if(selected != null)
+            {
+                ExpanderPanel.Children.Add(new LokalPodaci());
+            }
         }
     }
 }

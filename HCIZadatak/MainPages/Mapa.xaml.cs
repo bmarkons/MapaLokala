@@ -124,68 +124,14 @@ namespace HCIZadatak.Validation
             e.Handled = true;
         }
 
-        private void dataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void lokaliDG_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            DataGrid dataGrid = sender as DataGrid;
-            object selected = dataGrid.SelectedItem;
-            if (selected != null)
+            DataGrid lokaliDG = sender as DataGrid;
+            Lokal selected = (Lokal)lokaliDG.SelectedItem;
+            if(selected != null)
             {
-                UserControl podaci = null;
-                if (selected is Lokal)
-                {
-                    podaci = new LokalPodaci(selected as Lokal);
-                }
-                else if (selected is Tip)
-                {
-                    podaci = new TipPodaci(selected as Tip);
-                }
-                else if (selected is Etiketa)
-                {
-                    podaci = new EtiketaPodaci(selected as Etiketa);
-                }
-                setDetails(podaci);
-            }
-            else
-            {
-                object details = ExpanderPanel.FindName("Details");
-                if (details != null)
-                {
-                    ExpanderPanel.Children.Remove(details as UIElement);
-                    ExpanderPanel.UnregisterName("Details");
-                }
-            }
-        }
-
-        private void setDetails(UserControl detailsControl)
-        {
-            object details = ExpanderPanel.FindName("Details");
-            if (details == null)
-            {
-                ExpanderPanel.Children.Add(detailsControl);
-                ExpanderPanel.RegisterName("Details", detailsControl);
-            }
-            else
-            {
-                ExpanderPanel.Children.Remove(details as UIElement);
-                ExpanderPanel.UnregisterName("Details");
-
-                ExpanderPanel.Children.Add(detailsControl);
-                ExpanderPanel.RegisterName("Details", detailsControl);
-            }
-        }
-
-        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (e.Source is TabControl)
-            {
-                object details = ExpanderPanel.FindName("Details");
-                if (details != null)
-                {
-                    ExpanderPanel.Children.Remove(details as UIElement);
-                    ExpanderPanel.UnregisterName("Details");
-                }
+                ExpanderPanel.Children.Add(new LokalPodaci());
             }
         }
     }
 }
-

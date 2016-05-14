@@ -27,7 +27,7 @@
                                 <Image Width="48" Height="48" Source="../Images/newtag.png"/>
                             </Button>
                         </StackPanel>
-                        <TabControl Margin="2,2,2,2" BorderThickness="0" Padding="0" VerticalAlignment="Stretch" SelectionChanged="TabControl_SelectionChanged">
+                        <TabControl Margin="2,2,2,2" BorderThickness="0" Padding="0" VerticalAlignment="Stretch">
                             <TabControl.Resources>
                                 <Style TargetType="TabItem">
                                     <Setter Property="Template">
@@ -62,7 +62,7 @@
                                 <Grid VerticalAlignment="Stretch">
                                     <DockPanel>
                                         <StackPanel DockPanel.Dock="Bottom" Height="25" Background="#FF42AAAA" Margin="1"/>
-                                        <DataGrid Name="lokaliDG" CanUserAddRows="false" SelectionUnit="FullRow" AutoGenerateColumns="False" GridLinesVisibility="None" RowHeaderWidth="0" BorderBrush="Transparent" SelectionChanged="dataGrid_SelectionChanged">
+                                        <DataGrid Name="lokaliDG" CanUserAddRows="false" SelectionUnit="FullRow" AutoGenerateColumns="False" GridLinesVisibility="None" RowHeaderWidth="0" BorderBrush="Transparent" SelectionChanged="lokaliDG_SelectionChanged">
                                             <DataGrid.RowStyle>
                                                 <Style TargetType="DataGridRow">
                                                     <Setter Property="Background" Value="#d3ece9"/>
@@ -154,7 +154,7 @@
                                 <Grid VerticalAlignment="Stretch">
                                     <DockPanel>
                                         <StackPanel DockPanel.Dock="Bottom" Height="25" Background="#FF42AAAA" Margin="1"/>
-                                        <DataGrid Name="tipoviDG" CanUserAddRows="false" SelectionUnit="FullRow" AutoGenerateColumns="False" GridLinesVisibility="None" RowHeaderWidth="0" BorderBrush="Transparent" SelectionChanged="dataGrid_SelectionChanged">
+                                        <DataGrid Name="tipoviDG" CanUserAddRows="false" SelectionUnit="FullRow" AutoGenerateColumns="False" GridLinesVisibility="None" RowHeaderWidth="0" BorderBrush="Transparent">
                                             <DataGrid.RowStyle>
                                                 <Style TargetType="DataGridRow">
                                                     <Setter Property="Background" Value="#d3ece9"/>
@@ -171,7 +171,7 @@
                                                 <DataGridTextColumn Header="Oznaka tipa" Binding="{Binding Oznaka,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" MinWidth="180" />
                                                 <DataGridTextColumn Header="Ime tipa" Binding="{Binding Ime,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" MinWidth="180"/>
                                             </DataGrid.Columns>
-                                            <!--<DataGrid.RowDetailsTemplate>
+                                            <DataGrid.RowDetailsTemplate>
                                                 <DataTemplate>
                                                     <StackPanel Orientation="Horizontal">
                                                         <Image Source="{Binding Ikona,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Height="100" Margin="10"/>
@@ -181,7 +181,7 @@
                                                         </StackPanel>
                                                     </StackPanel>
                                                 </DataTemplate>
-                                            </DataGrid.RowDetailsTemplate>-->
+                                            </DataGrid.RowDetailsTemplate>
                                         </DataGrid>
                                     </DockPanel>
                                     <Expander Header="Filteri" VerticalAlignment="Bottom" ExpandDirection="Up">
@@ -194,7 +194,7 @@
                                 <TabItem.CommandBindings>
                                     <CommandBinding Command="Delete" CanExecute="ObrisiEtiketu_CanExecute" Executed="ObrisiEtiketu_Executed" />
                                 </TabItem.CommandBindings>
-                                <DataGrid Name="etiketeDG" SelectionUnit="FullRow" AutoGenerateColumns="False" CanUserAddRows="false" GridLinesVisibility="None" RowHeaderWidth="0" BorderBrush="Transparent" SelectionChanged="dataGrid_SelectionChanged">
+                                <DataGrid Name="etiketeDG" SelectionUnit="FullRow" AutoGenerateColumns="False" CanUserAddRows="false" GridLinesVisibility="None" RowHeaderWidth="0" BorderBrush="Transparent">
                                     <DataGrid.RowStyle>
                                         <Style TargetType="DataGridRow">
                                             <Setter Property="Background" Value="#d3ece9"/>

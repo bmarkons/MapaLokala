@@ -4,76 +4,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:HCIZadatak"
-             xmlns:xtd="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
              mc:Ignorable="d" 
-             d:DesignHeight="700" d:DesignWidth="450" Margin="10" Name="Details" >
-    <Border BorderThickness="4" CornerRadius="5" Background="#eff899" BorderBrush="#3c4262" Height="620" Width="400" Margin="0,-10,0,0">
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="1*"/>
-
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition Height="2*"/>
-                <RowDefinition Height="1.5*"/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-
-                <RowDefinition Height="2*"/>
-                <RowDefinition Height="2*"/>
-
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition />
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
-            <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Content="Podaci o lokalu" FontWeight="Bold" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" BorderThickness="0,0,0,3" BorderBrush="#3c4262"/>
-            <Button  Grid.Row="0" Grid.Column="2" Height="32" Width="32" HorizontalAlignment="Right" VerticalAlignment="Center" Click="Button_Click" Background="Transparent" BorderThickness="0">
-                <Image Source="./Images/exit.png" />
-            </Button>
-            <StackPanel Orientation="Vertical" Margin="15" Grid.Row="1" Grid.Column="0" Grid.RowSpan="13" HorizontalAlignment="Stretch" VerticalAlignment="Top">
-                <Border BorderThickness="2" BorderBrush="#3c4262">
-                    <Image Name="ikonaImg" HorizontalAlignment="Stretch" Source="{Binding Ikona,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
-                </Border>
-                <Button Name="ucitajBtn" HorizontalAlignment="Stretch" Content="Promeni sliku" Click="ucitajBtn_Click"/>
-            </StackPanel>
-
-            <!--Labele-->
-            <Label Margin="5" Grid.Row="1" Grid.Column="1" Content="Oznaka:"/>
-            <Label Margin="5" Grid.Row="2" Grid.Column="1" Content="Ime:"/>
-            <Label Margin="5" Grid.Row="3" Grid.Column="1" Content="Opis:"/>
-            <Label Margin="5" Grid.Row="5" Grid.Column="1" Content="Rang cena:"/>
-            <Label Margin="5" Grid.Row="6" Grid.Column="1" Content="Alkohol:"/>
-            <Label Margin="5" Grid.Row="7" Grid.Column="1" Content="Kapacitet:"/>
-            <Label Margin="5" Grid.Row="8" Grid.Column="1" Content="Otvoren:"/>
-            <Label Margin="5" Grid.Row="9" Grid.Column="1" Content="Tip:"/>
-            <Label Margin="5" Grid.Row="10" Grid.Column="1" Content="Etikete:"/>
-
-            <TextBox Margin="10" Grid.Row="1" Grid.Column="2" Text="{Binding OznakaTxt,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
-            <TextBox Margin="10" Grid.Row="2" Grid.Column="2" Text="{Binding ImeTxt,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
-            <TextBox Margin="10" Grid.Row="3" Grid.Column="2" Text="{Binding OpisTxt,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap"/>
-
-            <StackPanel Margin="10" Orientation="Horizontal" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2">
-                <CheckBox ToolTip="Dostupno za invalide" Margin="10,5" VerticalAlignment="Center" VerticalContentAlignment="Center" IsChecked="{Binding Path=Hendikep,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
-                    <Image Source="./Images/disabled.png"/>
-                </CheckBox>
-                <CheckBox ToolTip="Dozvoljeno pušenje" Margin="10,5"  VerticalAlignment="Center" VerticalContentAlignment="Center" IsChecked="{Binding Path=Pusenje,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
-                    <Image Source="./Images/smoking.png"/>
-                </CheckBox>
-                <CheckBox ToolTip="Moguće rezervacije" Margin="10,5" VerticalAlignment="Center" VerticalContentAlignment="Center" IsChecked="{Binding Path=Rezervacije,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
-                    <Image Source="./Images/book.png"/>
-                </CheckBox>
-
-            </StackPanel>
-
-            <ComboBox VerticalContentAlignment="Center" Margin="10" Grid.Row="5" Grid.Column="2" ItemsSource="{Binding Rang_cena}" SelectedItem="{Binding Cena}"/>
-            <ComboBox VerticalContentAlignment="Center" Margin="10" Grid.Row="6" Grid.Column="2" ItemsSource="{Binding Sluzenje_alkohola}" SelectedItem="{Binding Alkohol}"/>
-            <xtd:IntegerUpDown Margin="10" Grid.Row="7" Grid.Column="2" Value="{Binding Path=Kapacitet,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Minimum="0"/>
-            <xtd:DateTimePicker Margin="10" Grid.Row="8" Grid.Column="2" Text="{Binding Path=Datum,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
-
-        </Grid>
-    </Border>
+             d:DesignHeight="300" d:DesignWidth="300" Margin="10" Background="Red" Height="300" Width="300">
+    <Grid>
+        <TextBlock Text="Marko"/>
+    </Grid>
 </UserControl>

@@ -1,5 +1,4 @@
-﻿using Microsoft.Win32;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,30 +20,9 @@ namespace HCIZadatak
     /// </summary>
     public partial class LokalPodaci : UserControl
     {
-        public LokalPodaci(Lokal lokal)
+        public LokalPodaci()
         {
             InitializeComponent();
-            DataContext = lokal;
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            StackPanel parent = (StackPanel)Parent;
-            parent.Children.Remove(this);
-            parent.UnregisterName("Details");
-        }
-
-        private void ucitajBtn_Click(object sender, RoutedEventArgs e)
-        {
-            OpenFileDialog op = new OpenFileDialog();
-            op.Title = "Select a picture";
-            op.Filter = "All supported graphics|*.jpg;*.jpeg;*.png|" +
-              "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +
-              "Portable Network Graphic (*.png)|*.png";
-            if (op.ShowDialog() == true)
-            {
-                ikonaImg.Source = new BitmapImage(new Uri(op.FileName));
-            }
         }
     }
 }

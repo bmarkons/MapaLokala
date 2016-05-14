@@ -88,6 +88,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="EtiketaPodaci.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="LokalPodaci.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -111,6 +115,9 @@
     <Compile Include="Entiteti\Etiketa.cs" />
     <Compile Include="Entiteti\Lokal.cs" />
     <Compile Include="Entiteti\Tip.cs" />
+    <Compile Include="EtiketaPodaci.xaml.cs">
+      <DependentUpon>EtiketaPodaci.xaml</DependentUpon>
+    </Compile>
     <Compile Include="LokalPodaci.xaml.cs">
       <DependentUpon>LokalPodaci.xaml</DependentUpon>
     </Compile>
@@ -119,6 +126,9 @@
     </Compile>
     <Compile Include="MainPages\NoviTip.xaml.cs">
       <DependentUpon>NoviTip.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TipPodaci.xaml.cs">
+      <DependentUpon>TipPodaci.xaml</DependentUpon>
     </Compile>
     <Compile Include="Validation\OznakaEtiketeValidationRule.cs" />
     <Compile Include="Validation\OznakaTipaValidationRule.cs" />
@@ -147,6 +157,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="NoviLokalPages\Page1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TipPodaci.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -221,6 +235,18 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\newlokal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\exit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\disabled.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\smoking.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\book.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -44,13 +44,15 @@ namespace HCIZadatak.Validation
             lokaliDG.ItemsSource = ((App)App.Current).Lokali;
             tipoviDG.ItemsSource = ((App)App.Current).Tipovi;
             etiketeDG.ItemsSource = ((App)App.Current).Etikete;
+            alkoholfilter.ItemsSource = Lokal.Sluzenje_alkohola;
+            cenefilter.ItemsSource = Lokal.Rang_cena;
 
-            ((CollectionView)CollectionViewSource.GetDefaultView(lokaliDG.ItemsSource)).Filter = Filter;
-            ((CollectionView)CollectionViewSource.GetDefaultView(tipoviDG.ItemsSource)).Filter = Filter;
-            ((CollectionView)CollectionViewSource.GetDefaultView(etiketeDG.ItemsSource)).Filter = Filter;
+            ((CollectionView)CollectionViewSource.GetDefaultView(lokaliDG.ItemsSource)).Filter = Search;
+            ((CollectionView)CollectionViewSource.GetDefaultView(tipoviDG.ItemsSource)).Filter = Search;
+            ((CollectionView)CollectionViewSource.GetDefaultView(etiketeDG.ItemsSource)).Filter = Search;
         }
 
-        private bool Filter(object item)
+        private bool Search(object item)
         {
             if (item is Lokal)
             {

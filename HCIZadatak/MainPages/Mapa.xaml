@@ -142,7 +142,44 @@
                                         </DataGrid>
                                     </DockPanel>
                                     <Expander Header="Filteri" VerticalAlignment="Bottom" ExpandDirection="Up" Margin="0,0,0,3">
-                                        <StackPanel></StackPanel>
+                                        <Border Background="#eff899" BorderThickness="0,2,0,0" BorderBrush="#3c4262" Margin="-2,0,-2,5" >
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition/>
+                                                    <RowDefinition/>
+                                                    <RowDefinition/>
+                                                    <RowDefinition/>
+                                                    <RowDefinition Height="3*"/>
+                                                </Grid.RowDefinitions>
+                                                <StackPanel Orientation="Horizontal" Grid.Row="0" HorizontalAlignment="Center" Margin="10">
+                                                    <CheckBox ToolTip="Dostupno za invalide" Margin="10,5" VerticalAlignment="Center" VerticalContentAlignment="Center" >
+                                                        <Image Source="../Images/disabled.png" Width="32" Height="32"/>
+                                                    </CheckBox>
+                                                    <CheckBox ToolTip="Dozvoljeno pušenje" Margin="10,5"  VerticalAlignment="Center" VerticalContentAlignment="Center" >
+                                                        <Image Source="../Images/smoking.png" Width="32" Height="32"/>
+                                                    </CheckBox>
+                                                    <CheckBox ToolTip="Moguće rezervacije" Margin="10,5" VerticalAlignment="Center" VerticalContentAlignment="Center" >
+                                                        <Image Source="../Images/book.png" Width="32" Height="32"/>
+                                                    </CheckBox>
+                                                </StackPanel>
+                                                <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center" Margin="10">
+                                                    <ComboBox Name="cenefilter" Margin="10" Width="100"/>
+                                                    <ComboBox Name="alkoholfilter" Margin="10" Width="100"/>
+                                                </StackPanel>
+                                                <TextBlock Grid.Row="2" Text="Ovde ide neki skroler za kapacitet"/>
+                                                <TextBlock Grid.Row="3" Text="Ovde ide neki skroler za datum otvaranja"/>
+                                                <StackPanel Orientation="Horizontal" Grid.Row="4" HorizontalAlignment="Center" Margin="10">
+                                                    <StackPanel Orientation="Vertical" Width="150" Margin="10,0">
+                                                        <TextBox HorizontalAlignment="Stretch" Margin="2"/>
+                                                        <DataGrid Height="100" Name="tipoviFilter" HorizontalAlignment="Stretch" HeadersVisibility="None" GridLinesVisibility="None"/>
+                                                    </StackPanel>
+                                                    <StackPanel Orientation="Vertical" Width="150" Margin="10,0">
+                                                        <TextBox HorizontalAlignment="Stretch" Margin="2"/>
+                                                        <DataGrid Height="100" Name="etiketeFilter" HorizontalAlignment="Stretch" HeadersVisibility="None" GridLinesVisibility="None"/>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                            </Grid>
+                                        </Border>
                                     </Expander>
                                     <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="AliceBlue" Margin="3">
                                         <TextBox Name="pretragaLokali" VerticalAlignment="Center" Width="150" Margin="4,0,4,0" TextChanged="pretraga_TextChanged"/>
@@ -192,7 +229,7 @@
                                     </DockPanel>
                                     <Expander Header="Filteri" VerticalAlignment="Bottom" ExpandDirection="Up" Margin="0,0,0,3">
                                         <Grid Background="Yellow" VerticalAlignment="Stretch">
-                                            
+
                                         </Grid>
                                     </Expander>
                                     <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="AliceBlue" Margin="3">

@@ -44,6 +44,68 @@ namespace HCIZadatak.Validation
             lokaliDG.ItemsSource = ((App)App.Current).Lokali;
             tipoviDG.ItemsSource = ((App)App.Current).Tipovi;
             etiketeDG.ItemsSource = ((App)App.Current).Etikete;
+
+            ((CollectionView)CollectionViewSource.GetDefaultView(lokaliDG.ItemsSource)).Filter = Filter;
+            ((CollectionView)CollectionViewSource.GetDefaultView(tipoviDG.ItemsSource)).Filter = Filter;
+            ((CollectionView)CollectionViewSource.GetDefaultView(etiketeDG.ItemsSource)).Filter = Filter;
+        }
+
+        private bool Filter(object item)
+        {
+            if (item is Lokal)
+            {
+                Lokal lokal = item as Lokal;
+                if (String.IsNullOrEmpty(pretragaLokali.Text))
+                {
+                    return true;
+                }
+                else
+                {
+                    bool oznakaOk = (lokal.OznakaTxt.IndexOf(pretragaLokali.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+
+                    bool imeOk = false;
+                    if (lokal.ImeTxt != null)
+                    {
+                        imeOk = (lokal.ImeTxt.IndexOf(pretragaLokali.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+                    }
+                    return oznakaOk || imeOk;
+                }
+
+            }
+            else if (item is Tip)
+            {
+                Tip tip = item as Tip;
+                if (String.IsNullOrEmpty(pretragaTipovi.Text))
+                {
+                    return true;
+                }
+                else
+                {
+                    bool oznakaOk = (tip.Oznaka.IndexOf(pretragaTipovi.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+
+                    bool imeOk = false;
+                    if (tip.Ime != null)
+                    {
+                        imeOk = (tip.Ime.IndexOf(pretragaTipovi.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+                    }
+                    return oznakaOk || imeOk;
+                }
+            }
+            else if (item is Etiketa)
+            {
+                Etiketa etiketa = item as Etiketa;
+                if (String.IsNullOrEmpty(pretragaEtikete.Text))
+                {
+                    return true;
+                }
+                else
+                {
+                    bool oznakaOk = (etiketa.Oznaka.IndexOf(pretragaEtikete.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+
+                    return oznakaOk;
+                }
+            }
+            return false;
         }
 
         private void novilokalbtn_Click(object sender, RoutedEventArgs e)
@@ -184,6 +246,22 @@ namespace HCIZadatak.Validation
                     ExpanderPanel.Children.Remove(details as UIElement);
                     ExpanderPanel.UnregisterName("Details");
                 }
+            }
+        }
+
+        private void pretraga_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (sender.Equals(pretragaLokali))
+            {
+                CollectionViewSource.GetDefaultView(lokaliDG.ItemsSource).Refresh();
+            }
+            else if (sender.Equals(pretragaTipovi))
+            {
+                CollectionViewSource.GetDefaultView(tipoviDG.ItemsSource).Refresh();
+            }
+            else if (sender.Equals(pretragaEtikete))
+            {
+                CollectionViewSource.GetDefaultView(etiketeDG.ItemsSource).Refresh();
             }
         }
     }

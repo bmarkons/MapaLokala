@@ -114,5 +114,10 @@ namespace HCIZadatak.Entiteti
         {
             return "[" + oznaka + "] " + ime;
         }
+
+        public Tip This
+        {
+            get { return this; }
+        }
     }
 }

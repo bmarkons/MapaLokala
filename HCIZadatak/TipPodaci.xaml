@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:HCIZadatak"
+             xmlns:local="clr-namespace:HCIZadatak.Validation"
              mc:Ignorable="d" 
              Margin="10" Name="Details">
     <Border BorderThickness="4" CornerRadius="5" Background="#eff899" BorderBrush="#3c4262" Height="250" Width="400" Margin="0,-170,0,0">
@@ -33,7 +33,32 @@
             <Label Margin="5" Grid.Row="2" Grid.Column="1" Content="Ime:"/>
             <Label Margin="5" Grid.Row="3" Grid.Column="1" Content="Opis:"/>
 
-            <TextBox Margin="10" Grid.Row="1" Grid.Column="2" Text="{Binding Oznaka,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox Margin="10" Grid.Row="1" Grid.Column="2" >
+                <TextBox.Text>
+                    <Binding Path="Oznaka" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <local:OznakaTipaValidationRule />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+                <Validation.ErrorTemplate>
+                    <ControlTemplate>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Border BorderThickness="2" BorderBrush="Red" Grid.Row="1">
+                                <AdornedElementPlaceholder Grid.Row="1" x:Name="textBox"/>
+                            </Border>
+                            <!--<TextBlock Grid.Row="0" Text="{Binding [0].ErrorContent}" Foreground="Red" HorizontalAlignment="Right" FontStyle="Italic" FontSize="15"/>-->
+                        </Grid>
+                    </ControlTemplate>
+                </Validation.ErrorTemplate>
+            </TextBox>
             <TextBox Margin="10" Grid.Row="2" Grid.Column="2" Text="{Binding Ime,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
             <TextBox Margin="10" Grid.Row="3" Grid.Column="2" Text="{Binding Opis,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap"/>
 

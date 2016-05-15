@@ -12,7 +12,7 @@
         <ScrollViewer ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto">
             <Image  Stretch="UniformToFill" VerticalAlignment="Stretch" Source="/HCIZadatak;component/Images/novisadmap.png"/>
         </ScrollViewer>
-        <Expander ExpandDirection="Right" Template="{StaticResource SimpleExpanderTemp}" Margin="10,10,10,0">
+        <Expander Template="{StaticResource SimpleExpanderTemp}" Margin="10,10,10,0">
             <StackPanel Orientation="Horizontal" Name="ExpanderPanel">
                 <Border CornerRadius="5,5,5,5" BorderThickness="10,10,10,10" BorderBrush="#076350" HorizontalAlignment="Left" Margin="0,10,0,20">
                     <DockPanel Background="#076350" Width="385">
@@ -61,7 +61,7 @@
                                 </TabItem.CommandBindings>
                                 <Grid VerticalAlignment="Stretch">
                                     <DockPanel>
-                                        <StackPanel DockPanel.Dock="Bottom" Height="25" Background="#FF42AAAA" Margin="1"/>
+                                        <StackPanel DockPanel.Dock="Bottom" Height="30" Background="#FF42AAAA" Margin="0"/>
                                         <DataGrid Name="lokaliDG" CanUserAddRows="false" SelectionUnit="FullRow" AutoGenerateColumns="False" GridLinesVisibility="None" RowHeaderWidth="0" BorderBrush="Transparent" SelectionChanged="dataGrid_SelectionChanged">
                                             <DataGrid.RowStyle>
                                                 <Style TargetType="DataGridRow">
@@ -141,9 +141,15 @@
                                 </DataGrid.RowDetailsTemplate>-->
                                         </DataGrid>
                                     </DockPanel>
-                                    <Expander Header="Filteri" VerticalAlignment="Bottom" ExpandDirection="Up">
+                                    <Expander Header="Filteri" VerticalAlignment="Bottom" ExpandDirection="Up" Margin="0,0,0,3">
                                         <StackPanel></StackPanel>
                                     </Expander>
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="AliceBlue" Margin="3">
+                                        <TextBox Name="pretragaLokali" VerticalAlignment="Center" Width="150" Margin="4,0,4,0" TextChanged="pretraga_TextChanged"/>
+                                        <Button Width="25" Height="25" VerticalAlignment="Center" Background="Transparent" BorderThickness="0">
+                                            <Image Source="../Images/search.png"/>
+                                        </Button>
+                                    </StackPanel>
                                 </Grid>
                             </TabItem>
 
@@ -153,7 +159,7 @@
                                 </TabItem.CommandBindings>
                                 <Grid VerticalAlignment="Stretch">
                                     <DockPanel>
-                                        <StackPanel DockPanel.Dock="Bottom" Height="25" Background="#FF42AAAA" Margin="1"/>
+                                        <StackPanel DockPanel.Dock="Bottom" Height="30" Background="#FF42AAAA" Margin="0"/>
                                         <DataGrid Name="tipoviDG" CanUserAddRows="false" SelectionUnit="FullRow" AutoGenerateColumns="False" GridLinesVisibility="None" RowHeaderWidth="0" BorderBrush="Transparent" SelectionChanged="dataGrid_SelectionChanged">
                                             <DataGrid.RowStyle>
                                                 <Style TargetType="DataGridRow">
@@ -184,9 +190,17 @@
                                             </DataGrid.RowDetailsTemplate>-->
                                         </DataGrid>
                                     </DockPanel>
-                                    <Expander Header="Filteri" VerticalAlignment="Bottom" ExpandDirection="Up">
-                                        <StackPanel></StackPanel>
+                                    <Expander Header="Filteri" VerticalAlignment="Bottom" ExpandDirection="Up" Margin="0,0,0,3">
+                                        <Grid Background="Yellow" VerticalAlignment="Stretch">
+                                            
+                                        </Grid>
                                     </Expander>
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="AliceBlue" Margin="3">
+                                        <TextBox Name="pretragaTipovi" VerticalAlignment="Center" Width="150" Margin="4,0,4,0" TextChanged="pretraga_TextChanged"/>
+                                        <Button Width="25" Height="25" VerticalAlignment="Center" Background="Transparent" BorderThickness="0">
+                                            <Image Source="../Images/search.png"/>
+                                        </Button>
+                                    </StackPanel>
                                 </Grid>
                             </TabItem>
 
@@ -194,37 +208,47 @@
                                 <TabItem.CommandBindings>
                                     <CommandBinding Command="Delete" CanExecute="ObrisiEtiketu_CanExecute" Executed="ObrisiEtiketu_Executed" />
                                 </TabItem.CommandBindings>
-                                <DataGrid Name="etiketeDG" SelectionUnit="FullRow" AutoGenerateColumns="False" CanUserAddRows="false" GridLinesVisibility="None" RowHeaderWidth="0" BorderBrush="Transparent" SelectionChanged="dataGrid_SelectionChanged">
-                                    <DataGrid.RowStyle>
-                                        <Style TargetType="DataGridRow">
-                                            <Setter Property="Background" Value="#d3ece9"/>
-                                            <Setter Property="BorderThickness" Value="0,0,0,2"/>
-                                            <Setter Property="BorderBrush" Value="Azure"/>
-                                        </Style>
-                                    </DataGrid.RowStyle>
-                                    <DataGrid.CellStyle>
-                                        <Style TargetType="DataGridCell">
-                                            <Setter Property="BorderThickness" Value="0"/>
-                                        </Style>
-                                    </DataGrid.CellStyle>
-                                    <DataGrid.Columns>
-                                        <DataGridTextColumn Header="Oznaka etikete" Binding="{Binding Oznaka,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" MinWidth="180"/>
-                                        <DataGridTemplateColumn Header="Boja etikete" Width="180">
-                                            <DataGridTemplateColumn.CellTemplate>
-                                                <DataTemplate>
-                                                    <xtd:ColorPicker BorderThickness="0" SelectedColor="{Binding Boja, UpdateSourceTrigger=PropertyChanged}">
-                                                        <xtd:ColorPicker.ButtonStyle>
-                                                            <Style TargetType="ToggleButton">
-                                                                <Setter Property="Background" Value="Transparent"/>
-                                                            </Style>
-                                                        </xtd:ColorPicker.ButtonStyle>
-                                                    </xtd:ColorPicker>
-                                                </DataTemplate>
-                                            </DataGridTemplateColumn.CellTemplate>
-                                        </DataGridTemplateColumn>
-                                        <!--<DataGridTextColumn Header="Opis etikete" Binding="{Binding Opis,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" MinWidth="120"/>-->
-                                    </DataGrid.Columns>
-                                </DataGrid>
+                                <DockPanel>
+                                    <StackPanel Orientation="Vertical" DockPanel.Dock="Bottom" Height="30" Background="#FF42AAAA" Margin="0">
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="3,2,3,4" Background="AliceBlue">
+                                            <TextBox Name="pretragaEtikete" VerticalAlignment="Center" Width="150" Margin="4,0,4,0" TextChanged="pretraga_TextChanged"/>
+                                            <Button Width="25" Height="25" VerticalAlignment="Center" Background="Transparent" BorderThickness="0">
+                                                <Image Source="../Images/search.png"/>
+                                            </Button>
+                                        </StackPanel>
+                                    </StackPanel>
+                                    <DataGrid Name="etiketeDG" SelectionUnit="FullRow" AutoGenerateColumns="False" CanUserAddRows="false" GridLinesVisibility="None" RowHeaderWidth="0" BorderBrush="Transparent" SelectionChanged="dataGrid_SelectionChanged">
+                                        <DataGrid.RowStyle>
+                                            <Style TargetType="DataGridRow">
+                                                <Setter Property="Background" Value="#d3ece9"/>
+                                                <Setter Property="BorderThickness" Value="0,0,0,2"/>
+                                                <Setter Property="BorderBrush" Value="Azure"/>
+                                            </Style>
+                                        </DataGrid.RowStyle>
+                                        <DataGrid.CellStyle>
+                                            <Style TargetType="DataGridCell">
+                                                <Setter Property="BorderThickness" Value="0"/>
+                                            </Style>
+                                        </DataGrid.CellStyle>
+                                        <DataGrid.Columns>
+                                            <DataGridTextColumn Header="Oznaka etikete" Binding="{Binding Oznaka,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" MinWidth="180"/>
+                                            <DataGridTemplateColumn Header="Boja etikete" Width="180">
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <xtd:ColorPicker BorderThickness="0" SelectedColor="{Binding Boja, UpdateSourceTrigger=PropertyChanged}">
+                                                            <xtd:ColorPicker.ButtonStyle>
+                                                                <Style TargetType="ToggleButton">
+                                                                    <Setter Property="Background" Value="Transparent"/>
+                                                                </Style>
+                                                            </xtd:ColorPicker.ButtonStyle>
+                                                        </xtd:ColorPicker>
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+                                            <!--<DataGridTextColumn Header="Opis etikete" Binding="{Binding Opis,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" MinWidth="120"/>-->
+                                        </DataGrid.Columns>
+                                    </DataGrid>
+                                </DockPanel>
                             </TabItem>
                         </TabControl>
 

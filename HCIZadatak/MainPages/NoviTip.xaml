@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:HCIZadatak.Validation"
              mc:Ignorable="d" 
-             d:DesignHeight="700" d:DesignWidth="700" FontSize="20">
+             d:DesignHeight="700" d:DesignWidth="700" FontSize="20" FontFamily="Segoe UI Semibold" Background="#56988b">
     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
         <Grid.CommandBindings>
             <CommandBinding Command="New" CanExecute="Zavrsi_CanExecute" Executed="Zavrsi_Executed" />
@@ -33,7 +33,7 @@
                             <Border BorderThickness="2" BorderBrush="Red" Grid.Row="1">
                                 <AdornedElementPlaceholder Grid.Row="1" x:Name="textBox"/>
                             </Border>
-                            <TextBlock Grid.Row="0" Text="{Binding [0].ErrorContent}" Foreground="Red" HorizontalAlignment="Right" FontStyle="Italic" FontSize="15"/>
+                            <TextBlock Grid.Row="0" Padding="5" Text="{Binding [0].ErrorContent}" Foreground="Red" HorizontalAlignment="Right" FontStyle="Italic" FontSize="15" Background="Wheat"/>
                         </Grid>
                     </ControlTemplate>
                 </Validation.ErrorTemplate>
@@ -50,8 +50,12 @@
                 </Border>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,50,0,0">
-                <Button Name="odustanibtn" Content="Odustani" Click="odustanibtn_Click" Margin="0,0,5,0"/>
-                <Button Name="zavrsibtn" Content="Završi unos" Command="New"/>
+                <Button Name="odustanibtn" Click="odustanibtn_Click" Margin="0,0,5,0" BorderThickness="0" Background="Wheat" >
+                    <Image Source="../Images/quit.png" Height="48" Width="48"/>
+                </Button>
+                <Button Name="zavrsibtn" Command="New" Background="Wheat">
+                    <Image Source="../Images/done.png" Height="48" Width="48"/>
+                </Button>
             </StackPanel>
         </StackPanel>
     </Grid>

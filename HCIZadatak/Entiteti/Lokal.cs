@@ -55,7 +55,7 @@ namespace HCIZadatak
         private bool hendikep;
         private bool pusenje;
         private bool rezervacije;
-        private int kapacitet;
+        private int? kapacitet;
         private string cena;
         private string alkohol;
         private string datum;
@@ -148,7 +148,7 @@ namespace HCIZadatak
             }
         }
 
-        public int Kapacitet
+        public int? Kapacitet
         {
             get
             {

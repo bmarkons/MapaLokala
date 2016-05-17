@@ -34,7 +34,7 @@
                             <Border BorderThickness="2" BorderBrush="Red" Grid.Row="1">
                                 <AdornedElementPlaceholder Grid.Row="1" x:Name="textBox"/>
                             </Border>
-                            <TextBlock Grid.Row="0" Text="{Binding [0].ErrorContent}" Foreground="Red" HorizontalAlignment="Right" FontStyle="Italic" FontSize="15"/>
+                            <TextBlock Padding="5" Background="Wheat" Grid.Row="0" Text="{Binding [0].ErrorContent}" Foreground="Red" HorizontalAlignment="Right" FontStyle="Italic" FontSize="15"/>
                         </Grid>
                     </ControlTemplate>
                 </Validation.ErrorTemplate>

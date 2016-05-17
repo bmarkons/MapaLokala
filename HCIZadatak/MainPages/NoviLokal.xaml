@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:HCIZadatak.Validation"
              mc:Ignorable="d" 
-             d:DesignHeight="700" FontSize="20" Width="1395.444">
+             d:DesignHeight="700" FontSize="20" Width="1395.444" FontFamily="Segoe UI Semibold" Background="#3e9482">
 
     <UserControl.Resources>
         <Storyboard x:Key="MouseEnter1">
@@ -336,145 +336,147 @@
             <Grid>
                 <!--<Frame Grid.Column="0" x:Name="frame" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Source="/HCIZadatak;component/NoviLokalPages/GuidePage.xaml"/>-->
                 <TextBlock Text="Dodavanje novog lokala" HorizontalAlignment="Center" VerticalAlignment="Top" Width="325" Margin="0,20,0,0" FontSize="30"/>
-                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Height="364" Width="250">
-                    <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Oznaka lokala" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5" PreviewMouseDown="textBlock_PreviewMouseDown">
-                        <TextBlock.RenderTransform>
-                            <TransformGroup>
-                                <ScaleTransform/>
-                                <SkewTransform/>
-                                <RotateTransform/>
-                                <TranslateTransform/>
-                            </TransformGroup>
-                        </TextBlock.RenderTransform>
-                    </TextBlock>
-                    <TextBlock RenderTransformOrigin="0.5,0.5" x:Name="textBlock2" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Ime lokala" VerticalAlignment="Center" PreviewMouseDown="textBlock_PreviewMouseDown">
-                        <TextBlock.RenderTransform>
-                            <TransformGroup>
-                                <ScaleTransform/>
-                                <SkewTransform/>
-                                <RotateTransform/>
-                                <TranslateTransform/>
-                            </TransformGroup>
-                        </TextBlock.RenderTransform>
-                    </TextBlock>
-                    <TextBlock RenderTransformOrigin="0.5,0.5" x:Name="textBlock3" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Opis lokala" VerticalAlignment="Center" PreviewMouseDown="textBlock_PreviewMouseDown">
-                        <TextBlock.RenderTransform>
-                            <TransformGroup>
-                                <ScaleTransform/>
-                                <SkewTransform/>
-                                <RotateTransform/>
-                                <TranslateTransform/>
-                            </TransformGroup>
-                        </TextBlock.RenderTransform>
-                    </TextBlock>
-                    <TextBlock RenderTransformOrigin="0.5,0.5" x:Name="textBlock4" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Dostupnost za invalide" VerticalAlignment="Center" PreviewMouseDown="textBlock_PreviewMouseDown">
-                        <TextBlock.RenderTransform>
-                            <TransformGroup>
-                                <ScaleTransform/>
-                                <SkewTransform/>
-                                <RotateTransform/>
-                                <TranslateTransform/>
-                            </TransformGroup>
-                        </TextBlock.RenderTransform>
-                    </TextBlock>
-                    <TextBlock RenderTransformOrigin="0.5,0.5" x:Name="textBlock5" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Dozvoljeno pušenje" VerticalAlignment="Center" PreviewMouseDown="textBlock_PreviewMouseDown">
-                        <TextBlock.RenderTransform>
-                            <TransformGroup>
-                                <ScaleTransform/>
-                                <SkewTransform/>
-                                <RotateTransform/>
-                                <TranslateTransform/>
-                            </TransformGroup>
-                        </TextBlock.RenderTransform>
-                    </TextBlock>
-                    <TextBlock RenderTransformOrigin="0.5,0.5" x:Name="textBlock6" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Mogućnost rezervacije" VerticalAlignment="Center" PreviewMouseDown="textBlock_PreviewMouseDown">
-                        <TextBlock.RenderTransform>
-                            <TransformGroup>
-                                <ScaleTransform/>
-                                <SkewTransform/>
-                                <RotateTransform/>
-                                <TranslateTransform/>
-                            </TransformGroup>
-                        </TextBlock.RenderTransform>
-                    </TextBlock>
-                    <TextBlock RenderTransformOrigin="0.5,0.5" x:Name="textBlock7" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Rang cena" VerticalAlignment="Center" PreviewMouseDown="textBlock_PreviewMouseDown">
-                        <TextBlock.RenderTransform>
-                            <TransformGroup>
-                                <ScaleTransform/>
-                                <SkewTransform/>
-                                <RotateTransform/>
-                                <TranslateTransform/>
-                            </TransformGroup>
-                        </TextBlock.RenderTransform>
-                    </TextBlock>
-                    <TextBlock RenderTransformOrigin="0.5,0.5" x:Name="textBlock8" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Služenje alkohola" VerticalAlignment="Center" PreviewMouseDown="textBlock_PreviewMouseDown">
-                        <TextBlock.RenderTransform>
-                            <TransformGroup>
-                                <ScaleTransform/>
-                                <SkewTransform/>
-                                <RotateTransform/>
-                                <TranslateTransform/>
-                            </TransformGroup>
-                        </TextBlock.RenderTransform>
-                    </TextBlock>
-                    <TextBlock RenderTransformOrigin="0.5,0.5" x:Name="textBlock9" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Kapacitet lokala" VerticalAlignment="Center" PreviewMouseDown="textBlock_PreviewMouseDown">
-                        <TextBlock.RenderTransform>
-                            <TransformGroup>
-                                <ScaleTransform/>
-                                <SkewTransform/>
-                                <RotateTransform/>
-                                <TranslateTransform/>
-                            </TransformGroup>
-                        </TextBlock.RenderTransform>
-                    </TextBlock>
-                    <TextBlock RenderTransformOrigin="0.5,0.5" x:Name="textBlock10" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Datum otvaranja lokala" VerticalAlignment="Center" PreviewMouseDown="textBlock_PreviewMouseDown">
-                        <TextBlock.RenderTransform>
-                            <TransformGroup>
-                                <ScaleTransform/>
-                                <SkewTransform/>
-                                <RotateTransform/>
-                                <TranslateTransform/>
-                            </TransformGroup>
-                        </TextBlock.RenderTransform>
-                    </TextBlock>
-                    <TextBlock RenderTransformOrigin="0.5,0.5" x:Name="textBlock11" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Ikonica lokala" VerticalAlignment="Center" PreviewMouseDown="textBlock_PreviewMouseDown">
-                        <TextBlock.RenderTransform>
-                            <TransformGroup>
-                                <ScaleTransform/>
-                                <SkewTransform/>
-                                <RotateTransform/>
-                                <TranslateTransform/>
-                            </TransformGroup>
-                        </TextBlock.RenderTransform>
-                    </TextBlock>
-                    <TextBlock RenderTransformOrigin="0.5,0.5" x:Name="textBlock12" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Tip lokala" VerticalAlignment="Center" PreviewMouseDown="textBlock_PreviewMouseDown">
-                        <TextBlock.RenderTransform>
-                            <TransformGroup>
-                                <ScaleTransform/>
-                                <SkewTransform/>
-                                <RotateTransform/>
-                                <TranslateTransform/>
-                            </TransformGroup>
-                        </TextBlock.RenderTransform>
-                    </TextBlock>
-                    <TextBlock RenderTransformOrigin="0.5,0.5" x:Name="textBlock13" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Tagujte lokal" VerticalAlignment="Center" PreviewMouseDown="textBlock_PreviewMouseDown">
-                        <TextBlock.RenderTransform>
-                            <TransformGroup>
-                                <ScaleTransform/>
-                                <SkewTransform/>
-                                <RotateTransform/>
-                                <TranslateTransform/>
-                            </TransformGroup>
-                        </TextBlock.RenderTransform>
-                    </TextBlock>
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Height="364" Width="250"  >
+                        <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Oznaka lokala" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5" PreviewMouseDown="textBlock_PreviewMouseDown">
+                            <TextBlock.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </TextBlock.RenderTransform>
+                        </TextBlock>
+                        <TextBlock RenderTransformOrigin="0.5,0.5" x:Name="textBlock2" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Ime lokala" VerticalAlignment="Center" PreviewMouseDown="textBlock_PreviewMouseDown">
+                            <TextBlock.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </TextBlock.RenderTransform>
+                        </TextBlock>
+                        <TextBlock RenderTransformOrigin="0.5,0.5" x:Name="textBlock3" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Opis lokala" VerticalAlignment="Center" PreviewMouseDown="textBlock_PreviewMouseDown">
+                            <TextBlock.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </TextBlock.RenderTransform>
+                        </TextBlock>
+                        <TextBlock RenderTransformOrigin="0.5,0.5" x:Name="textBlock4" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Dostupnost za invalide" VerticalAlignment="Center" PreviewMouseDown="textBlock_PreviewMouseDown">
+                            <TextBlock.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </TextBlock.RenderTransform>
+                        </TextBlock>
+                        <TextBlock RenderTransformOrigin="0.5,0.5" x:Name="textBlock5" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Dozvoljeno pušenje" VerticalAlignment="Center" PreviewMouseDown="textBlock_PreviewMouseDown">
+                            <TextBlock.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </TextBlock.RenderTransform>
+                        </TextBlock>
+                        <TextBlock RenderTransformOrigin="0.5,0.5" x:Name="textBlock6" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Mogućnost rezervacije" VerticalAlignment="Center" PreviewMouseDown="textBlock_PreviewMouseDown">
+                            <TextBlock.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </TextBlock.RenderTransform>
+                        </TextBlock>
+                        <TextBlock RenderTransformOrigin="0.5,0.5" x:Name="textBlock7" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Rang cena" VerticalAlignment="Center" PreviewMouseDown="textBlock_PreviewMouseDown">
+                            <TextBlock.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </TextBlock.RenderTransform>
+                        </TextBlock>
+                        <TextBlock RenderTransformOrigin="0.5,0.5" x:Name="textBlock8" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Služenje alkohola" VerticalAlignment="Center" PreviewMouseDown="textBlock_PreviewMouseDown">
+                            <TextBlock.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </TextBlock.RenderTransform>
+                        </TextBlock>
+                        <TextBlock RenderTransformOrigin="0.5,0.5" x:Name="textBlock9" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Kapacitet lokala" VerticalAlignment="Center" PreviewMouseDown="textBlock_PreviewMouseDown">
+                            <TextBlock.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </TextBlock.RenderTransform>
+                        </TextBlock>
+                        <TextBlock RenderTransformOrigin="0.5,0.5" x:Name="textBlock10" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Datum otvaranja lokala" VerticalAlignment="Center" PreviewMouseDown="textBlock_PreviewMouseDown">
+                            <TextBlock.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </TextBlock.RenderTransform>
+                        </TextBlock>
+                        <TextBlock RenderTransformOrigin="0.5,0.5" x:Name="textBlock11" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Ikonica lokala" VerticalAlignment="Center" PreviewMouseDown="textBlock_PreviewMouseDown">
+                            <TextBlock.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </TextBlock.RenderTransform>
+                        </TextBlock>
+                        <TextBlock RenderTransformOrigin="0.5,0.5" x:Name="textBlock12" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Tip lokala" VerticalAlignment="Center" PreviewMouseDown="textBlock_PreviewMouseDown">
+                            <TextBlock.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </TextBlock.RenderTransform>
+                        </TextBlock>
+                        <TextBlock RenderTransformOrigin="0.5,0.5" x:Name="textBlock13" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Tagujte lokal" VerticalAlignment="Center" PreviewMouseDown="textBlock_PreviewMouseDown">
+                            <TextBlock.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </TextBlock.RenderTransform>
+                        </TextBlock>
 
-                </StackPanel>
+                    </StackPanel>
                 <Grid VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="250" Margin="0,0,0,30">
-                    <Button x:Name="odustanibtn" Content="Odustani" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Click="odustanibtn_Click"/>
+                    <Button x:Name="odustanibtn" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Click="odustanibtn_Click"  BorderThickness="0" Background="Wheat" >
+                        <Image Source="../Images/quit.png" Height="48" Width="48"/>
+                    </Button>
                 </Grid>
             </Grid>
         </Border>
-        <Frame Grid.Column="1" x:Name="frame1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" NavigationUIVisibility="Hidden"/>
+        <Frame Grid.Column="1" x:Name="frame1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" NavigationUIVisibility="Hidden" Background="#56988b"/>
 
     </Grid>
 </UserControl>

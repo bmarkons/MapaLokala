@@ -5,8 +5,10 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:HCIZadatak.Validation"
              xmlns:xtd="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
+             xmlns:dateslider="clr-namespace:Andora.UserControlLibrary;assembly=Andora.UserControlLibrary"
+             xmlns:converters="clr-namespace:Andora.UserControlLibrary.Converters;assembly=Andora.UserControlLibrary"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="500" FontSize="15">
+             d:DesignHeight="300" d:DesignWidth="500" FontSize="15" FontFamily="Segoe UI Semibold" >
     <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
 
         <ScrollViewer ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto">
@@ -141,42 +143,96 @@
                                 </DataGrid.RowDetailsTemplate>-->
                                         </DataGrid>
                                     </DockPanel>
-                                    <Expander Header="Filteri" VerticalAlignment="Bottom" ExpandDirection="Up" Margin="0,0,0,3">
-                                        <Border Background="#eff899" BorderThickness="0,2,0,0" BorderBrush="#3c4262" Margin="-2,0,-2,5" >
-                                            <Grid>
+                                    <Expander Name="expanderFilteri"  VerticalAlignment="Bottom" ExpandDirection="Up" Margin="0,0,0,3" FontSize="12" Expanded="ExpanderFilteri_Expanded" Collapsed="Expander_Collapsed">
+                                        <Expander.Header>
+                                            <BulletDecorator>
+                                                <BulletDecorator.Bullet>
+                                                    <Image Width="20" Source="../Images/filter.png"/>
+                                                </BulletDecorator.Bullet>
+                                            </BulletDecorator>
+                                        </Expander.Header>
+                                        <Expander.Resources>
+                                            <converters:NotConverter x:Key="negationConverter" />
+                                        </Expander.Resources>
+                                        <Border Background="#eff899" BorderThickness="0,2,0,0" BorderBrush="#3c4262" Margin="-2,0,-2,5">
+                                            <Grid >
                                                 <Grid.RowDefinitions>
                                                     <RowDefinition/>
                                                     <RowDefinition/>
-                                                    <RowDefinition/>
+                                                    <RowDefinition Height="1.5*"/>
                                                     <RowDefinition/>
                                                     <RowDefinition Height="3*"/>
+                                                    <RowDefinition/>
                                                 </Grid.RowDefinitions>
                                                 <StackPanel Orientation="Horizontal" Grid.Row="0" HorizontalAlignment="Center" Margin="10">
-                                                    <CheckBox ToolTip="Dostupno za invalide" Margin="10,5" VerticalAlignment="Center" VerticalContentAlignment="Center" >
-                                                        <Image Source="../Images/disabled.png" Width="32" Height="32"/>
+                                                    <CheckBox Name="invalidiFiler" ToolTip="Dostupno za invalide" Margin="10,5" VerticalAlignment="Center" VerticalContentAlignment="Center" >
+                                                        <Image Source="../Images/disabled.png" Width="25" Height="25"/>
                                                     </CheckBox>
-                                                    <CheckBox ToolTip="Dozvoljeno pušenje" Margin="10,5"  VerticalAlignment="Center" VerticalContentAlignment="Center" >
-                                                        <Image Source="../Images/smoking.png" Width="32" Height="32"/>
+                                                    <CheckBox Name="pusenjeFilter" ToolTip="Dozvoljeno pušenje" Margin="10,5"  VerticalAlignment="Center" VerticalContentAlignment="Center" >
+                                                        <Image Source="../Images/smoking.png" Width="25" Height="25"/>
                                                     </CheckBox>
-                                                    <CheckBox ToolTip="Moguće rezervacije" Margin="10,5" VerticalAlignment="Center" VerticalContentAlignment="Center" >
-                                                        <Image Source="../Images/book.png" Width="32" Height="32"/>
+                                                    <CheckBox Name="rezervacijeFilter" ToolTip="Moguće rezervacije" Margin="10,5" VerticalAlignment="Center" VerticalContentAlignment="Center" >
+                                                        <Image Source="../Images/book.png" Width="25" Height="25"/>
                                                     </CheckBox>
                                                 </StackPanel>
                                                 <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center" Margin="10">
-                                                    <ComboBox Name="cenefilter" Margin="10" Width="100"/>
-                                                    <ComboBox Name="alkoholfilter" Margin="10" Width="100"/>
+                                                    <ComboBox Name="ceneFilter" Margin="10,0" Width="100"/>
+                                                    <ComboBox Name="alkoholFilter" Margin="10,0" Width="100"/>
                                                 </StackPanel>
-                                                <TextBlock Grid.Row="2" Text="Ovde ide neki skroler za kapacitet"/>
-                                                <TextBlock Grid.Row="3" Text="Ovde ide neki skroler za datum otvaranja"/>
+
+                                                <Grid Grid.Row="2" Margin="5">
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition/>
+                                                        <RowDefinition Height="2*"/>
+                                                    </Grid.RowDefinitions>
+                                                    <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center">
+                                                        <TextBlock Text="Od:" Margin="5,0" FontWeight="Bold"/>
+                                                        <TextBlock Width="130" Text="{Binding ElementName=dateSliderFilter, Path=LowerValue, Mode=OneWay}" Margin="5,0"/>
+                                                        <TextBlock Text="Do:" Margin="10,0,5,0" FontWeight="Bold"/>
+                                                        <TextBlock Width="130" Text="{Binding ElementName=dateSliderFilter, Path=UpperValue, Mode=OneWay}" HorizontalAlignment="Right" Margin="5,0"/>
+                                                    </StackPanel>
+
+                                                    <dateslider:DateRangeSlider Name="dateSliderFilter" 
+                                                                                Grid.Row="1" 
+                                                                                LowerValue="01/01/2000 12:00 AM"
+                                                                                Minimum="01/01/2000 12:00 AM"
+                                                                                IsUpperSliderEnabled="{Binding IsUpperSliderEnabled, Converter={StaticResource ResourceKey=negationConverter}, Mode=TwoWay}"
+                                                                                IsLowerSliderEnabled="{Binding IsUpperSliderEnabled, Converter={StaticResource ResourceKey=negationConverter}, Mode=TwoWay}"
+                                                                                IsUpperValueLockedToMax="True"
+                                                                                IsLowerValueLockedToMin="True"
+                                                                                SmallChange="0:1:0:0.000"
+                                                                                LargeChange="0:1:0:0.000"
+                                                                                Margin="10,5"
+                                                                                />
+                                                </Grid>
+                                                <StackPanel Grid.Row="3" Margin="5" Orientation="Horizontal" HorizontalAlignment="Center">
+                                                    <TextBlock Text="Kapacitet:" Margin="10,0" FontWeight="Bold"/>
+                                                    <xtd:IntegerUpDown Minimum="0" Name="minKapacitetFilter" Margin="5,0" Width="100" Watermark="Od"/>
+                                                    <xtd:IntegerUpDown Minimum="{Binding ElementName=minKapacitet,Path=Value}" Name="maxKapacitetFilter" Margin="5,0" Width="100" Watermark="Do"/>
+                                                </StackPanel>
                                                 <StackPanel Orientation="Horizontal" Grid.Row="4" HorizontalAlignment="Center" Margin="10">
                                                     <StackPanel Orientation="Vertical" Width="150" Margin="10,0">
-                                                        <TextBox HorizontalAlignment="Stretch" Margin="2"/>
-                                                        <DataGrid Height="100" Name="tipoviFilter" HorizontalAlignment="Stretch" HeadersVisibility="None" GridLinesVisibility="None"/>
+                                                        <TextBlock Text="Tipovi:" HorizontalAlignment="Left" Margin="5" FontWeight="Bold"/>
+                                                        <xtd:WatermarkTextBox Watermark="Pretraga" Name="pretragaTipoviFilter" HorizontalAlignment="Stretch" Margin="0,0,0,2" TextChanged="pretraga_TextChanged"/>
+                                                        <xtd:CheckListBox Height="100" Name="tipoviListFilter" HorizontalAlignment="Stretch"/>
                                                     </StackPanel>
                                                     <StackPanel Orientation="Vertical" Width="150" Margin="10,0">
-                                                        <TextBox HorizontalAlignment="Stretch" Margin="2"/>
-                                                        <DataGrid Height="100" Name="etiketeFilter" HorizontalAlignment="Stretch" HeadersVisibility="None" GridLinesVisibility="None"/>
+                                                        <TextBlock Text="Etikete:" HorizontalAlignment="Left" Margin="5" FontWeight="Bold"/>
+                                                        <xtd:WatermarkTextBox Watermark="Pretraga" Name="pretragaEtiketeFilter" HorizontalAlignment="Stretch" Margin="0,0,0,2" TextChanged="pretraga_TextChanged"/>
+                                                        <xtd:CheckListBox Height="100" Name="etiketeListFilter" HorizontalAlignment="Stretch"/>
                                                     </StackPanel>
+                                                </StackPanel>
+                                                <StackPanel Grid.Row="5" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+                                                    <Button Name="filterBtn" Click="filterBtn_Click" Margin="10,0" Background="Transparent" ToolTip="Filtriraj" BorderThickness="0">
+                                                        <Button.Content>
+                                                            <Image Width="32" Source="../Images/ok.ico"/>
+                                                        </Button.Content>
+                                                    </Button>
+                                                    <Button Name="ponistiFilterBtn" ToolTip="Poništi filter" Click="ponistiFilterBtn_Click" Margin="10,0" Background="Transparent" BorderThickness="0">
+                                                        <Button.Content>
+                                                            <Image Width="32" Source="../Images/exit.png"/>
+                                                        </Button.Content>
+                                                    </Button>
                                                 </StackPanel>
                                             </Grid>
                                         </Border>

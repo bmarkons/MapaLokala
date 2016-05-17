@@ -51,14 +51,19 @@ namespace HCIZadatak.Validation
 
         private bool TipFilter(object item)
         {
+            Tip tip = item as Tip;
             if (String.IsNullOrEmpty(txtFilter.Text))
             {
                 return true;
             }
             else
             {
-                bool oznakaOk = ((item as Tip).Oznaka.IndexOf(txtFilter.Text, StringComparison.OrdinalIgnoreCase) >= 0);
-                bool imeOk = ((item as Tip).Ime.IndexOf(txtFilter.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+                bool oznakaOk = (tip.Oznaka.IndexOf(txtFilter.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+                bool imeOk = false;
+                if (tip.Ime != null)
+                {
+                    imeOk = (tip.Ime.IndexOf(txtFilter.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+                }
                 return oznakaOk || imeOk;
             }
                 

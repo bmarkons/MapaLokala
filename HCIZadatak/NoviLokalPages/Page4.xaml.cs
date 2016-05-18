@@ -110,6 +110,10 @@ namespace HCIZadatak.Validation
         private void Zavrsi_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             ((App)App.Current).Lokali.Add(noviLokal.Novi);
+            if(noviLokal.Novi.Ikona == null)
+            {
+                noviLokal.Novi.Ikona = noviLokal.Novi.Tip.Ikona;
+            }
             ((MainWindow)App.Current.MainWindow).Navigate(Mapa.Current);
         }
     }

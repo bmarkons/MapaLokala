@@ -47,6 +47,8 @@ namespace HCIZadatak.Validation
             }
         }
 
+        private Point startPoint;
+
         private Mapa()
         {
             InitializeComponent();
@@ -65,6 +67,10 @@ namespace HCIZadatak.Validation
             etiketeListFilter.ItemsSource = ((App)App.Current).Etikete;
 
             dateSliderFilter.Maximum = DateTime.Now;
+
+
+
+
         }
 
         private bool Search(object item)
@@ -459,13 +465,15 @@ namespace HCIZadatak.Validation
                 {
                     tipoviOK = true;
                 }
-            }catch(NullReferenceException ex)
+            }
+            catch (NullReferenceException ex)
             {
                 tipoviOK = true;
             }
 
             bool etiketeOK = false;
-            try {
+            try
+            {
                 if (etikete.Count == 0)
                 {
                     etiketeOK = true;
@@ -480,7 +488,8 @@ namespace HCIZadatak.Validation
                         }
                     }
                 }
-            }catch(NullReferenceException ex)
+            }
+            catch (NullReferenceException ex)
             {
                 etiketeOK = true;
             }
@@ -492,6 +501,61 @@ namespace HCIZadatak.Validation
         {
             ((CollectionView)CollectionViewSource.GetDefaultView(lokaliDG.ItemsSource)).Filter = null;
             CollectionViewSource.GetDefaultView(lokaliDG.ItemsSource).Refresh();
+        }
+
+        private void lokaliDG_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            startPoint = e.GetPosition(null);
+        }
+
+        private void lokaliDG_MouseMove(object sender, MouseEventArgs e)
+        {
+            Point mousePos = e.GetPosition(null);
+            Vector diff = startPoint - mousePos;
+
+            if (e.LeftButton == MouseButtonState.Pressed &&
+                (Math.Abs(diff.X) > SystemParameters.MinimumHorizontalDragDistance ||
+                Math.Abs(diff.Y) > SystemParameters.MinimumVerticalDragDistance))
+            {
+                DataGrid dataGrid = sender as DataGrid;
+                Lokal lokal = (Lokal)dataGrid.SelectedItem;
+                DataObject dragData = new DataObject("myFormat", lokal);
+                
+                //postavi mapu ispred expander-a
+                UIElement expander = (UIElement)mapaGrid.FindName("mainExpander");
+                mapaGrid.Children.Remove(mapaView);
+                mapaGrid.Children.Insert(mapaGrid.Children.Count, mapaView);
+
+                DragDrop.DoDragDrop(dataGrid, dragData, DragDropEffects.Move);
+            }
+        }
+
+        private void mapaView_DragEnter(object sender, DragEventArgs e)
+        {
+
+        }
+
+        private void mapaView_Drop(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent("myFormat"))
+            {
+                Lokal lokal = e.Data.GetData("myFormat") as Lokal;
+
+                //obrisi detalje lokala ako postoje
+                object details = ExpanderPanel.FindName("Details");
+                if (details != null)
+                {
+                    ExpanderPanel.Children.Remove(details as UIElement);
+                    ExpanderPanel.UnregisterName("Details");
+                }
+                
+                //vrati expander ispred mape
+                UIElement expander = (UIElement)mapaGrid.FindName("mainExpander");
+                mapaGrid.Children.Remove(mapaView);
+                mapaGrid.Children.Insert(0, mapaView);
+
+                
+            }
         }
     }
 }

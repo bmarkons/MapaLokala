@@ -6,6 +6,18 @@
              xmlns:local="clr-namespace:HCIZadatak.Validation"
              mc:Ignorable="d" 
              d:DesignHeight="700" d:DesignWidth="700" FontSize="20" FontFamily="Segoe UI Semibold" Background="#56988b">
+    <UserControl.Resources>
+        <Style x:Key="ButtonEnabledStyle" TargetType="Button">
+            <Style.Triggers>
+                <Trigger Property="IsEnabled" Value="False" >
+                    <Setter Property="Visibility" Value="Collapsed" />
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="True">
+                    <Setter Property="Visibility" Value="Visible"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
         <Grid.CommandBindings>
             <CommandBinding Command="New" CanExecute="Zavrsi_CanExecute" Executed="Zavrsi_Executed" />
@@ -49,14 +61,14 @@
                     <Image x:Name="ikona" Height="84" Width="148" Margin="0,0,0,0" Source="{Binding Path=Ikona,Mode=OneWayToSource,UpdateSourceTrigger=PropertyChanged}"/>
                 </Border>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,50,0,0">
-                <Button Name="odustanibtn" Click="odustanibtn_Click" Margin="0,0,5,0" BorderThickness="0" Background="Wheat" >
+            <Grid HorizontalAlignment="Stretch" Margin="0,50,0,0">
+                <Button Name="odustanibtn" Width="100" HorizontalAlignment="Left" Click="odustanibtn_Click" Margin="0,0,5,0" BorderThickness="0" Background="Wheat" >
                     <Image Source="../Images/quit.png" Height="48" Width="48"/>
                 </Button>
-                <Button Name="zavrsibtn" Command="New" Background="Wheat">
+                <Button Name="zavrsibtn" Width="100" Style="{StaticResource ButtonEnabledStyle}" HorizontalAlignment="Right" Command="New" Background="Wheat">
                     <Image Source="../Images/done.png" Height="48" Width="48"/>
                 </Button>
-            </StackPanel>
+            </Grid>
         </StackPanel>
     </Grid>
 </UserControl>

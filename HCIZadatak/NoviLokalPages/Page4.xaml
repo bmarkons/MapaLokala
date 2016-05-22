@@ -7,7 +7,18 @@
       xmlns:xtd="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
       mc:Ignorable="d"
       Title="Page4" FontSize="20" Height="700" Width="700">
-
+    <Page.Resources>
+        <Style x:Key="ButtonEnabledStyle" TargetType="Button">
+            <Style.Triggers>
+                <Trigger Property="IsEnabled" Value="False" >
+                    <Setter Property="Visibility" Value="Collapsed" />
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="True">
+                    <Setter Property="Visibility" Value="Visible"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Page.Resources>
     <Grid>
         <Grid.CommandBindings>
             <CommandBinding Command="New" CanExecute="Zavrsi_CanExecute" Executed="Zavrsi_Executed" />
@@ -57,7 +68,7 @@
             </StackPanel>
         </StackPanel>
         <Grid VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="400" Margin="0,0,0,30">
-            <Button x:Name="zavrsibtn" HorizontalAlignment="Right" VerticalAlignment="Top" Width="80" Command="New" >
+            <Button x:Name="zavrsibtn" Style="{StaticResource ButtonEnabledStyle}" HorizontalAlignment="Right" VerticalAlignment="Top" Width="80" Command="New" >
                 <Image Source="../Images/done.png" Height="48" Width="48"/>
             </Button>
             <Button x:Name="nazadbtn" Content="&lt;&lt;" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Click="nazadbtn_Click"/>

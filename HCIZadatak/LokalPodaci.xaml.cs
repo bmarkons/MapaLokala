@@ -25,6 +25,7 @@ namespace HCIZadatak
         {
             InitializeComponent();
             DataContext = lokal;
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

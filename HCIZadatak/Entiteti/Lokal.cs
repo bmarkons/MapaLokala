@@ -7,6 +7,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Media.Imaging;
 
 namespace HCIZadatak
@@ -14,6 +15,20 @@ namespace HCIZadatak
     [Serializable]
     public class Lokal : INotifyPropertyChanged
     {
+        private Point mapPoint = new Point(Double.NaN, Double.NaN);
+        public Point MapPoint
+        {
+            get
+            {
+                return mapPoint;
+            }
+
+            set
+            {
+                mapPoint = value;
+            }
+        }
+
         #region CENE_ALKOHOL_VREDNOSTI
         // Moguce vrednosti za polje CENE i ALKOHOL
         static List<String> rang_cena = new List<string>() { "Niske", "Srednje", "Visoke", "Luksuzne" };

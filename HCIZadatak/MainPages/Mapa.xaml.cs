@@ -69,7 +69,16 @@ namespace HCIZadatak.Validation
             dateSliderFilter.Maximum = DateTime.Now;
 
 
-
+            foreach (Lokal lokal in ((App)App.Current).Lokali)
+            {
+                if (!Double.IsNaN(lokal.MapPoint.X))
+                {
+                    MapItem mapItem = new MapItem(lokal);
+                    canvas.Children.Add(mapItem);
+                    Canvas.SetLeft(mapItem, lokal.MapPoint.X - 43);
+                    Canvas.SetTop(mapItem, lokal.MapPoint.Y - 43);
+                }
+            }
 
         }
 
@@ -519,42 +528,92 @@ namespace HCIZadatak.Validation
             {
                 DataGrid dataGrid = sender as DataGrid;
                 Lokal lokal = (Lokal)dataGrid.SelectedItem;
-                DataObject dragData = new DataObject("myFormat", lokal);
-                
-                //postavi mapu ispred expander-a
-                UIElement expander = (UIElement)mapaGrid.FindName("mainExpander");
-                mapaGrid.Children.Remove(mapaView);
-                mapaGrid.Children.Insert(mapaGrid.Children.Count, mapaView);
+                if (lokal != null)
+                {
+                    DataObject dragData = new DataObject("myFormat", lokal);
 
-                DragDrop.DoDragDrop(dataGrid, dragData, DragDropEffects.Move);
+                    //postavi mapu i canvas ispred expander-a
+                    SetMapFront();
+
+                    canvas.AllowDrop = true;
+                    DragDrop.DoDragDrop(dataGrid, dragData, DragDropEffects.Move);
+                    setMapBack();
+                }
             }
         }
 
-        private void mapaView_DragEnter(object sender, DragEventArgs e)
+        private void canvas_Drop(object sender, DragEventArgs e)
         {
+            //obrisi detalje lokala ako postoje
+            object details = ExpanderPanel.FindName("Details");
+            if (details != null)
+            {
+                ExpanderPanel.Children.Remove(details as UIElement);
+                ExpanderPanel.UnregisterName("Details");
+            }
 
+            if (e.Data.GetDataPresent("myFormat"))
+            {
+
+                //prikazi lokal na mapi
+                Lokal lokal = e.Data.GetData("myFormat") as Lokal;
+                Point dropPoint = e.GetPosition(mapaGrid);
+                lokal.MapPoint = dropPoint;
+
+                MapItem mapItem = new MapItem(lokal);
+                canvas.Children.Add(mapItem);
+
+                Canvas.SetLeft(mapItem, dropPoint.X - 43);
+                Canvas.SetTop(mapItem, dropPoint.Y - 43);
+
+            }
+            else if (e.Data.GetDataPresent("moveFormat"))
+            {
+
+                MapItem previousItem = (MapItem)e.Data.GetData("moveFormat");
+                //obrisi sa prethodnog mesta
+                canvas.Children.Remove(previousItem);
+
+                //prikazi lokal na mapi
+                Lokal lokal = previousItem.Lokal;
+                Point dropPoint = e.GetPosition(mapaGrid);
+                lokal.MapPoint = dropPoint;
+
+                MapItem mapItem = new MapItem(lokal);
+                canvas.Children.Add(mapItem);
+
+                Canvas.SetLeft(mapItem, dropPoint.X - 43);
+                Canvas.SetTop(mapItem, dropPoint.Y - 43);
+            }
         }
 
-        private void mapaView_Drop(object sender, DragEventArgs e)
+        public void SetMapFront()
+        {
+            mapaGrid.Children.Remove(mapaView);
+            mapaGrid.Children.Remove(canvas);
+            mapaGrid.Children.Insert(mapaGrid.Children.Count, mapaView);
+            mapaGrid.Children.Insert(mapaGrid.Children.Count, canvas);
+        }
+
+        public void setMapBack()
+        {
+            mapaGrid.Children.Remove(mapaView);
+            mapaGrid.Children.Remove(canvas);
+            mapaGrid.Children.Insert(0, canvas);
+            mapaGrid.Children.Insert(0, mapaView);
+        }
+
+        private void canvas_DragEnter(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent("myFormat"))
             {
-                Lokal lokal = e.Data.GetData("myFormat") as Lokal;
+                Lokal lokal = null;
+                lokal = (Lokal)e.Data.GetData("myFormat");
 
-                //obrisi detalje lokala ako postoje
-                object details = ExpanderPanel.FindName("Details");
-                if (details != null)
+                if (!Double.IsNaN(lokal.MapPoint.X))
                 {
-                    ExpanderPanel.Children.Remove(details as UIElement);
-                    ExpanderPanel.UnregisterName("Details");
+                    canvas.AllowDrop = false;
                 }
-                
-                //vrati expander ispred mape
-                UIElement expander = (UIElement)mapaGrid.FindName("mainExpander");
-                mapaGrid.Children.Remove(mapaView);
-                mapaGrid.Children.Insert(0, mapaView);
-
-                
             }
         }
     }

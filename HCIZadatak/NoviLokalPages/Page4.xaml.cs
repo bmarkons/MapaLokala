@@ -96,7 +96,7 @@ namespace HCIZadatak.Validation
         {
             Page[] p = noviLokal.Pages;
             Page1 p1 =(Page1) noviLokal.Pages[0];
-            if (p1.HasErrors)
+            if (p1.HasErrors || (noviLokal.Novi.Tip == null))
             {
                 e.CanExecute = false;
             }

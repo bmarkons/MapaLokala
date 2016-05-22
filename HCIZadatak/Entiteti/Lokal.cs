@@ -223,6 +223,10 @@ namespace HCIZadatak
         {
             get
             {
+                if(ikona == null)
+                {
+                    return Tip.Ikona;
+                }
                 return ikona;
             }
 

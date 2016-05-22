@@ -24,6 +24,8 @@ namespace HCIZadatak.Entiteti
         public event PropertyChangedEventHandler PropertyChanged;
         #endregion
 
+        private static BitmapImage noImageAvailable = new BitmapImage(new Uri(@"C:\Users\Marko\Documents\Visual Studio 2015\Projects\HCIZadatak\HCIZadatak\Images\nia300x300.svg"));
+
         #region NotifyProperties
         private string oznaka;
         private string ime;
@@ -63,6 +65,10 @@ namespace HCIZadatak.Entiteti
         {
             get
             {
+                if (ikona == null)
+                {
+                    return noImageAvailable;
+                }
                 return ikona;
             }
 

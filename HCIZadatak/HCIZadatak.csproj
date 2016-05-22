@@ -283,6 +283,9 @@
   <ItemGroup>
     <Resource Include="Images\done.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Images\nia300x300.svg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

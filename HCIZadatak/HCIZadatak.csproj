@@ -95,6 +95,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="EtiketeCheckList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="LokalPodaci.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -122,6 +126,9 @@
     <Compile Include="EtiketaPodaci.xaml.cs">
       <DependentUpon>EtiketaPodaci.xaml</DependentUpon>
     </Compile>
+    <Compile Include="EtiketeCheckList.xaml.cs">
+      <DependentUpon>EtiketeCheckList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="LokalPodaci.xaml.cs">
       <DependentUpon>LokalPodaci.xaml</DependentUpon>
     </Compile>
@@ -134,6 +141,15 @@
     <Compile Include="MapItem.xaml.cs">
       <DependentUpon>MapItem.xaml</DependentUpon>
     </Compile>
+    <Compile Include="NovaEtiketaControl.xaml.cs">
+      <DependentUpon>NovaEtiketaControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NoviTipControl.xaml.cs">
+      <DependentUpon>NoviTipControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TipoviDataGrid.xaml.cs">
+      <DependentUpon>TipoviDataGrid.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TipPodaci.xaml.cs">
       <DependentUpon>TipPodaci.xaml</DependentUpon>
     </Compile>
@@ -144,6 +160,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="MapItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="NovaEtiketaControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -168,6 +188,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="NoviLokalPages\Page1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="NoviTipControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TipoviDataGrid.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -284,6 +312,8 @@
     <Resource Include="Images\done.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\newtag20x20.png" />
+    <Resource Include="Images\delete.png" />
     <Content Include="Images\nia300x300.svg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

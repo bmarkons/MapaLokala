@@ -36,12 +36,9 @@ namespace HCIZadatak.Validation
 
             InitializeComponent();
 
-            tipovilist.ItemsSource = ((App)App.Current).Tipovi;
-            etiketaCheckList.ItemsSource = ((App)App.Current).Etikete;
-            proba.ItemsSource = noviLokal.Novi.Etikete;
-
-            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(tipovilist.ItemsSource);
-            view.Filter = TipFilter;
+            odabraneEtiketeCB.ItemsSource = noviLokal.Novi.Etikete;
+            tipFrame.NavigationService.Navigate(new TipoviDataGrid(noviLokal.Novi));
+            etiketeFrame.NavigationService.Navigate(new EtiketeCheckList(noviLokal.Novi));
         }
 
         private void nazadbtn_Click(object sender, RoutedEventArgs e)
@@ -49,42 +46,30 @@ namespace HCIZadatak.Validation
             ((NoviLokal)App.Current.MainWindow.Content).NavigateToPage(3);
         }
 
-        private bool TipFilter(object item)
-        {
-            Tip tip = item as Tip;
-            if (String.IsNullOrEmpty(txtFilter.Text))
-            {
-                return true;
-            }
-            else
-            {
-                bool oznakaOk = (tip.Oznaka.IndexOf(txtFilter.Text, StringComparison.OrdinalIgnoreCase) >= 0);
-                bool imeOk = false;
-                if (tip.Ime != null)
-                {
-                    imeOk = (tip.Ime.IndexOf(txtFilter.Text, StringComparison.OrdinalIgnoreCase) >= 0);
-                }
-                return oznakaOk || imeOk;
-            }
-                
-        }
+        //private bool TipFilter(object item)
+        //{
+        //    Tip tip = item as Tip;
+        //    if (String.IsNullOrEmpty(txtFilter.Text))
+        //    {
+        //        return true;
+        //    }
+        //    else
+        //    {
+        //        bool oznakaOk = (tip.Oznaka.IndexOf(txtFilter.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+        //        bool imeOk = false;
+        //        if (tip.Ime != null)
+        //        {
+        //            imeOk = (tip.Ime.IndexOf(txtFilter.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+        //        }
+        //        return oznakaOk || imeOk;
+        //    }
 
-        private void txtFlter_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            CollectionViewSource.GetDefaultView(tipovilist.ItemsSource).Refresh();
-        }
+        //}
 
-        private void etiketaCheckList_ItemSelectionChanged(object sender, Xceed.Wpf.Toolkit.Primitives.ItemSelectionChangedEventArgs e)
-        {
-            if (e.IsSelected)
-            {
-                noviLokal.Novi.Etikete.Add((Etiketa)e.Item);
-            }
-            else
-            {
-                noviLokal.Novi.Etikete.Remove((Etiketa)e.Item);
-            }
-        }
+        //private void txtFlter_TextChanged(object sender, TextChangedEventArgs e)
+        //{
+        //    CollectionViewSource.GetDefaultView(tipovilist.ItemsSource).Refresh();
+        //}
 
         //private void zavrsibtn_Click(object sender, RoutedEventArgs e)
         //{
@@ -95,7 +80,7 @@ namespace HCIZadatak.Validation
         private void Zavrsi_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
             Page[] p = noviLokal.Pages;
-            Page1 p1 =(Page1) noviLokal.Pages[0];
+            Page1 p1 = (Page1)noviLokal.Pages[0];
             if (p1.HasErrors || (noviLokal.Novi.Tip == null))
             {
                 e.CanExecute = false;
@@ -111,6 +96,19 @@ namespace HCIZadatak.Validation
         {
             ((App)App.Current).Lokali.Add(noviLokal.Novi);
             ((MainWindow)App.Current.MainWindow).Navigate(Mapa.Current);
+        }
+
+        private void CommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+            e.Handled = true;
+        }
+
+        private void CommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            noviLokal.Novi.Etikete.Remove(e.Parameter as Etiketa);
+
+            e.Handled = true;
         }
     }
 }

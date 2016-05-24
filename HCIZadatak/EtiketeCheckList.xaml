@@ -1,0 +1,22 @@
+﻿<UserControl x:Class="HCIZadatak.EtiketeCheckList"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HCIZadatak"
+             xmlns:xtd="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch">
+        <DockPanel>
+            <Border DockPanel.Dock="Left" Background="White" BorderThickness="1,0,0,0" BorderBrush="Gray">
+                <Image Source="./Images/search.png" Height="20" Width="30"/>
+            </Border>
+            <Button DockPanel.Dock="Right" Name="noviTagBtn" Width="30" Background="Wheat" Click="noviTagBtn_Click">
+                <Image Height="20" Source="./Images/newtag20x20.png"/>
+            </Button>
+            <TextBox Name="etiketaFilter" BorderThickness="0" Margin="0,0.5,0,0"/>
+        </DockPanel>
+        <xtd:CheckListBox Height="250" Name="etiketaCheckList" SelectedItemsOverride="{Binding Etikete,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"/>
+    </StackPanel>
+</UserControl>

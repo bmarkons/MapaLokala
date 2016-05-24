@@ -27,11 +27,8 @@
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,100" >
             <StackPanel VerticalAlignment="Center" Orientation="Vertical" Width="300">
                 <Label Content="Odaberite tip lokala:"/>
-                <Grid Margin="0,10,0,0">
-                    <TextBox Name="txtFilter" Width="218" HorizontalAlignment="Left" TextChanged="txtFlter_TextChanged"/>
-                    <Button Content="Novi tip" Width="80" HorizontalAlignment="Right"/>
-                </Grid>
-                <DataGrid SelectionUnit="FullRow" Name="tipovilist" Height="450" Width="300" Margin="0,1,0,0" IsReadOnly="True" AutoGenerateColumns="False" SelectedItem="{Binding Path=Tip,Mode=OneWayToSource,UpdateSourceTrigger=PropertyChanged}">
+                <Frame Name="tipFrame" NavigationUIVisibility="Hidden" Height="520" Width="300" Margin="0,1,0,0"/>
+                <!--<DataGrid SelectionUnit="FullRow" Name="tipovilist" Height="450" Width="300" Margin="0,1,0,0" IsReadOnly="True" AutoGenerateColumns="False" SelectedItem="{Binding Path=Tip,Mode=OneWayToSource,UpdateSourceTrigger=PropertyChanged}">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Oznaka tipa" Width="145" Binding="{Binding Oznaka}"/>
                         <DataGridTextColumn Header="Ime tipa" Width="145" Binding="{Binding Ime}"/>
@@ -47,23 +44,41 @@
                             </StackPanel>
                         </DataTemplate>
                     </DataGrid.RowDetailsTemplate>
-                </DataGrid>
-                <StackPanel Orientation="Horizontal" Background="Gray" Margin="1,0,0,0">
+                </DataGrid>-->
+                <!--<StackPanel Orientation="Horizontal" Margin="1,0,0,0">
                     <Label Content="Odabrani tip:" Margin="0,0,10,0"/>
                     <Label Content="{Binding ElementName=tipovilist, Path=SelectedItem, Mode=OneWay}" Foreground="#00CC00"/>
 
-                </StackPanel>
+                </StackPanel>-->
             </StackPanel>
-            <StackPanel VerticalAlignment="Center" Orientation="Vertical" Width="300" Margin="60,0,0,0">
+            <StackPanel VerticalAlignment="Center" Orientation="Vertical" Width="250" Margin="60,0,0,0">
                 <Label Content="Tagujte lokal"/>
-                <Grid Margin="0,10,0,0">
-                    <TextBox Name="etiketaFilter" Width="178" HorizontalAlignment="Left" TextChanged="txtFlter_TextChanged"/>
-                    <Button Content="Nova etiketa" Width="120" HorizontalAlignment="Right" Height="31" VerticalAlignment="Top"/>
-                </Grid>
-                <xtd:CheckListBox Height="250" Name="etiketaCheckList" ItemSelectionChanged="etiketaCheckList_ItemSelectionChanged" >
-                </xtd:CheckListBox>
+                <Frame Name="etiketeFrame" NavigationUIVisibility="Hidden" Height="280"/>
                 <Label Content="Odabrane etikete:"></Label>
-                <DataGrid Name="proba" Height="200" GridLinesVisibility="None" RowBackground="{Binding Boja}">
+                <DataGrid Name="odabraneEtiketeCB" 
+                          Height="200"
+                          CanUserAddRows="false" 
+                          SelectionUnit="FullRow" 
+                          AutoGenerateColumns="False"
+                          GridLinesVisibility="None" 
+                          RowHeaderWidth="0"
+                          HeadersVisibility="None"
+                          FontSize="15">
+                    <DataGrid.CommandBindings>
+                        <CommandBinding Command="Delete" CanExecute="CommandBinding_CanExecute" Executed="CommandBinding_Executed"/>
+                    </DataGrid.CommandBindings>
+                    <DataGrid.Columns>
+                            <DataGridTemplateColumn>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                    <Button Background="Transparent" BorderThickness="0" Command="Delete" CommandParameter="{Binding}">
+                                        <Image Source="../Images/delete.png" Height="16"/>
+                                    </Button>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        <DataGridTextColumn Binding="{Binding Oznaka,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                    </DataGrid.Columns>
                 </DataGrid>
             </StackPanel>
         </StackPanel>

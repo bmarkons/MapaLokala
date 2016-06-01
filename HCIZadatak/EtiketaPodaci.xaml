@@ -21,10 +21,10 @@
             </Grid.ColumnDefinitions>
             <DockPanel Grid.Row="0" Grid.ColumnSpan="3">
                 <Label DockPanel.Dock="Left" Content="Podaci o lokalu" FontWeight="Bold" VerticalContentAlignment="Center"/>
-                <Button Name="editBtn" Margin="5" Width="32" Height="32" BorderThickness="0" Background="Transparent" Click="editBtn_Click">
+                <Button ToolTip="{StaticResource izmeni}" Name="editBtn" Margin="5" Width="32" Height="32" BorderThickness="0" Background="Transparent" Click="editBtn_Click">
                     <Image Source="./Images/edit.png" />
                 </Button>
-                <Button Margin="10,0" Grid.Row="0" Grid.Column="2" Height="32" Width="32" HorizontalAlignment="Right" VerticalAlignment="Center" Click="Button_Click" Background="Transparent" BorderThickness="0">
+                <Button ToolTip="{StaticResource zatvori}" Margin="10,0" Grid.Row="0" Grid.Column="2" Height="32" Width="32" HorizontalAlignment="Right" VerticalAlignment="Center" Click="Button_Click" Background="Transparent" BorderThickness="0">
                     <Image Source="./Images/exit.png" />
                 </Button>
             </DockPanel>

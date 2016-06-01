@@ -12,10 +12,10 @@
             <Border DockPanel.Dock="Left" Background="White" BorderThickness="1,0,0,0" BorderBrush="Gray">
                 <Image Source="./Images/search.png" Height="20" Width="30"/>
             </Border>
-            <Button DockPanel.Dock="Right" Name="noviTagBtn" Width="30" Background="Wheat" Click="noviTagBtn_Click">
+            <Button ToolTip="{StaticResource dodajEtiketu}" DockPanel.Dock="Right" Name="noviTagBtn" Width="30" Background="Wheat" Click="noviTagBtn_Click">
                 <Image Height="20" Source="./Images/newtag20x20.png"/>
             </Button>
-            <TextBox Name="etiketaFilter" BorderThickness="0" Margin="0,0.5,0,0"/>
+            <xtd:WatermarkTextBox Watermark="Pronađite etiketu" ToolTip="{StaticResource pretragaEtikete}" Name="etiketaFilter" BorderThickness="0" Margin="0,0.5,0,0"/>
         </DockPanel>
         <xtd:CheckListBox Height="250" Name="etiketaCheckList" SelectedItemsOverride="{Binding Etikete,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"/>
     </StackPanel>

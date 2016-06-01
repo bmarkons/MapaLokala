@@ -11,22 +11,22 @@
     </Page.Resources>
     <Grid>
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Height="469" Width="400" >
-            <CheckBox Height="45" Padding="15,0,0,0" Content="Lokal dostupan za invalide" VerticalContentAlignment="Center" IsChecked="{Binding Path=Hendikep,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
-            <CheckBox Height="45" Padding="15,0,0,0" Content="Dozvoljeno pušenje" VerticalContentAlignment="Center" IsChecked="{Binding Path=Pusenje,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
-            <CheckBox Height="45" Padding="15,0,0,0" Content="Postoji mogućnost rezervacije" VerticalContentAlignment="Center" IsChecked="{Binding Path=Rezervacije,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+            <CheckBox ToolTip="{StaticResource invalidiLokal}" Height="45" Padding="15,0,0,0" Content="Lokal dostupan za invalide" VerticalContentAlignment="Center" IsChecked="{Binding Path=Hendikep,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+            <CheckBox ToolTip="{StaticResource pusenjeLokal}" Height="45" Padding="15,0,0,0" Content="Dozvoljeno pušenje" VerticalContentAlignment="Center" IsChecked="{Binding Path=Pusenje,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+            <CheckBox ToolTip="{StaticResource rezervacijeLokal}" Height="45" Padding="15,0,0,0" Content="Postoji mogućnost rezervacije" VerticalContentAlignment="Center" IsChecked="{Binding Path=Rezervacije,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
             <Label x:Name="cenelabel" Content="Rang cena:" Margin="0,20,0,0"/>
             <StackPanel Orientation="Vertical" Margin="40,0,0,0">
-                <RadioButton x:Name="niske" GroupName="cene" Content="Niske" VerticalContentAlignment="Center" IsChecked="{Binding Path=Cena, Converter={StaticResource BooleanToStringValueConverter}, ConverterParameter=Niske}"/>
-                <RadioButton x:Name="srednje" GroupName="cene" Content="Srednje" VerticalContentAlignment="Center" IsChecked="{Binding Path=Cena, Converter={StaticResource BooleanToStringValueConverter}, ConverterParameter=Srednje}"/>
-                <RadioButton x:Name="visoke" GroupName="cene" Content="Visoke" VerticalContentAlignment="Center" IsChecked="{Binding Path=Cena, Converter={StaticResource BooleanToStringValueConverter}, ConverterParameter=Visoke}"/>
-                <RadioButton x:Name="vvisoke" GroupName="cene" Content="Izuzetno visoke" VerticalContentAlignment="Center" IsChecked="{Binding Path=Cena, Converter={StaticResource BooleanToStringValueConverter}, ConverterParameter=Luksuzne}"/>
+                <RadioButton ToolTip="{StaticResource niskeCeneLokal}" x:Name="niske" GroupName="cene" Content="Niske" VerticalContentAlignment="Center" IsChecked="{Binding Path=Cena, Converter={StaticResource BooleanToStringValueConverter}, ConverterParameter=Niske}"/>
+                <RadioButton ToolTip="{StaticResource srednjeCeneLokal}" x:Name="srednje" GroupName="cene" Content="Srednje" VerticalContentAlignment="Center" IsChecked="{Binding Path=Cena, Converter={StaticResource BooleanToStringValueConverter}, ConverterParameter=Srednje}"/>
+                <RadioButton ToolTip="{StaticResource visokeCeneLokal}" x:Name="visoke" GroupName="cene" Content="Visoke" VerticalContentAlignment="Center" IsChecked="{Binding Path=Cena, Converter={StaticResource BooleanToStringValueConverter}, ConverterParameter=Visoke}"/>
+                <RadioButton ToolTip="{StaticResource luksuzneCeneLokal}" x:Name="vvisoke" GroupName="cene" Content="Luksuzne" VerticalContentAlignment="Center" IsChecked="{Binding Path=Cena, Converter={StaticResource BooleanToStringValueConverter}, ConverterParameter=Luksuzne}"/>
             </StackPanel>
             <Label x:Name="alkohollabel" Content="Alkohol se služi:" Margin="0,20,0,0"/>
             <StackPanel Orientation="Vertical" Margin="40,0,0,0">
-                <RadioButton GroupName="alkohol" Content="Da" VerticalContentAlignment="Center" IsChecked="{Binding Path=Alkohol, Converter={StaticResource BooleanToStringValueConverter}, ConverterParameter=Da}"/>
-                <RadioButton GroupName="alkohol" Content="Ne" VerticalContentAlignment="Center" IsChecked="{Binding Path=Alkohol, Converter={StaticResource BooleanToStringValueConverter}, ConverterParameter=Ne}"/>
-                <RadioButton GroupName="alkohol" Content="Samo do 23:00" VerticalContentAlignment="Center" IsChecked="{Binding Path=Alkohol, Converter={StaticResource BooleanToStringValueConverter}, ConverterParameter=Do23h}"/>
+                <RadioButton ToolTip="{StaticResource daAlkoholLokal}" GroupName="alkohol" Content="Da" VerticalContentAlignment="Center" IsChecked="{Binding Path=Alkohol, Converter={StaticResource BooleanToStringValueConverter}, ConverterParameter=Da}"/>
+                <RadioButton ToolTip="{StaticResource neAlkoholLokal}" GroupName="alkohol" Content="Ne" VerticalContentAlignment="Center" IsChecked="{Binding Path=Alkohol, Converter={StaticResource BooleanToStringValueConverter}, ConverterParameter=Ne}"/>
+                <RadioButton ToolTip="{StaticResource do23AlkoholLokal}" GroupName="alkohol" Content="Samo do 23:00" VerticalContentAlignment="Center" IsChecked="{Binding Path=Alkohol, Converter={StaticResource BooleanToStringValueConverter}, ConverterParameter=Do23h}"/>
             </StackPanel>
             <!--<Grid Margin="0,70,0,0">
                 <Button x:Name="daljebtn" Content="&gt;&gt;" HorizontalAlignment="Right" VerticalAlignment="Top" Width="80" Click="daljebtn_Click" />
@@ -36,8 +36,8 @@
 
         </StackPanel>
         <Grid VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="400" Margin="0,0,0,30">
-            <Button x:Name="daljebtn" Content="&gt;&gt;"  Width="80" FontSize="20" Click="daljebtn_Click" HorizontalAlignment="Right" />
-            <Button x:Name="nazadbtn" Content="&lt;&lt;" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Click="nazadbtn_Click"/>
+            <Button ToolTip="{StaticResource nastaviLokal}" x:Name="daljebtn" Content="&gt;&gt;"  Width="80" FontSize="20" Click="daljebtn_Click" HorizontalAlignment="Right" />
+            <Button ToolTip="{StaticResource vratiLokal}" x:Name="nazadbtn" Content="&lt;&lt;" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Click="nazadbtn_Click"/>
         </Grid>
     </Grid>
 </Page>

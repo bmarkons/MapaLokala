@@ -73,6 +73,8 @@ namespace HCIZadatak.Validation
             InitializeComponent();
 
             title.Text = "Izmena podataka lokala";
+            odustanibtn.ToolTip = "Obustavi izmenu lokala";
+            zavrsibtn.ToolTip = "Završi izmenu lokala";
 
             NavigateToPage(1);
         }

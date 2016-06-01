@@ -2,6 +2,7 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:HCIZadatak"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
              StartupUri="MainWindow.xaml" Exit="Application_Exit" Startup="Application_Startup">
     <Application.Resources>
         <ControlTemplate x:Key="SimpleExpanderButtonTemp" TargetType="{x:Type ToggleButton}">
@@ -162,5 +163,56 @@
                 </Trigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>
+        
+        <!--Tooltips-->
+        <system:String x:Key="detaljniPrikaz">Klinkite za detaljniji prikaz</system:String>
+        <system:String x:Key="izmeni">Izmenite podatke</system:String>
+        <system:String x:Key="zatvori">Uklonite prikaz podataka</system:String>
+
+
+        <system:String x:Key="prikazLokala">Prikaz svih lokala</system:String>
+        <system:String x:Key="dodajLokal">Dodajte novi lokal</system:String>
+        <system:String x:Key="oznakaLokala">Unesite jedinstvenu oznaku lokala</system:String>
+        <system:String x:Key="imeLokala">Unesite ime lokala</system:String>
+        <system:String x:Key="opisLokala">Unesite opis lokala</system:String>
+        <system:String x:Key="pusenjeLokal">Obeležite da li je u lokalu dozvoljeno pušenje</system:String>
+        <system:String x:Key="invalidiLokal">Obeležite da li je lokal dostupan za invalide</system:String>
+        <system:String x:Key="rezervacijeLokal">Obeležite da li je moguće rezervisati mesto u lokalu</system:String>
+        <system:String x:Key="niskeCeneLokal">Cene u lokalu su niske</system:String>
+        <system:String x:Key="srednjeCeneLokal">Cene u lokalu su srednje</system:String>
+        <system:String x:Key="visokeCeneLokal">Cene u lokalu su visoke</system:String>
+        <system:String x:Key="luksuzneCeneLokal">Cene u lokalu su izuzetno visoke</system:String>
+        <system:String x:Key="daAlkoholLokal">U lokalu se alkohol služi stalno</system:String>
+        <system:String x:Key="neAlkoholLokal">U lokalu se ne služi alkohol</system:String>
+        <system:String x:Key="do23AlkoholLokal">U lokalu se alkohol služi do 23h</system:String>
+        <system:String x:Key="kapacitetLokal">Unesite koliki je kapacitet lokala</system:String>
+        <system:String x:Key="datumLokal">Unesite datum otvaranja lokala</system:String>
+        <system:String x:Key="slikaLokal">Unesite sliku lokala</system:String>
+        <system:String x:Key="nastaviLokal">Nastavite sa unosom</system:String>
+        <system:String x:Key="vratiLokal">Vrati se na prethodni unos</system:String>
+        <system:String x:Key="obustaviDodavanjeLokala">Obustavite dodavanje lokala</system:String>
+        <system:String x:Key="zavrsiDodavanjeLokala">Obustavite dodavanje lokala</system:String>
+        <system:String x:Key="pretragaLokal">Krenite da kucate oznaku ili naziv željenog lokala</system:String>
+
+        <system:String x:Key="prikazTipova">Prikaz svih tipova</system:String>
+        <system:String x:Key="dodajTip">Dodajte novi tip</system:String>
+        <system:String x:Key="oznakaTipa">Unesite jedinstvenu oznaku tipa</system:String>
+        <system:String x:Key="imeTipa">Unesite ime tipa</system:String>
+        <system:String x:Key="opisTipa">Unesite opis tipa</system:String>
+        <system:String x:Key="slikaTipa">Unesite sliku tipa</system:String>
+        <system:String x:Key="pretragaTipa">Krenite da kucate oznaku ili naziv željenog tipa</system:String>
+        <system:String x:Key="obustaviDodavanjeTipa">Obustavite dodavanje tipa</system:String>
+        <system:String x:Key="zavrsiDodavanjeTipa">Završite dodavanje tipa</system:String>
+
+        <system:String x:Key="prikazEtiketa">Prikaz svih etikete</system:String>
+        <system:String x:Key="dodajEtiketu">Dodajte novu etiketu</system:String>
+        <system:String x:Key="oznakaEtikete">Unesite jedinstvenu oznaku etikete</system:String>
+        <system:String x:Key="opisEtikete">Unesite opis etikete</system:String>
+        <system:String x:Key="bojaEtikete">Unesite boju etikete</system:String>
+        <system:String x:Key="pretragaEtikete">Krenite da kucate oznaku ili naziv željene etikete</system:String>
+        <system:String x:Key="obustaviDodavanjeEtikete">Obustavite dodavanje etikete</system:String>
+        <system:String x:Key="zavrsiDodavanjeEtikete">Završite dodavanje etikete</system:String>
+
+
     </Application.Resources>
 </Application>

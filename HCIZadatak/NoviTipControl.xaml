@@ -41,7 +41,7 @@
         <Label Grid.Row="3" Grid.Column="0" Content="Opis:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <Label Grid.Row="4" Grid.Column="0" Content="Ikona:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
-        <TextBox Name="oznakaTxt" Grid.Row="1" Grid.Column="1" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <TextBox ToolTip="{StaticResource oznakaTipa}" Name="oznakaTxt" Grid.Row="1" Grid.Column="1" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center">
             <TextBox.Text>
                 <Binding Path="Oznaka" Mode="OneWayToSource" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
@@ -67,9 +67,9 @@
                 </ControlTemplate>
             </Validation.ErrorTemplate>
         </TextBox>
-        <TextBox Name="imeTxt" Grid.Row="2" Grid.Column="1" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Path=Ime,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
-        <TextBox Name="opisTxt" Grid.Row="3" Grid.Column="1" Width="150" Height="70" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Path=Opis,Mode=OneWayToSource,UpdateSourceTrigger=PropertyChanged}"/>
-        <StackPanel Grid.Row="4" Grid.Column="1" Orientation="Vertical" Width="100" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <TextBox ToolTip="{StaticResource imeTipa}" Name="imeTxt" Grid.Row="2" Grid.Column="1" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Path=Ime,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox ToolTip="{StaticResource opisTipa}" Name="opisTxt" Grid.Row="3" Grid.Column="1" Width="150" Height="70" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Path=Opis,Mode=OneWayToSource,UpdateSourceTrigger=PropertyChanged}"/>
+        <StackPanel ToolTip="{StaticResource slikaTipa}" Grid.Row="4" Grid.Column="1" Orientation="Vertical" Width="100" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Button x:Name="ucitajbtn" Width="100" Content="Učitaj sliku" VerticalAlignment="Top" HorizontalAlignment="Left" Click="ucitajbtn_Click"/>
             <Border Margin="0,1,0,0" BorderBrush="Black" BorderThickness="1" Width="100" Height="80">
                 <Image x:Name="ikona" Margin="0,0,0,0" Source="{Binding Path=Ikona,Mode=OneWayToSource,UpdateSourceTrigger=PropertyChanged}"/>
@@ -77,10 +77,10 @@
         </StackPanel>
 
         <Grid Grid.Row="5" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Center">
-            <Button Name="odustaniBtn" Width="40" Margin="15,0" Click="odustaniBtn_Click" Background="Wheat" HorizontalAlignment="Left">
+            <Button ToolTip="{StaticResource obustaviDodavanjeTipa}" Name="odustaniBtn" Width="40" Margin="15,0,0,0" Click="odustaniBtn_Click" Background="Wheat" HorizontalAlignment="Left" Height="34" VerticalAlignment="Bottom">
                 <Image Source="./Images/quit.png" Height="30"/>
             </Button>
-            <Button Margin="15,0" Width="40" Style="{StaticResource ButtonEnabledStyle}" Command="New" HorizontalAlignment="Right" Background="Wheat">
+            <Button ToolTip="{StaticResource zavrsiDodavanjeTipa}" Margin="15,0" Width="40" Style="{StaticResource ButtonEnabledStyle}" Command="New" HorizontalAlignment="Right" Background="Wheat">
                 <Image Source="./Images/ok.ico" Height="30"/>
             </Button>
         </Grid>

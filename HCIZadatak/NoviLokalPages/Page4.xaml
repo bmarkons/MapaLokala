@@ -52,6 +52,7 @@
                 <Frame Name="etiketeFrame" NavigationUIVisibility="Hidden" Height="280"/>
                 <Label Content="Odabrane etikete:"></Label>
                 <DataGrid Name="odabraneEtiketeCB" 
+                          ToolTip="Etikete kojima je lokal označen"
                           Height="200"
                           CanUserAddRows="false" 
                           SelectionUnit="FullRow" 
@@ -67,7 +68,7 @@
                             <DataGridTemplateColumn>
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                    <Button Background="Transparent" BorderThickness="0" Command="Delete" CommandParameter="{Binding}">
+                                    <Button ToolTip="Uklonite etiketu" Background="Transparent" BorderThickness="0" Command="Delete" CommandParameter="{Binding}">
                                         <Image Source="../Images/delete.png" Height="16"/>
                                     </Button>
                                     </DataTemplate>
@@ -82,7 +83,7 @@
             <!--<Button x:Name="zavrsibtn" Style="{StaticResource ButtonEnabledStyle}" HorizontalAlignment="Right" VerticalAlignment="Top" Width="80" Command="New" >
                 <Image Source="../Images/done.png" Height="48" Width="48"/>
             </Button>-->
-            <Button x:Name="nazadbtn" Content="&lt;&lt;" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Click="nazadbtn_Click"/>
+            <Button ToolTip="{StaticResource vratiLokal}" x:Name="nazadbtn" Content="&lt;&lt;" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Click="nazadbtn_Click"/>
         </Grid>
     </Grid>
 </Page>

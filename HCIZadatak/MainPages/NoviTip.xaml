@@ -25,7 +25,7 @@
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Width="400">
             <TextBlock Name="title" HorizontalAlignment="Left" Text="Dodavanje novog tipa" Margin="0,0,0,20" FontSize="20"/>
             <Label x:Name="oznakalabel" Content="Oznaka tipa:" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-            <TextBox x:Name="oznakatext" HorizontalAlignment="Stretch" >
+            <TextBox ToolTip="{StaticResource oznakaTipa}" x:Name="oznakatext" HorizontalAlignment="Stretch" >
                 <TextBox.Text>
                     <Binding Path="Oznaka" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                         <Binding.ValidationRules>
@@ -52,12 +52,12 @@
                 </Validation.ErrorTemplate>
             </TextBox>
             <Label x:Name="imelabel" Content="Ime tipa:" HorizontalAlignment="Left" Margin="0,10,0,0"/>
-            <TextBox x:Name="imetext" Text="{Binding Path=Ime,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox ToolTip="{StaticResource imeTipa}" x:Name="imetext" Text="{Binding Path=Ime,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
             <Label x:Name="opislabel" Content="Opis tipa:" Margin="0,10,0,0"/>
-            <TextBox x:Name="opistext" Height="200" Text="{Binding Path=Opis,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox ToolTip="{StaticResource opisTipa}" x:Name="opistext" Height="200" Text="{Binding Path=Opis,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
             <DockPanel Margin="0,10,0,0">
                 <Label x:Name="ikonalabel" Content="Odaberite ikonu tipa:"/>
-                <StackPanel Orientation="Vertical" HorizontalAlignment="Right">
+                <StackPanel ToolTip="{StaticResource slikaTipa}" Orientation="Vertical" HorizontalAlignment="Right">
                     <Button x:Name="ucitajbtn" Content="Učitaj sliku" Width="150" VerticalAlignment="Top" HorizontalAlignment="Left" Click="ucitajbtn_Click" Height="23" FontSize="15"/>
                     <Border Margin="0,1,0,0" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left">
                         <Image x:Name="ikona" Height="84" Width="148" Margin="0,0,0,0" Source="{Binding Path=Ikona,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
@@ -66,10 +66,10 @@
             </DockPanel>
             
             <Grid HorizontalAlignment="Stretch" Margin="0,60,0,0">
-                <Button Name="odustanibtn" Width="100" HorizontalAlignment="Left" Click="odustanibtn_Click" Margin="0,0,5,0" BorderThickness="0" Background="Wheat" >
+                <Button ToolTip="{StaticResource obustaviDodavanjeTipa}" Name="odustanibtn" Width="100" HorizontalAlignment="Left" Click="odustanibtn_Click" Margin="0,0,5,0" BorderThickness="0" Background="Wheat" >
                     <Image Source="../Images/quit.png" Height="48" Width="48"/>
                 </Button>
-                <Button Name="zavrsibtn" Width="100" Style="{StaticResource ButtonEnabledStyle}" HorizontalAlignment="Right" Command="New" Background="Wheat">
+                <Button ToolTip="{StaticResource zavrsiDodavanjeTipa}" Name="zavrsibtn" Width="100" Style="{StaticResource ButtonEnabledStyle}" HorizontalAlignment="Right" Command="New" Background="Wheat">
                     <Image Source="../Images/done.png" Height="48" Width="48"/>
                 </Button>
             </Grid>

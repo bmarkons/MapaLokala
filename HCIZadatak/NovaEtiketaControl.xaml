@@ -41,7 +41,7 @@
         <Label Grid.Row="2" Grid.Column="0" Content="Opis:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <Label Grid.Row="3" Grid.Column="0" Content="Boja:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
-        <TextBox  Margin="5,0" Height="25" Grid.Row="1" Grid.Column="1" x:Name="oznakatext" >
+        <TextBox ToolTip="{StaticResource oznakaEtikete}" Margin="5,0" Height="25" Grid.Row="1" Grid.Column="1" x:Name="oznakatext" >
             <TextBox.Text>
                 <Binding Path="Oznaka" Mode="OneWayToSource" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
@@ -67,13 +67,13 @@
                 </ControlTemplate>
             </Validation.ErrorTemplate>
         </TextBox>
-        <TextBox Height="70" Grid.Row="2" Grid.Column="1" x:Name="opistext" Margin="5,0" Text="{Binding Path=Opis,Mode=OneWayToSource,UpdateSourceTrigger=PropertyChanged}"/>
-        <xtd:ColorPicker BorderThickness="0" Margin="5,0" Height="25" Grid.Row="3" Grid.Column="1" Name="colorpicker" SelectedColor="{Binding Path=Boja,Mode=OneWayToSource,UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox ToolTip="{StaticResource opisEtikete}" Height="70" Grid.Row="2" Grid.Column="1" x:Name="opistext" Margin="5,0" Text="{Binding Path=Opis,Mode=OneWayToSource,UpdateSourceTrigger=PropertyChanged}"/>
+        <xtd:ColorPicker ToolTip="{StaticResource bojaEtikete}" BorderThickness="0" Margin="5,0" Height="25" Grid.Row="3" Grid.Column="1" Name="colorpicker" SelectedColor="{Binding Path=Boja,Mode=OneWayToSource,UpdateSourceTrigger=PropertyChanged}"/>
         <Grid Grid.Row="4" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Center">
-            <Button Name="odustaniBtn" HorizontalAlignment="Left" Width="40" Margin="15,0" Background="Wheat" Click="odustaniBtn_Click">
+            <Button ToolTip="{StaticResource obustaviDodavanjeEtikete}" Name="odustaniBtn" HorizontalAlignment="Left" Width="40" Margin="15,0" Background="Wheat" Click="odustaniBtn_Click">
                 <Image Source="./Images/quit.png" Height="30"/>
             </Button>
-            <Button Style="{StaticResource ButtonEnabledStyle}" Command="New" HorizontalAlignment="Right" Width="40" Margin="15,0" Background="Wheat">
+            <Button ToolTip="{StaticResource zavrsiDodavanjeEtikete}" Style="{StaticResource ButtonEnabledStyle}" Command="New" HorizontalAlignment="Right" Width="40" Margin="15,0" Background="Wheat">
                 <Image Source="./Images/ok.ico" Height="30"/>
             </Button>
         </Grid>

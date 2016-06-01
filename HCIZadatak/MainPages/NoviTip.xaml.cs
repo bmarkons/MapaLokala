@@ -49,6 +49,8 @@ namespace HCIZadatak.Validation
             this.DataContext = novi;
 
             title.Text = "Izmena podataka tipa";
+            odustanibtn.ToolTip = "Obustavi izmenu tipa";
+            zavrsibtn.ToolTip = "Završi izmenu tipa";
         }
 
         private void ucitajbtn_Click(object sender, RoutedEventArgs e)

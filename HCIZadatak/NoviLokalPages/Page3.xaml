@@ -11,11 +11,11 @@
     <Grid>
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Height="430" Width="340">
             <Label x:Name="kapacitetlabel" Content="Kapacitet lokala:"/>
-            <xtd:IntegerUpDown x:Name="integerupdown" Minimum="0" HorizontalAlignment="Left" Width="150" Value="{Binding Path=Kapacitet,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+            <xtd:IntegerUpDown ToolTip="{StaticResource kapacitetLokal}" x:Name="integerupdown" Minimum="0" HorizontalAlignment="Left" Width="150" Value="{Binding Path=Kapacitet,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
             <Label x:Name="datumlabel" Margin="0,20,0,0" Content="Datum otvaranja:"/>
-            <DatePicker x:Name="datepicker" HorizontalAlignment="Left" Width="150" Text="{Binding Path=Datum,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+            <DatePicker ToolTip="{StaticResource datumLokal}" x:Name="datepicker" HorizontalAlignment="Left" Width="150" Text="{Binding Path=Datum,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
             <Label x:Name="ikonalabel" Margin="0,20,0,0" Content="Izaberite sliku za lokal:"/>
-            <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Vertical" ToolTip="{StaticResource slikaLokal}">
                 <Button x:Name="ucitajbtn" Content="Učitaj sliku" Width="150" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="15" Click="ucitajbtn_Click" Height="23"/>
                 <Border Margin="0,1,0,0" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left">
                     <Image x:Name="ikona" Height="84" Width="148" Margin="0,0,0,0" Source="{Binding Path=Ikona,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
@@ -23,8 +23,8 @@
             </StackPanel>
         </StackPanel>
         <Grid VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="400" Margin="0,0,0,30">
-            <Button x:Name="daljebtn" Content="&gt;&gt;" HorizontalAlignment="Right" VerticalAlignment="Top" Width="80" Click="daljebtn_Click" />
-            <Button x:Name="nazadbtn" Content="&lt;&lt;" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Click="nazadbtn_Click"/>
+            <Button ToolTip="{StaticResource nastaviLokal}" x:Name="daljebtn" Content="&gt;&gt;" HorizontalAlignment="Right" VerticalAlignment="Top" Width="80" Click="daljebtn_Click" />
+            <Button ToolTip="{StaticResource vratiLokal}" x:Name="nazadbtn" Content="&lt;&lt;" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Click="nazadbtn_Click"/>
         </Grid>
     </Grid>
 </Page>

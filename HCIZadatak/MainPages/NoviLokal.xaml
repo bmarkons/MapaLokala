@@ -387,7 +387,7 @@
                             </TransformGroup>
                         </TextBlock.RenderTransform>
                     </TextBlock>
-                    <TextBlock RenderTransformOrigin="0.5,0.5" x:Name="textBlock5" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Dozvoljeno pušenje" VerticalAlignment="Center" PreviewMouseDown="textBlock_PreviewMouseDown">
+                    <TextBlock ToolTip="Unesi  lokala" RenderTransformOrigin="0.5,0.5" x:Name="textBlock5" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Dozvoljeno pušenje" VerticalAlignment="Center" PreviewMouseDown="textBlock_PreviewMouseDown">
                         <TextBlock.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
@@ -483,10 +483,10 @@
                     <Grid.CommandBindings>
                         <CommandBinding Command="New" CanExecute="Zavrsi_CanExecute" Executed="Zavrsi_Executed" />
                     </Grid.CommandBindings>
-                    <Button x:Name="odustanibtn" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" Click="odustanibtn_Click"  BorderThickness="0" Background="Wheat" >
+                    <Button x:Name="odustanibtn" ToolTip="{StaticResource obustaviDodavanjeLokala}" HorizontalAlignment="Left" Width="60" Click="odustanibtn_Click"  BorderThickness="0" Background="Wheat" >
                         <Image Source="../Images/quit.png" Height="48" Width="48"/>
                     </Button>
-                    <Button x:Name="zavrsibtn" Style="{StaticResource ButtonEnabledStyle}" HorizontalAlignment="Right" VerticalAlignment="Top" Width="60" Command="New" >
+                    <Button x:Name="zavrsibtn" ToolTip="{StaticResource zavrsiDodavanjeLokala}" Style="{StaticResource ButtonEnabledStyle}" HorizontalAlignment="Right" VerticalAlignment="Top" Width="60" Command="New" >
                         <Image Source="../Images/done.png" Height="48" Width="48"/>
                     </Button>
 

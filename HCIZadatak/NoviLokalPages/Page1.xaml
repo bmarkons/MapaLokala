@@ -13,7 +13,7 @@
         </Grid.CommandBindings>
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Height="382" Width="400" >
             <Label x:Name="oznakalabel" Content="Oznaka lokala:" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-            <TextBox x:Name="oznakatext" TextWrapping="Wrap"  >
+            <TextBox ToolTip="{StaticResource oznakaLokala}" x:Name="oznakatext" TextWrapping="Wrap"  >
                 <TextBox.Text>
                     <Binding Path="OznakaTxt" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                         <Binding.ValidationRules>
@@ -40,12 +40,12 @@
                 </Validation.ErrorTemplate>
             </TextBox>
             <Label x:Name="imelabel" Content="Ime lokala:" HorizontalAlignment="Left" VerticalAlignment="Top" />
-            <TextBox x:Name="imetext" TextWrapping="Wrap" Text="{Binding Path=ImeTxt,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox ToolTip="{StaticResource imeLokala}" x:Name="imetext" TextWrapping="Wrap" Text="{Binding Path=ImeTxt,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
             <Label x:Name="opislabel" Content="Opis lokala:"/>
-            <TextBox x:Name="opistext" Height="200" TextWrapping="Wrap" Text="{Binding Path=OpisTxt,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox ToolTip="{StaticResource opisLokala}" x:Name="opistext" Height="200" TextWrapping="Wrap" Text="{Binding Path=OpisTxt,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
         </StackPanel>
         <Grid VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="400" Margin="0,0,0,30">
-            <Button x:Name="daljebtn" Content="&gt;&gt;"  Width="80" FontSize="20" Command="New" HorizontalAlignment="Right" />
+            <Button ToolTip="{StaticResource nastaviLokal}" x:Name="daljebtn" Content="&gt;&gt;"  Width="80" FontSize="20" Command="New" HorizontalAlignment="Right" />
         </Grid>
 
 

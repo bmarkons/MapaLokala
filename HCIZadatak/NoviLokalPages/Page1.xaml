@@ -15,7 +15,7 @@
             <Label x:Name="oznakalabel" Content="Oznaka lokala:" HorizontalAlignment="Left" VerticalAlignment="Top"/>
             <TextBox x:Name="oznakatext" TextWrapping="Wrap"  >
                 <TextBox.Text>
-                    <Binding Path="OznakaTxt" Mode="OneWayToSource" UpdateSourceTrigger="PropertyChanged">
+                    <Binding Path="OznakaTxt" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                         <Binding.ValidationRules>
                             <local:OznakaLokalaValidationRule />
                         </Binding.ValidationRules>
@@ -42,7 +42,7 @@
             <Label x:Name="imelabel" Content="Ime lokala:" HorizontalAlignment="Left" VerticalAlignment="Top" />
             <TextBox x:Name="imetext" TextWrapping="Wrap" Text="{Binding Path=ImeTxt,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
             <Label x:Name="opislabel" Content="Opis lokala:"/>
-            <TextBox x:Name="opistext" Height="200" TextWrapping="Wrap" Text="{Binding Path=OpisTxt,Mode=OneWayToSource,UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox x:Name="opistext" Height="200" TextWrapping="Wrap" Text="{Binding Path=OpisTxt,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
         </StackPanel>
         <Grid VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="400" Margin="0,0,0,30">
             <Button x:Name="daljebtn" Content="&gt;&gt;"  Width="80" FontSize="20" Command="New" HorizontalAlignment="Right" />

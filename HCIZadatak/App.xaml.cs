@@ -19,6 +19,10 @@ namespace HCIZadatak
     /// </summary>
     public partial class App : Application
     {
+        Tuple<Lokal, int> editingLokal = null;
+        Tuple<Tip, int> editingTip = null;
+        Tuple<Etiketa, int> editingEtiketa = null;
+
         ObservableCollection<Lokal> lokali = new ObservableCollection<Lokal>();
         ObservableCollection<Tip> tipovi = new ObservableCollection<Tip>();
         ObservableCollection<Etiketa> etikete = new ObservableCollection<Etiketa>();
@@ -63,8 +67,61 @@ namespace HCIZadatak
             }
         }
 
+        public Tuple<Lokal, int> EditingLokal
+        {
+            get
+            {
+                return editingLokal;
+            }
+
+            set
+            {
+                editingLokal = value;
+            }
+        }
+
+        public Tuple<Tip, int> EditingTip
+        {
+            get
+            {
+                return editingTip;
+            }
+
+            set
+            {
+                editingTip = value;
+            }
+        }
+
+        public Tuple<Etiketa, int> EditingEtiketa
+        {
+            get
+            {
+                return editingEtiketa;
+            }
+
+            set
+            {
+                editingEtiketa = value;
+            }
+        }
+
         private void Application_Exit(object sender, ExitEventArgs e)
         {
+            //vrati u listu ukoliko je u toku editovanje
+            if (editingLokal != null)
+            {
+                Lokali.Insert(editingLokal.Item2, editingLokal.Item1);
+            }
+            if (editingTip != null)
+            {
+                Tipovi.Insert(editingTip.Item2, editingTip.Item1);
+            }
+            if (editingEtiketa != null)
+            {
+                Etikete.Insert(editingEtiketa.Item2, editingEtiketa.Item1);
+            }
+
             //snimi lokale
             string lokaliFile = "lokali.bin";
             using (Stream stream = File.Open(lokaliFile, FileMode.Create))
@@ -92,17 +149,6 @@ namespace HCIZadatak
 
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-            ////ucitaj lokale
-            string lokaliFile = "lokali.bin";
-            if (File.Exists(lokaliFile))
-            {
-                using (Stream stream = File.Open(lokaliFile, FileMode.Open))
-                {
-                    BinaryFormatter bformatter = new BinaryFormatter();
-                    lokali = (ObservableCollection<Lokal>)bformatter.Deserialize(stream);
-                }
-            }
-
             //ucitaj tipove
             string tipoviFile = "tipovi.bin";
             if (File.Exists(tipoviFile))
@@ -122,6 +168,45 @@ namespace HCIZadatak
                 {
                     BinaryFormatter bformatter = new BinaryFormatter();
                     etikete = (ObservableCollection<Etiketa>)bformatter.Deserialize(stream);
+                }
+            }
+
+            ////ucitaj lokale
+            string lokaliFile = "lokali.bin";
+            if (File.Exists(lokaliFile))
+            {
+                using (Stream stream = File.Open(lokaliFile, FileMode.Open))
+                {
+                    BinaryFormatter bformatter = new BinaryFormatter();
+                    lokali = (ObservableCollection<Lokal>)bformatter.Deserialize(stream);
+                }
+            }
+
+
+            foreach (Lokal lokal in Lokali)
+            {
+                foreach (Tip tip in Tipovi)
+                {
+                    if (lokal.Tip.Oznaka.Equals(tip.Oznaka))
+                    {
+                        lokal.Tip = tip;
+                        break;
+                    }
+                }
+            }
+
+            foreach (Lokal lokal in Lokali)
+            {
+                foreach (Etiketa e1 in lokal.Etikete.ToArray())
+                {
+                    foreach (Etiketa e2 in Etikete)
+                    {
+                        if (e1.Oznaka.Equals(e2.Oznaka))
+                        {
+                            lokal.Etikete.Remove(e1);
+                            lokal.Etikete.Add(e2);
+                        }
+                    }
                 }
             }
 

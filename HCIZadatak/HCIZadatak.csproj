@@ -314,6 +314,7 @@
   <ItemGroup>
     <Resource Include="Images\newtag20x20.png" />
     <Resource Include="Images\delete.png" />
+    <Resource Include="Images\edit.png" />
     <Content Include="Images\nia300x300.svg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

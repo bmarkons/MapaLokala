@@ -121,9 +121,19 @@ namespace HCIZadatak.Entiteti
             return "[" + oznaka + "] " + ime;
         }
 
-        public Tip This
+       public Tip Clone()
         {
-            get { return this; }
+            Tip tip = new Tip();
+
+            tip.imgUri = imgUri;
+            tip.Oznaka = Oznaka;
+            tip.Ime = Ime;
+            tip.Opis = Opis;
+            tip.Ikona = Ikona;
+
+            return tip;
         }
+
+        public Tip This { get { return this; } }
     }
 }

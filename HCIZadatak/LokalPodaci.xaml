@@ -4,55 +4,68 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:HCIZadatak.Validation"
+             xmlns:root="clr-namespace:HCIZadatak"
              xmlns:xtd="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
              mc:Ignorable="d" 
              d:DesignHeight="700" d:DesignWidth="450" Margin="10" Name="Details" >
-    <Border BorderThickness="4" CornerRadius="5" Background="#eff899" BorderBrush="#3c4262" Height="620" Width="400" Margin="0,-10,0,0">
-        <Grid>
+    <UserControl.Resources>
+        <root:BooleanToVisibilityConverter x:Key="myBoolToVisibilityConverter" />
+    </UserControl.Resources>
+    <Border BorderThickness="4" CornerRadius="5" Background="#b8e5f2" BorderBrush="#3c4262" Height="620" Width="400" Margin="0,-10,0,0">
+        <Grid Name="grid">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
 
                 <RowDefinition/>
                 <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
                 <RowDefinition Height="2*"/>
-                <RowDefinition Height="1.5*"/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-
-                <RowDefinition Height="2*"/>
-                <RowDefinition Height="2*"/>
-
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1.5*"/>
                 <ColumnDefinition />
-                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="1.5*"/>
             </Grid.ColumnDefinitions>
-            <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Content="Podaci o lokalu" FontWeight="Bold" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" BorderThickness="0,0,0,3" BorderBrush="#3c4262"/>
-            <Button  Grid.Row="0" Grid.Column="2" Height="32" Width="32" HorizontalAlignment="Right" VerticalAlignment="Center" Click="Button_Click" Background="Transparent" BorderThickness="0">
-                <Image Source="./Images/exit.png" />
-            </Button>
+            <Border Grid.Column="0" Grid.ColumnSpan="3" BorderBrush="#3c4262" BorderThickness="0,0,0,3">
+                <DockPanel  >
+                    <Label DockPanel.Dock="Left" Content="Podaci o lokalu" FontWeight="Bold" VerticalContentAlignment="Center"/>
+                    <Button Name="editBtn" Margin="5" Width="32" Height="32" BorderThickness="0" Background="Transparent" Click="editBtn_Click">
+                        <Image Source="./Images/edit.png" />
+                    </Button>
+                    <Button Margin="10,0" Grid.Row="0" Grid.Column="2" Height="32" Width="32" HorizontalAlignment="Right" VerticalAlignment="Center" Click="Button_Click" Background="Transparent" BorderThickness="0">
+                        <Image Source="./Images/exit.png" />
+                    </Button>
+
+                </DockPanel>
+            </Border>
             <StackPanel Orientation="Vertical" Margin="15" Grid.Row="1" Grid.Column="0" Grid.RowSpan="13" HorizontalAlignment="Stretch" VerticalAlignment="Top">
+                <DockPanel Margin="0,0,0,20">
+                    <Image DockPanel.Dock="Left" Source="./Images/disabled.png" Width="30" Visibility="{Binding Hendikep, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource myBoolToVisibilityConverter}}"/>
+                    <Image DockPanel.Dock="Right" Source="./Images/book.png" Width="30" Visibility="{Binding Rezervacije, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource myBoolToVisibilityConverter}}"/>
+                    <Image Source="./Images/smoking.png" Width="30" Visibility="{Binding Pusenje, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource myBoolToVisibilityConverter}}"/>
+                </DockPanel>
+
                 <Border BorderThickness="2" BorderBrush="#3c4262">
                     <Image Name="ikonaImg" HorizontalAlignment="Stretch" Source="{Binding Ikona,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
                 </Border>
-                <Button Name="ucitajBtn" HorizontalAlignment="Stretch" Content="Promeni sliku" Click="ucitajBtn_Click"/>
+                <!--<Button Name="ucitajBtn" HorizontalAlignment="Stretch" Content="Promeni sliku" Click="ucitajBtn_Click"/>-->
             </StackPanel>
 
             <!--Labele-->
             <Label Margin="5" Grid.Row="1" Grid.Column="1" Content="Oznaka:"/>
             <Label Margin="5" Grid.Row="2" Grid.Column="1" Content="Ime:"/>
-            <Label Margin="5" Grid.Row="3" Grid.Column="1" Content="Opis:"/>
-            <Label Margin="5" Grid.Row="5" Grid.Column="1" Content="Rang cena:"/>
-            <Label Margin="5" Grid.Row="6" Grid.Column="1" Content="Alkohol:"/>
-            <Label Margin="5" Grid.Row="7" Grid.Column="1" Content="Kapacitet:"/>
-            <Label Margin="5" Grid.Row="8" Grid.Column="1" Content="Otvoren:"/>
-            <Label Margin="5" Grid.Row="9" Grid.Column="1" Content="Tip:"/>
-            <Label Margin="5" Grid.Row="10" Grid.Column="1" Content="Etikete:"/>
+            <Label Margin="5" Grid.Row="8" Grid.Column="1" Content="Opis:"/>
+            <Label Margin="5" Grid.Row="3" Grid.Column="1" Content="Rang cena:"/>
+            <Label Margin="5" Grid.Row="4" Grid.Column="1" Content="Alkohol:"/>
+            <Label Margin="5" Grid.Row="5" Grid.Column="1" Content="Kapacitet:"/>
+            <Label Margin="5" Grid.Row="6" Grid.Column="1" Content="Otvoren:"/>
+            <Label Margin="5" Grid.Row="7" Grid.Column="1" Content="Tip:"/>
 
-            <TextBox Margin="10" Grid.Row="1" Grid.Column="2">
+            <!--<TextBox Margin="10" Grid.Row="1" Grid.Column="2">
                 <TextBox.Text>
                     <Binding Path="OznakaTxt" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                         <Binding.ValidationRules>
@@ -73,15 +86,18 @@
                             <Border BorderThickness="2" BorderBrush="Red" Grid.Row="1">
                                 <AdornedElementPlaceholder Grid.Row="1" x:Name="textBox"/>
                             </Border>
-                            <!--<TextBlock Grid.Row="0" Text="{Binding [0].ErrorContent}" Foreground="Red" HorizontalAlignment="Right" FontStyle="Italic"/>-->
+                            -->
+            <!--<TextBlock Grid.Row="0" Text="{Binding [0].ErrorContent}" Foreground="Red" HorizontalAlignment="Right" FontStyle="Italic"/>-->
+            <!--
                         </Grid>
                     </ControlTemplate>
                 </Validation.ErrorTemplate>
-            </TextBox>
-            <TextBox Margin="10" Grid.Row="2" Grid.Column="2" Text="{Binding ImeTxt,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
-            <TextBox Margin="10" Grid.Row="3" Grid.Column="2" Text="{Binding OpisTxt,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap"/>
+            </TextBox>-->
+            <TextBlock Margin="10" Grid.Row="1" Grid.Column="2" Text="{Binding Path=OznakaTxt, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBlock Margin="10" Grid.Row="2" Grid.Column="2" Text="{Binding ImeTxt,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap"/>
+            <TextBlock Margin="10" Grid.Row="8" Grid.Column="2" Text="{Binding OpisTxt,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap"/>
 
-            <StackPanel Margin="10" Orientation="Horizontal" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2">
+            <!--<StackPanel Margin="10" Orientation="Horizontal" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2">
                 <CheckBox ToolTip="Dostupno za invalide" Margin="10,5" VerticalAlignment="Center" VerticalContentAlignment="Center" IsChecked="{Binding Path=Hendikep,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
                     <Image Source="./Images/disabled.png"/>
                 </CheckBox>
@@ -92,13 +108,16 @@
                     <Image Source="./Images/book.png"/>
                 </CheckBox>
 
-            </StackPanel>
-
-            <ComboBox VerticalContentAlignment="Center" Margin="10" Grid.Row="5" Grid.Column="2" ItemsSource="{Binding Rang_cena}" SelectedItem="{Binding Cena}"/>
+            </StackPanel>-->
+            <!--<ComboBox VerticalContentAlignment="Center" Margin="10" Grid.Row="5" Grid.Column="2" ItemsSource="{Binding Rang_cena}" SelectedItem="{Binding Cena}"/>
             <ComboBox VerticalContentAlignment="Center" Margin="10" Grid.Row="6" Grid.Column="2" ItemsSource="{Binding Sluzenje_alkohola}" SelectedItem="{Binding Alkohol}"/>
             <xtd:IntegerUpDown Margin="10" Grid.Row="7" Grid.Column="2" Value="{Binding Path=Kapacitet,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Minimum="0"/>
-            <xtd:DateTimePicker Margin="10" Grid.Row="8" Grid.Column="2" Text="{Binding Path=Datum,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
-
+            <xtd:DateTimePicker Margin="10" Grid.Row="8" Grid.Column="2" Text="{Binding Path=Datum,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>-->
+            <TextBlock Margin="10" Grid.Row="3" Grid.Column="2" Text="{Binding Cena,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBlock Margin="10" Grid.Row="4" Grid.Column="2" Text="{Binding Alkohol,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBlock Margin="10" Grid.Row="5" Grid.Column="2" Text="{Binding Kapacitet,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBlock Margin="10" Grid.Row="6" Grid.Column="2" Text="{Binding Datum,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBlock Margin="10" Grid.Row="7" Grid.Column="2" Text="{Binding Tip,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap"/>
         </Grid>
     </Border>
 </UserControl>

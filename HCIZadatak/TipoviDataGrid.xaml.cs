@@ -29,6 +29,8 @@ namespace HCIZadatak
             DataContext = lokal;
             this.lokal = lokal;
 
+            //bool proba = ((App)App.Current).Tipovi.Contains(lokal.Tip);
+
             tipovilist.ItemsSource = ((App)App.Current).Tipovi;
             CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(tipovilist.ItemsSource);
             view.Filter = TipFilter;

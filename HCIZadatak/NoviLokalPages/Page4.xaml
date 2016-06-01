@@ -20,10 +20,6 @@
         </Style>
     </Page.Resources>
     <Grid>
-        <Grid.CommandBindings>
-            <CommandBinding Command="New" CanExecute="Zavrsi_CanExecute" Executed="Zavrsi_Executed" />
-        </Grid.CommandBindings>
-
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,100" >
             <StackPanel VerticalAlignment="Center" Orientation="Vertical" Width="300">
                 <Label Content="Odaberite tip lokala:"/>
@@ -83,9 +79,9 @@
             </StackPanel>
         </StackPanel>
         <Grid VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="400" Margin="0,0,0,30">
-            <Button x:Name="zavrsibtn" Style="{StaticResource ButtonEnabledStyle}" HorizontalAlignment="Right" VerticalAlignment="Top" Width="80" Command="New" >
+            <!--<Button x:Name="zavrsibtn" Style="{StaticResource ButtonEnabledStyle}" HorizontalAlignment="Right" VerticalAlignment="Top" Width="80" Command="New" >
                 <Image Source="../Images/done.png" Height="48" Width="48"/>
-            </Button>
+            </Button>-->
             <Button x:Name="nazadbtn" Content="&lt;&lt;" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Click="nazadbtn_Click"/>
         </Grid>
     </Grid>

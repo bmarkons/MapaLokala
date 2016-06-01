@@ -98,5 +98,20 @@ namespace HCIZadatak.Entiteti
             return this.Oznaka;
         }
 
+        public Etiketa Clone()
+        {
+            Etiketa etiketa = new Etiketa();
+
+            etiketa.Oznaka = Oznaka;
+            etiketa.Opis = Opis;
+            etiketa.Boja = Boja;
+            etiketa.a = a;
+            etiketa.b = b;
+            etiketa.r = r;
+            etiketa.g = g;
+
+            return etiketa;
+        }
+
     }
 }

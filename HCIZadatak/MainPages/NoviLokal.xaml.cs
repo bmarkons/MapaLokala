@@ -22,6 +22,10 @@ namespace HCIZadatak.Validation
     /// </summary>
     public partial class NoviLokal : UserControl
     {
+        private bool edit = false;
+        private Lokal stari;
+        private int index;
+
         private Page[] pages = new Page[4];
 
         private Lokal novi = new Lokal();
@@ -41,13 +45,34 @@ namespace HCIZadatak.Validation
                 return pages;
             }
         }
+
         public NoviLokal()
         {
-            InitializeComponent();
             pages[0] = new Page1(this);
             pages[1] = new Page2(this);
             pages[2] = new Page3(this);
             pages[3] = new Page4(this);
+            InitializeComponent();
+
+            NavigateToPage(1);
+        }
+
+        public NoviLokal(Lokal lokal)
+        {
+            index = ((App)App.Current).Lokali.IndexOf(lokal);
+            ((App)App.Current).Lokali.Remove(lokal);
+            stari = lokal;
+            edit = true;
+            novi = stari.Clone();
+            ((App)App.Current).EditingLokal = new Tuple<Lokal, int>(stari, index);
+
+            pages[0] = new Page1(this);
+            pages[1] = new Page2(this);
+            pages[2] = new Page3(this);
+            pages[3] = new Page4(this);
+            InitializeComponent();
+
+            title.Text = "Izmena podataka lokala";
 
             NavigateToPage(1);
         }
@@ -143,7 +168,45 @@ namespace HCIZadatak.Validation
 
         private void odustanibtn_Click(object sender, RoutedEventArgs e)
         {
+            if (edit)
+            {
+                ((App)App.Current).Lokali.Insert(index,stari);
+                Mapa.Current.lokaliDG.SelectedItem = stari;
+                ((App)App.Current).EditingLokal = null;
+            }
             ((MainWindow)App.Current.MainWindow).Navigate(Mapa.Current);
         }
+
+        private void Zavrsi_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            Page1 p1 = (Page1)pages[0];
+            if (p1.HasErrors || (novi.Tip == null))
+            {
+                e.CanExecute = false;
+            }
+            else
+            {
+                e.CanExecute = true;
+            }
+            e.Handled = true;
+        }
+
+        private void Zavrsi_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            if (edit)
+            {
+                ((App)App.Current).Lokali.Insert(index,novi);
+                ((App)App.Current).EditingLokal = null;
+            }
+            else
+            {
+                ((App)App.Current).Lokali.Add(novi);
+            }
+            Mapa.Current.lokaliDG.SelectedItem = novi;
+            ((MainWindow)App.Current.MainWindow).Navigate(Mapa.Current);
+
+            e.Handled = true;
+        }
+
     }
 }

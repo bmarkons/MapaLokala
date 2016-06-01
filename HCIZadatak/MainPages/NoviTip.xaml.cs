@@ -23,12 +23,32 @@ namespace HCIZadatak.Validation
     /// </summary>
     public partial class NoviTip : UserControl
     {
+
+        private bool edit = false;
+        private int index;
+        private Tip stari;
+
         private Tip novi = new Tip();
 
         public NoviTip()
         {
             InitializeComponent();
             this.DataContext = novi;
+        }
+
+        public NoviTip(Tip tip)
+        {
+            index = ((App)App.Current).Tipovi.IndexOf(tip);
+            ((App)App.Current).Tipovi.Remove(tip);
+            stari = tip;
+            edit = true;
+            novi = stari.Clone();
+            ((App)App.Current).EditingTip = new Tuple<Tip, int>(stari, index);
+
+            InitializeComponent();
+            this.DataContext = novi;
+
+            title.Text = "Izmena podataka tipa";
         }
 
         private void ucitajbtn_Click(object sender, RoutedEventArgs e)
@@ -44,16 +64,17 @@ namespace HCIZadatak.Validation
             }
         }
 
-        //private void zavrsibtn_Click(object sender, RoutedEventArgs e)
-        //{
-        //    ((App)App.Current).Tipovi.Add(novi);
-        //    ((MainWindow)App.Current.MainWindow).Navigate(new Mapa());
-        //}
-
         private void odustanibtn_Click(object sender, RoutedEventArgs e)
         {
+            if (edit)
+            {
+                ((App)App.Current).Tipovi.Insert(index, stari);
+                Mapa.Current.tipoviDG.SelectedItem = stari;
+                ((App)App.Current).EditingTip = null;
+            }
             ((MainWindow)App.Current.MainWindow).Navigate(Mapa.Current);
         }
+
         private void Zavrsi_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
             if (System.Windows.Controls.Validation.GetHasError(oznakatext))
@@ -69,8 +90,16 @@ namespace HCIZadatak.Validation
 
         private void Zavrsi_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            
-            ((App)App.Current).Tipovi.Add(novi);
+            if (edit)
+            {
+                ((App)App.Current).Tipovi.Insert(index, novi);
+                ((App)App.Current).EditingTip = null;
+            }
+            else
+            {
+                ((App)App.Current).Tipovi.Add(novi);
+            }
+            Mapa.Current.tipoviDG.SelectedItem = novi;
             ((MainWindow)App.Current.MainWindow).Navigate(Mapa.Current);
             e.Handled = true;
         }

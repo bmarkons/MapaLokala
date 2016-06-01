@@ -15,6 +15,8 @@ namespace HCIZadatak
     [Serializable]
     public class Lokal : INotifyPropertyChanged
     {
+        private static BitmapImage noImageAvailable = new BitmapImage(new Uri(@"C:\Users\Marko\Documents\Visual Studio 2015\Projects\HCIZadatak\HCIZadatak\Images\nia300x300.svg"));
+
         private Point mapPoint = new Point(Double.NaN, Double.NaN);
         public Point MapPoint
         {
@@ -31,8 +33,8 @@ namespace HCIZadatak
 
         #region CENE_ALKOHOL_VREDNOSTI
         // Moguce vrednosti za polje CENE i ALKOHOL
-        static List<String> rang_cena = new List<string>() { "Niske", "Srednje", "Visoke", "Luksuzne" };
-        static List<string> sluzenje_alkohola = new List<string>() { "Da", "Ne", "Do23h" };
+        private static List<String> rang_cena = new List<string>() { "Niske", "Srednje", "Visoke", "Luksuzne" };
+        private static List<string> sluzenje_alkohola = new List<string>() { "Da", "Ne", "Do23h" };
         public static List<string> Rang_cena
         {
             get
@@ -225,9 +227,19 @@ namespace HCIZadatak
             {
                 if(ikona == null)
                 {
-                    return Tip.Ikona;
+                    if(Tip == null)
+                    {
+                        return noImageAvailable;
+                    }
+                    else
+                    {
+                        return Tip.Ikona;
+                    }
                 }
-                return ikona;
+                else
+                {
+                    return ikona;
+                }
             }
 
             set
@@ -286,5 +298,29 @@ namespace HCIZadatak
             }
         }
         #endregion
+
+        public Lokal Clone()
+        {
+            Lokal lokal = new Lokal();
+
+            lokal.MapPoint = MapPoint;
+            lokal.imgUri = imgUri;
+
+            lokal.OznakaTxt = OznakaTxt;
+            lokal.ImeTxt = ImeTxt;
+            lokal.OpisTxt = OpisTxt;
+            lokal.Hendikep = Hendikep;
+            lokal.Pusenje = Pusenje;
+            lokal.Rezervacije = Rezervacije;
+            lokal.Kapacitet = Kapacitet;
+            lokal.Cena = Cena;
+            lokal.Alkohol = Alkohol;
+            lokal.Datum = Datum;
+            lokal.Ikona = Ikona;
+            lokal.Tip = Tip;
+            lokal.Etikete = Etikete;
+
+            return lokal;
+        }
     }
 }

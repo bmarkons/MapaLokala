@@ -19,16 +19,21 @@
                 <ColumnDefinition/>
                 <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
-            <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Content="Podaci o etiketi" FontWeight="Bold" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" BorderThickness="0,0,0,3" BorderBrush="#3c4262"/>
-            <Button  Grid.Row="0" Grid.Column="2" Height="32" Width="32" HorizontalAlignment="Right" VerticalAlignment="Center" Click="Button_Click" Background="Transparent" BorderThickness="0">
-                <Image Source="./Images/exit.png" />
-            </Button>
+            <DockPanel Grid.Row="0" Grid.ColumnSpan="3">
+                <Label DockPanel.Dock="Left" Content="Podaci o lokalu" FontWeight="Bold" VerticalContentAlignment="Center"/>
+                <Button Name="editBtn" Margin="5" Width="32" Height="32" BorderThickness="0" Background="Transparent" Click="editBtn_Click">
+                    <Image Source="./Images/edit.png" />
+                </Button>
+                <Button Margin="10,0" Grid.Row="0" Grid.Column="2" Height="32" Width="32" HorizontalAlignment="Right" VerticalAlignment="Center" Click="Button_Click" Background="Transparent" BorderThickness="0">
+                    <Image Source="./Images/exit.png" />
+                </Button>
+            </DockPanel>
 
             <Label Margin="5" Grid.Row="1" Grid.Column="0" Content="Oznaka:"/>
             <Label Margin="5" Grid.Row="2" Grid.Column="0" Content="Boja:"/>
             <Label Margin="5" Grid.Row="3" Grid.Column="0" Content="Opis:"/>
 
-            <TextBox Margin="10" Grid.Row="1" Grid.Column="2" >
+            <!--<TextBox Margin="10" Grid.Row="1" Grid.Column="2" >
                 <TextBox.Text>
                     <Binding Path="Oznaka" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                         <Binding.ValidationRules>
@@ -49,13 +54,22 @@
                             <Border BorderThickness="2" BorderBrush="Red" Grid.Row="0">
                                 <AdornedElementPlaceholder Grid.Row="0" x:Name="textBox"/>
                             </Border>
-                            <!--<TextBlock Grid.Row="1" Text="{Binding [0].ErrorContent}" Foreground="Red" HorizontalAlignment="Right" FontStyle="Italic" />-->
+                            -->
+            <!--<TextBlock Grid.Row="1" Text="{Binding [0].ErrorContent}" Foreground="Red" HorizontalAlignment="Right" FontStyle="Italic" />-->
+            <!--
                         </Grid>
                     </ControlTemplate>
                 </Validation.ErrorTemplate>
-            </TextBox>
-            <xtd:ColorPicker Margin="10" Grid.Row="2" Grid.Column="2" SelectedColor="{Binding Boja,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-            <TextBox Margin="10" Grid.Row="3" Grid.Column="2" Text="{Binding Opis,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap"/>
+            </TextBox>-->
+            <TextBlock Margin="10" Grid.Row="1" Grid.Column="2" Text="{Binding Oznaka,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap"/>
+            <xtd:ColorPicker IsEnabled="False" Margin="10" Grid.Row="2" Grid.Column="2" SelectedColor="{Binding Boja,Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
+                <xtd:ColorPicker.ButtonStyle>
+                    <Style TargetType="ToggleButton">
+                        <Setter Property="Background" Value="Transparent"/>
+                    </Style>
+                </xtd:ColorPicker.ButtonStyle>
+            </xtd:ColorPicker>
+            <TextBlock Margin="10" Grid.Row="3" Grid.Column="2" Text="{Binding Opis,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap"/>
 
         </Grid>
     </Border>

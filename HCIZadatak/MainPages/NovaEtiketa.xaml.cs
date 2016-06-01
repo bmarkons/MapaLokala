@@ -22,6 +22,10 @@ namespace HCIZadatak.Validation
     /// </summary>
     public partial class NovaEtiketa : UserControl
     {
+        private bool edit = false;
+        private int index;
+        private Etiketa stari;
+
         private Etiketa novi = new Etiketa();
 
         public NovaEtiketa()
@@ -30,16 +34,31 @@ namespace HCIZadatak.Validation
             DataContext = novi;
         }
 
-        private void odustanibtn_Click(object sender, RoutedEventArgs e)
+        public NovaEtiketa(Etiketa etiketa)
         {
-            ((MainWindow)App.Current.MainWindow).Navigate(Mapa.Current);
+            index = ((App)App.Current).Etikete.IndexOf(etiketa);
+            ((App)App.Current).Etikete.Remove(etiketa);
+            stari = etiketa;
+            edit = true;
+            novi = stari.Clone();
+            ((App)App.Current).EditingEtiketa = new Tuple<Etiketa, int>(stari, index);
+
+            InitializeComponent();
+            DataContext = novi;
+
+            title.Text = "Izmena podataka etikete";
         }
 
-        //private void zavrsibtn_Click(object sender, RoutedEventArgs e)
-        //{
-        //    ((App)App.Current).Etikete.Add(novi);
-        //    ((MainWindow)App.Current.MainWindow).Navigate(Mapa.Current);
-        //}
+        private void odustanibtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (edit)
+            {
+                ((App)App.Current).Etikete.Insert(index, stari);
+                Mapa.Current.etiketeDG.SelectedItem = stari;
+                ((App)App.Current).EditingEtiketa = null;
+            }
+            ((MainWindow)App.Current.MainWindow).Navigate(Mapa.Current);
+        }
 
         private void Zavrsi_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
@@ -56,7 +75,16 @@ namespace HCIZadatak.Validation
 
         private void Zavrsi_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            ((App)App.Current).Etikete.Add(novi);
+            if (edit)
+            {
+                ((App)App.Current).Etikete.Insert(index, novi);
+                ((App)App.Current).EditingEtiketa = null;
+            }
+            else
+            {
+                ((App)App.Current).Etikete.Add(novi);
+            }
+            Mapa.Current.etiketeDG.SelectedItem = novi;
             ((MainWindow)App.Current.MainWindow).Navigate(Mapa.Current);
             e.Handled = true;
         }

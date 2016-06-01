@@ -11,9 +11,9 @@
     </Page.Resources>
     <Grid>
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Height="469" Width="400" >
-            <CheckBox Height="45" Padding="15,0,0,0" Content="Lokal dostupan za invalide" VerticalContentAlignment="Center" IsChecked="{Binding Path=Hendikep,Mode=OneWayToSource,UpdateSourceTrigger=PropertyChanged}"/>
-            <CheckBox Height="45" Padding="15,0,0,0" Content="Dozvoljeno pušenje" VerticalContentAlignment="Center" IsChecked="{Binding Path=Pusenje,Mode=OneWayToSource,UpdateSourceTrigger=PropertyChanged}"/>
-            <CheckBox Height="45" Padding="15,0,0,0" Content="Postoji mogućnost rezervacije" VerticalContentAlignment="Center" IsChecked="{Binding Path=Rezervacije,Mode=OneWayToSource,UpdateSourceTrigger=PropertyChanged}"/>
+            <CheckBox Height="45" Padding="15,0,0,0" Content="Lokal dostupan za invalide" VerticalContentAlignment="Center" IsChecked="{Binding Path=Hendikep,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+            <CheckBox Height="45" Padding="15,0,0,0" Content="Dozvoljeno pušenje" VerticalContentAlignment="Center" IsChecked="{Binding Path=Pusenje,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+            <CheckBox Height="45" Padding="15,0,0,0" Content="Postoji mogućnost rezervacije" VerticalContentAlignment="Center" IsChecked="{Binding Path=Rezervacije,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
             <Label x:Name="cenelabel" Content="Rang cena:" Margin="0,20,0,0"/>
             <StackPanel Orientation="Vertical" Margin="40,0,0,0">

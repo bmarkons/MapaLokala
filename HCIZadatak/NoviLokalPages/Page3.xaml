@@ -11,14 +11,14 @@
     <Grid>
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Height="430" Width="340">
             <Label x:Name="kapacitetlabel" Content="Kapacitet lokala:"/>
-            <xtd:IntegerUpDown x:Name="integerupdown" Minimum="0" HorizontalAlignment="Left" Width="150" Value="{Binding Path=Kapacitet,Mode=OneWayToSource,UpdateSourceTrigger=PropertyChanged}"/>
+            <xtd:IntegerUpDown x:Name="integerupdown" Minimum="0" HorizontalAlignment="Left" Width="150" Value="{Binding Path=Kapacitet,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
             <Label x:Name="datumlabel" Margin="0,20,0,0" Content="Datum otvaranja:"/>
-            <DatePicker x:Name="datepicker" HorizontalAlignment="Left" Width="150" Text="{Binding Path=Datum,Mode=OneWayToSource,UpdateSourceTrigger=PropertyChanged}"/>
+            <DatePicker x:Name="datepicker" HorizontalAlignment="Left" Width="150" Text="{Binding Path=Datum,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
             <Label x:Name="ikonalabel" Margin="0,20,0,0" Content="Izaberite sliku za lokal:"/>
             <StackPanel Orientation="Vertical">
                 <Button x:Name="ucitajbtn" Content="Učitaj sliku" Width="150" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="15" Click="ucitajbtn_Click" Height="23"/>
                 <Border Margin="0,1,0,0" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left">
-                    <Image x:Name="ikona" Height="84" Width="148" Margin="0,0,0,0" Source="{Binding Path=Ikona,Mode=OneWayToSource,UpdateSourceTrigger=PropertyChanged}"/>
+                    <Image x:Name="ikona" Height="84" Width="148" Margin="0,0,0,0" Source="{Binding Path=Ikona,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
                 </Border>
             </StackPanel>
         </StackPanel>

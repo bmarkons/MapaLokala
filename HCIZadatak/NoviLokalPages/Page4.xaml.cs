@@ -77,27 +77,6 @@ namespace HCIZadatak.Validation
         //    ((MainWindow)App.Current.MainWindow).Navigate(new Mapa());
         //}
 
-        private void Zavrsi_CanExecute(object sender, CanExecuteRoutedEventArgs e)
-        {
-            Page[] p = noviLokal.Pages;
-            Page1 p1 = (Page1)noviLokal.Pages[0];
-            if (p1.HasErrors || (noviLokal.Novi.Tip == null))
-            {
-                e.CanExecute = false;
-            }
-            else
-            {
-                e.CanExecute = true;
-            }
-            e.Handled = true;
-        }
-
-        private void Zavrsi_Executed(object sender, ExecutedRoutedEventArgs e)
-        {
-            ((App)App.Current).Lokali.Add(noviLokal.Novi);
-            ((MainWindow)App.Current.MainWindow).Navigate(Mapa.Current);
-        }
-
         private void CommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
             e.CanExecute = true;

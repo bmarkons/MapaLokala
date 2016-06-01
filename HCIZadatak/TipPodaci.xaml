@@ -19,48 +19,27 @@
                 <ColumnDefinition/>
                 <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
-            <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Content="Podaci o tipu" FontWeight="Bold" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" BorderThickness="0,0,0,3" BorderBrush="#3c4262"/>
-            <Button  Grid.Row="0" Grid.Column="2" Height="32" Width="32" HorizontalAlignment="Right" VerticalAlignment="Center" Click="Button_Click" Background="Transparent" BorderThickness="0">
-                <Image Source="./Images/exit.png" />
-            </Button>
+            <DockPanel Grid.Row="0" Grid.ColumnSpan="3">
+                <Label DockPanel.Dock="Left" Content="Podaci o lokalu" FontWeight="Bold" VerticalContentAlignment="Center"/>
+                <Button Name="editBtn" Margin="5" Width="32" Height="32" BorderThickness="0" Background="Transparent" Click="editBtn_Click">
+                    <Image Source="./Images/edit.png" />
+                </Button>
+                <Button Margin="10,0" Grid.Row="0" Grid.Column="2" Height="32" Width="32" HorizontalAlignment="Right" VerticalAlignment="Center" Click="Button_Click" Background="Transparent" BorderThickness="0">
+                    <Image Source="./Images/exit.png" />
+                </Button>
+            </DockPanel>
             <StackPanel Orientation="Vertical" Margin="15" Grid.Row="1" Grid.Column="0" Grid.RowSpan="3" HorizontalAlignment="Stretch" VerticalAlignment="Top">
                 <Border BorderThickness="2" BorderBrush="#3c4262">
                     <Image Name="ikonaImg" HorizontalAlignment="Stretch" Source="{Binding Ikona,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
                 </Border>
-                <Button Name="ucitajBtn" HorizontalAlignment="Stretch" Content="Promeni sliku" Click="ucitajBtn_Click"/>
             </StackPanel>
             <Label Margin="5" Grid.Row="1" Grid.Column="1" Content="Oznaka:"/>
             <Label Margin="5" Grid.Row="2" Grid.Column="1" Content="Ime:"/>
             <Label Margin="5" Grid.Row="3" Grid.Column="1" Content="Opis:"/>
 
-            <TextBox Margin="10" Grid.Row="1" Grid.Column="2" >
-                <TextBox.Text>
-                    <Binding Path="Oznaka" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
-                        <Binding.ValidationRules>
-                            <local:OznakaTipaValidationRule />
-                        </Binding.ValidationRules>
-                    </Binding>
-                </TextBox.Text>
-                <Validation.ErrorTemplate>
-                    <ControlTemplate>
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition />
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition />
-                            </Grid.ColumnDefinitions>
-                            <Border BorderThickness="2" BorderBrush="Red" Grid.Row="1">
-                                <AdornedElementPlaceholder Grid.Row="1" x:Name="textBox"/>
-                            </Border>
-                            <!--<TextBlock Grid.Row="0" Text="{Binding [0].ErrorContent}" Foreground="Red" HorizontalAlignment="Right" FontStyle="Italic" FontSize="15"/>-->
-                        </Grid>
-                    </ControlTemplate>
-                </Validation.ErrorTemplate>
-            </TextBox>
-            <TextBox Margin="10" Grid.Row="2" Grid.Column="2" Text="{Binding Ime,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
-            <TextBox Margin="10" Grid.Row="3" Grid.Column="2" Text="{Binding Opis,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap"/>
+            <TextBlock Margin="10" Grid.Row="1" Grid.Column="2" Text="{Binding Oznaka,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap"/>
+            <TextBlock Margin="10" Grid.Row="2" Grid.Column="2" Text="{Binding Ime,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap"/>
+            <TextBlock Margin="10" Grid.Row="3" Grid.Column="2" Text="{Binding Opis,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap"/>
 
         </Grid>
     </Border>

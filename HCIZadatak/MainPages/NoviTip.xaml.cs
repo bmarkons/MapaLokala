@@ -34,6 +34,8 @@ namespace HCIZadatak.Validation
         {
             InitializeComponent();
             this.DataContext = novi;
+            Loaded += (sender, e) => MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
+
         }
 
         public NoviTip(Tip tip)
@@ -47,6 +49,9 @@ namespace HCIZadatak.Validation
 
             InitializeComponent();
             this.DataContext = novi;
+
+            Loaded += (sender, e) => MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
+
 
             title.Text = "Izmena podataka tipa";
             odustanibtn.ToolTip = "Obustavi izmenu tipa";
@@ -105,5 +110,22 @@ namespace HCIZadatak.Validation
             ((MainWindow)App.Current.MainWindow).Navigate(Mapa.Current);
             e.Handled = true;
         }
+
+        private void CommandGoBack_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        private void CommandGoBack_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            if (edit)
+            {
+                ((App)App.Current).Tipovi.Insert(index, stari);
+                Mapa.Current.tipoviDG.SelectedItem = stari;
+                ((App)App.Current).EditingTip = null;
+            }
+            ((MainWindow)App.Current.MainWindow).Navigate(Mapa.Current);
+        }
+
     }
 }

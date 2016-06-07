@@ -4,8 +4,11 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:HCIZadatak.Validation"
+             xmlns:cmd="clr-namespace:HCIZadatak.Commands"
+             xmlns:l="clr-namespace:HCIZadatak.Help"
+             xmlns:root="clr-namespace:HCIZadatak"
              mc:Ignorable="d" 
-             d:DesignHeight="700" d:DesignWidth="700" FontSize="15" FontFamily="Segoe UI Semibold" Background="#56988b">
+             d:DesignHeight="700" d:DesignWidth="700" FontSize="15" FontFamily="Segoe UI Semibold" Background="#56988b" l:HelpProvider.HelpKey="tip">
     <UserControl.Resources>
         <Style x:Key="ButtonEnabledStyle" TargetType="Button">
             <Style.Triggers>
@@ -18,13 +21,35 @@
             </Style.Triggers>
         </Style>
     </UserControl.Resources>
+    <UserControl.CommandBindings>
+        <CommandBinding Command="cmd:Commands.GoBack" CanExecute="CommandGoBack_CanExecute" Executed="CommandGoBack_Executed"/>
+    </UserControl.CommandBindings>
     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
         <Grid.CommandBindings>
             <CommandBinding Command="New" CanExecute="Zavrsi_CanExecute" Executed="Zavrsi_Executed" />
         </Grid.CommandBindings>
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Width="400">
-            <TextBlock Name="title" HorizontalAlignment="Left" Text="Dodavanje novog tipa" Margin="0,0,0,20" FontSize="20"/>
-            <Label x:Name="oznakalabel" Content="Oznaka tipa:" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,20">
+                <TextBlock VerticalAlignment="Center" Name="title" Text="Dodavanje novog tipa" FontSize="20"/>
+                <root:HelpControl Margin="5,0">
+                    <StackPanel Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="../Images/quit.png" Width="30" Height="30"/>
+                            <TextBlock Text=" - Odustanak od unosa."/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="../Images/done.png" Width="30" Height="30"/>
+                            <TextBlock Text=" - Dugme za potvrdu i završetak unosa (vidljivo ukoliko je uneta oznaka tipa)."/>
+                        </StackPanel>
+                    </StackPanel>
+                </root:HelpControl>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label x:Name="oznakalabel" Content="Oznaka tipa:" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <root:HelpControl>
+                    <TextBlock Text="Oznaka tipa je obavezna i mora biti jedinstvena."/>
+                </root:HelpControl>
+            </StackPanel>
             <TextBox ToolTip="{StaticResource oznakaTipa}" x:Name="oznakatext" HorizontalAlignment="Stretch" >
                 <TextBox.Text>
                     <Binding Path="Oznaka" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
@@ -64,9 +89,9 @@
                     </Border>
                 </StackPanel>
             </DockPanel>
-            
+
             <Grid HorizontalAlignment="Stretch" Margin="0,60,0,0">
-                <Button ToolTip="{StaticResource obustaviDodavanjeTipa}" Name="odustanibtn" Width="100" HorizontalAlignment="Left" Click="odustanibtn_Click" Margin="0,0,5,0" BorderThickness="0" Background="Wheat" >
+                <Button ToolTip="{StaticResource obustaviDodavanjeTipa}" Name="odustanibtn" Width="100" HorizontalAlignment="Left" Command="cmd:Commands.GoBack" Margin="0,0,5,0" BorderThickness="0" Background="Wheat" RenderTransformOrigin="0.5,0.5" >
                     <Image Source="../Images/quit.png" Height="48" Width="48"/>
                 </Button>
                 <Button ToolTip="{StaticResource zavrsiDodavanjeTipa}" Name="zavrsibtn" Width="100" Style="{StaticResource ButtonEnabledStyle}" HorizontalAlignment="Right" Command="New" Background="Wheat">

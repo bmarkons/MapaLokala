@@ -11,7 +11,7 @@
     <UserControl.Resources>
         <root:BooleanToVisibilityConverter x:Key="myBoolToVisibilityConverter" />
     </UserControl.Resources>
-    <Border BorderThickness="4" CornerRadius="5" Background="#b8e5f2" BorderBrush="#3c4262" Height="620" Width="400" Margin="0,-10,0,0">
+    <Border BorderThickness="4" CornerRadius="5" Background="#eff899" BorderBrush="#3c4262" Height="620" Width="400" Margin="0,-10,0,0">
         <Grid Name="grid">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
@@ -31,12 +31,30 @@
                 <ColumnDefinition Width="1.5*"/>
             </Grid.ColumnDefinitions>
             <Border Grid.Column="0" Grid.ColumnSpan="3" BorderBrush="#3c4262" BorderThickness="0,0,0,3">
-                <DockPanel HorizontalAlignment="Left" Width="392"  >
+                <DockPanel >
                     <Label DockPanel.Dock="Left" Content="Podaci o lokalu" FontWeight="Bold" VerticalContentAlignment="Center"/>
                     <Button ToolTip="{StaticResource izmeni}" Name="editBtn" Margin="5" Width="32" Height="32" BorderThickness="0" Background="Transparent" Click="editBtn_Click">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="Red"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
                         <Image Source="./Images/edit.png" />
                     </Button>
-                    <Button ToolTip="{StaticResource zatvori}" Margin="10,0" Grid.Row="0" Grid.Column="2" Height="32" Width="32" HorizontalAlignment="Right" VerticalAlignment="Center" Click="Button_Click" Background="Transparent" BorderThickness="0">
+                    <Button ToolTip="{StaticResource zatvori}" Name="close" Margin="10,0" Grid.Row="0" Grid.Column="2" Height="32" Width="32" HorizontalAlignment="Right" VerticalAlignment="Center" Click="Button_Click" Background="Transparent" BorderThickness="0">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="Black"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
                         <Image Source="./Images/exit.png" />
                     </Button>
 

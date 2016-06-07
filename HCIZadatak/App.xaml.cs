@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using System.IO;
@@ -17,8 +18,38 @@ namespace HCIZadatak
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
-    public partial class App : Application
+    public partial class App : Application, INotifyPropertyChanged
     {
+
+        #region PropertyChangedNotifier
+        protected virtual void OnPropertyChanged(string name)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(name));
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        #endregion
+
+        #region NotifyProperties
+        private bool helpVisibility = false;
+        public bool HelpVisibility
+        {
+            get
+            {
+                return helpVisibility;
+            }
+
+            set
+            {
+                helpVisibility = value;
+                OnPropertyChanged("HelpVisibility");
+            }
+        }
+        #endregion
+
         Tuple<Lokal, int> editingLokal = null;
         Tuple<Tip, int> editingTip = null;
         Tuple<Etiketa, int> editingEtiketa = null;
@@ -194,6 +225,7 @@ namespace HCIZadatak
                     }
                 }
             }
+        
 
             foreach (Lokal lokal in Lokali)
             {
@@ -206,11 +238,20 @@ namespace HCIZadatak
                             lokal.Etikete.Remove(e1);
                             lokal.Etikete.Add(e2);
                         }
-                    }
+}
                 }
             }
 
-
+            //foreach(Lokal lokal in ((App)Application.Current).Lokali)
+            //{
+            //    foreach(Etiketa et in lokal.Etikete.ToArray())
+            //    {
+            //        if (!((App)Application.Current).Etikete.Contains(et))
+            //        {
+            //            lokal.Etikete.Remove(et);
+            //        }
+            //    }
+            //}
             //ucitaj tipove iz .txt fajla
             //string[] tiplines = File.ReadAllLines("tipovi.txt");
             //for (int i = 0; i < tiplines.Length; i++)

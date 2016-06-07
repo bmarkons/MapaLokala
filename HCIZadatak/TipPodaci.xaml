@@ -20,7 +20,7 @@
                 <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
             <DockPanel Grid.Row="0" Grid.ColumnSpan="3">
-                <Label DockPanel.Dock="Left" Content="Podaci o lokalu" FontWeight="Bold" VerticalContentAlignment="Center"/>
+                <Label DockPanel.Dock="Left" Content="Podaci o tipu" FontWeight="Bold" VerticalContentAlignment="Center"/>
                 <Button ToolTip="{StaticResource izmeni}" Name="editBtn" Margin="5" Width="32" Height="32" BorderThickness="0" Background="Transparent" Click="editBtn_Click">
                     <Image Source="./Images/edit.png" />
                 </Button>

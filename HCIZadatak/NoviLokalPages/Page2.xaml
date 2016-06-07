@@ -4,8 +4,10 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:HCIZadatak.Validation"
+      xmlns:cmd="clr-namespace:HCIZadatak.Commands"
       mc:Ignorable="d"
       Title="Page2" FontSize="20" Height="700" Width="400">
+
     <Page.Resources>
         <local:BooleanToStringValueConverter x:Key="BooleanToStringValueConverter" />
     </Page.Resources>
@@ -28,16 +30,10 @@
                 <RadioButton ToolTip="{StaticResource neAlkoholLokal}" GroupName="alkohol" Content="Ne" VerticalContentAlignment="Center" IsChecked="{Binding Path=Alkohol, Converter={StaticResource BooleanToStringValueConverter}, ConverterParameter=Ne}"/>
                 <RadioButton ToolTip="{StaticResource do23AlkoholLokal}" GroupName="alkohol" Content="Samo do 23:00" VerticalContentAlignment="Center" IsChecked="{Binding Path=Alkohol, Converter={StaticResource BooleanToStringValueConverter}, ConverterParameter=Do23h}"/>
             </StackPanel>
-            <!--<Grid Margin="0,70,0,0">
-                <Button x:Name="daljebtn" Content="&gt;&gt;" HorizontalAlignment="Right" VerticalAlignment="Top" Width="80" Click="daljebtn_Click" />
-                <Button x:Name="nazadbtn" Content="&lt;&lt;" HorizontalAlignment="Left" Width="80" Click="nazadbtn_Click"/>
-            </Grid>-->
-
-
         </StackPanel>
-        <Grid VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="400" Margin="0,0,0,30">
-            <Button ToolTip="{StaticResource nastaviLokal}" x:Name="daljebtn" Content="&gt;&gt;"  Width="80" FontSize="20" Click="daljebtn_Click" HorizontalAlignment="Right" />
-            <Button ToolTip="{StaticResource vratiLokal}" x:Name="nazadbtn" Content="&lt;&lt;" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Click="nazadbtn_Click"/>
-        </Grid>
+        <!--<Grid VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="400" Margin="0,0,0,30">
+            <Button ToolTip="{StaticResource nastaviLokal}" x:Name="daljebtn" Content="&gt;&gt;"  Width="80" FontSize="20" HorizontalAlignment="Right" Command="cmd:Commands.Next"/>
+            <Button ToolTip="{StaticResource vratiLokal}" x:Name="nazadbtn" Content="&lt;&lt;" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Command="cmd:Commands.Back"/>
+        </Grid>-->
     </Grid>
 </Page>

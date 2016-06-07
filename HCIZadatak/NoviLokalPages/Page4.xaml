@@ -5,8 +5,11 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:HCIZadatak.Validation"
       xmlns:xtd="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
+      xmlns:cmd="clr-namespace:HCIZadatak.Commands"
+      xmlns:root="clr-namespace:HCIZadatak"
       mc:Ignorable="d"
       Title="Page4" FontSize="20" Height="700" Width="700">
+
     <Page.Resources>
         <Style x:Key="ButtonEnabledStyle" TargetType="Button">
             <Style.Triggers>
@@ -22,7 +25,18 @@
     <Grid>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,100" >
             <StackPanel VerticalAlignment="Center" Orientation="Vertical" Width="300">
-                <Label Content="Odaberite tip lokala:"/>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Odaberite tip lokala:"/>
+                    <root:HelpControl>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Text="Svaki lokal pripada tačno jednom tipu. Odabir tipa je obavezan!"/>
+                            <StackPanel Margin="5" Orientation="Horizontal">
+                                <Image Source="../Images/newtip.png" Width="30" Height="30"/>
+                                <TextBlock  Text=" - Dodavanje novog tipa ukoliko već ne postoji odgovarajući."/>
+                            </StackPanel>
+                        </StackPanel>
+                    </root:HelpControl>
+                </StackPanel>
                 <Frame Name="tipFrame" NavigationUIVisibility="Hidden" Height="520" Width="300" Margin="0,1,0,0"/>
                 <!--<DataGrid SelectionUnit="FullRow" Name="tipovilist" Height="450" Width="300" Margin="0,1,0,0" IsReadOnly="True" AutoGenerateColumns="False" SelectedItem="{Binding Path=Tip,Mode=OneWayToSource,UpdateSourceTrigger=PropertyChanged}">
                     <DataGrid.Columns>
@@ -65,25 +79,19 @@
                         <CommandBinding Command="Delete" CanExecute="CommandBinding_CanExecute" Executed="CommandBinding_Executed"/>
                     </DataGrid.CommandBindings>
                     <DataGrid.Columns>
-                            <DataGridTemplateColumn>
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
+                        <DataGridTemplateColumn>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
                                     <Button ToolTip="Uklonite etiketu" Background="Transparent" BorderThickness="0" Command="Delete" CommandParameter="{Binding}">
                                         <Image Source="../Images/delete.png" Height="16"/>
                                     </Button>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
                         <DataGridTextColumn Binding="{Binding Oznaka,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </StackPanel>
         </StackPanel>
-        <Grid VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="400" Margin="0,0,0,30">
-            <!--<Button x:Name="zavrsibtn" Style="{StaticResource ButtonEnabledStyle}" HorizontalAlignment="Right" VerticalAlignment="Top" Width="80" Command="New" >
-                <Image Source="../Images/done.png" Height="48" Width="48"/>
-            </Button>-->
-            <Button ToolTip="{StaticResource vratiLokal}" x:Name="nazadbtn" Content="&lt;&lt;" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Click="nazadbtn_Click"/>
-        </Grid>
     </Grid>
 </Page>

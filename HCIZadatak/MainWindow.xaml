@@ -4,6 +4,20 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCIZadatak"
+        xmlns:cmd="clr-namespace:HCIZadatak.Commands"
         mc:Ignorable="d"
         Title="Mapa Lokala" WindowState="Maximized" MinWidth="1300" MinHeight="750" >
+    <Window.CommandBindings>
+        <CommandBinding Command="cmd:Commands.Expander" CanExecute="CommandExpander_CanExecute" Executed="CommandExpander_Executed"/>
+        <CommandBinding Command="cmd:Commands.NoviLokal" CanExecute="CommandNoviLokal_CanExecute" Executed="CommandNoviLokal_Executed"/>
+        <CommandBinding Command="cmd:Commands.NoviTip" CanExecute="CommandNoviTip_CanExecute" Executed="CommandNoviTip_Executed"/>
+        <CommandBinding Command="cmd:Commands.NovaEtiketa" CanExecute="CommandNovaEtiketa_CanExecute" Executed="CommandNovaEtiketa_Executed"/>
+        <CommandBinding Command="ApplicationCommands.Help" Executed="Help_Executed"/>
+        <CommandBinding Command="cmd:Commands.Demo" CanExecute="Demo_CanExecute" Executed="Demo_Executed"/>
+        <CommandBinding Command="cmd:Commands.GoBack" CanExecute="GoBack_CanExecute" Executed="GoBack_Executed"/>
+        <CommandBinding Command="cmd:Commands.Search" CanExecute="Search_CanExecute" Executed="Search_Executed"/>
+        <CommandBinding Command="cmd:Commands.Back" Executed="Nazad_Executed"/>
+        <CommandBinding Command="cmd:Commands.Next" Executed="Dalje_Executed"/>
+        <CommandBinding Command="cmd:Commands.Filter" Executed="Filter_Executed"/>
+    </Window.CommandBindings>
 </Window>

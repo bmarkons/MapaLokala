@@ -26,6 +26,7 @@ namespace HCIZadatak.Validation
         private Lokal stari;
         private int index;
 
+        private int currentPage = 1;
         private Page[] pages = new Page[4];
 
         private Lokal novi = new Lokal();
@@ -54,6 +55,9 @@ namespace HCIZadatak.Validation
             pages[3] = new Page4(this);
             InitializeComponent();
 
+
+            Loaded += (sender, e) => MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
+
             NavigateToPage(1);
         }
 
@@ -72,6 +76,10 @@ namespace HCIZadatak.Validation
             pages[3] = new Page4(this);
             InitializeComponent();
 
+
+            Loaded += (sender, e) => MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
+
+
             title.Text = "Izmena podataka lokala";
             odustanibtn.ToolTip = "Obustavi izmenu lokala";
             zavrsibtn.ToolTip = "Završi izmenu lokala";
@@ -81,6 +89,7 @@ namespace HCIZadatak.Validation
 
         public void NavigateToPage(int pageNum)
         {
+            currentPage = pageNum;
             frame1.NavigationService.Navigate(pages[pageNum - 1]);
             switch (pageNum)
             {
@@ -168,16 +177,16 @@ namespace HCIZadatak.Validation
             }
         }
 
-        private void odustanibtn_Click(object sender, RoutedEventArgs e)
-        {
-            if (edit)
-            {
-                ((App)App.Current).Lokali.Insert(index,stari);
-                Mapa.Current.lokaliDG.SelectedItem = stari;
-                ((App)App.Current).EditingLokal = null;
-            }
-            ((MainWindow)App.Current.MainWindow).Navigate(Mapa.Current);
-        }
+        //private void odustanibtn_Click(object sender, RoutedEventArgs e)
+        //{
+        //    if (edit)
+        //    {
+        //        ((App)App.Current).Lokali.Insert(index,stari);
+        //        Mapa.Current.lokaliDG.SelectedItem = stari;
+        //        ((App)App.Current).EditingLokal = null;
+        //    }
+        //    ((MainWindow)App.Current.MainWindow).Navigate(Mapa.Current);
+        //}
 
         private void Zavrsi_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
@@ -197,7 +206,7 @@ namespace HCIZadatak.Validation
         {
             if (edit)
             {
-                ((App)App.Current).Lokali.Insert(index,novi);
+                ((App)App.Current).Lokali.Insert(index, novi);
                 ((App)App.Current).EditingLokal = null;
             }
             else
@@ -210,5 +219,58 @@ namespace HCIZadatak.Validation
             e.Handled = true;
         }
 
+        private void CommandGoBack_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        private void CommandGoBack_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            if (edit)
+            {
+                ((App)App.Current).Lokali.Insert(index, stari);
+                Mapa.Current.lokaliDG.SelectedItem = stari;
+                ((App)App.Current).EditingLokal = null;
+            }
+            ((MainWindow)App.Current.MainWindow).Navigate(Mapa.Current);
+        }
+
+        private void Nazad_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            if (currentPage == 1)
+            {
+                e.CanExecute = false;
+            }
+            else
+            {
+                e.CanExecute = true;
+            }
+            e.Handled = true;
+        }
+
+        private void Nazad_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            NavigateToPage(currentPage - 1);
+            e.Handled = true;
+        }
+
+        private void Dalje_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            if (currentPage == 4)
+            {
+                e.CanExecute = false;
+            }
+            else
+            {
+                e.CanExecute = true;
+            }
+            e.Handled = true;
+        }
+
+        private void Dalje_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            NavigateToPage(currentPage + 1);
+            e.Handled = true;
+        }
     }
 }

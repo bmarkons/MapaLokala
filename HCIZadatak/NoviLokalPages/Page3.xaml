@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:xtd="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
       xmlns:local="clr-namespace:HCIZadatak.Validation"
+      xmlns:cmd="clr-namespace:HCIZadatak.Commands"
       mc:Ignorable="d"
       Title="Page3" FontSize="20" Height="700" Width="400">
 
@@ -22,9 +23,5 @@
                 </Border>
             </StackPanel>
         </StackPanel>
-        <Grid VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="400" Margin="0,0,0,30">
-            <Button ToolTip="{StaticResource nastaviLokal}" x:Name="daljebtn" Content="&gt;&gt;" HorizontalAlignment="Right" VerticalAlignment="Top" Width="80" Click="daljebtn_Click" />
-            <Button ToolTip="{StaticResource vratiLokal}" x:Name="nazadbtn" Content="&lt;&lt;" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Click="nazadbtn_Click"/>
-        </Grid>
     </Grid>
 </Page>

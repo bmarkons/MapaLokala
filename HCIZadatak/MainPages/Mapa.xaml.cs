@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -55,6 +56,7 @@ namespace HCIZadatak.Validation
             InitializeComponent();
 
             DataContext = this;
+            demo.DataContext = (App)Application.Current;
 
             //DataGrids
             lokaliDG.ItemsSource = ((App)App.Current).Lokali;
@@ -515,7 +517,18 @@ namespace HCIZadatak.Validation
 
         private void lokaliDG_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            startPoint = e.GetPosition(null);
+            DependencyObject o = VisualTreeHelper.GetParent(VisualTreeHelper.GetParent(VisualTreeHelper.GetParent(VisualTreeHelper.GetParent(e.OriginalSource as DependencyObject))));
+
+            if (o is ScrollBar)
+            {
+                startPoint = new Point(Double.NaN, Double.NaN);
+            }
+            else
+            {
+                startPoint = e.GetPosition(null);
+            }
+
+
         }
 
         private void lokaliDG_MouseMove(object sender, MouseEventArgs e)
@@ -617,6 +630,37 @@ namespace HCIZadatak.Validation
                 }
             }
         }
+
+        private void CommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine(e.Source);
+        }
+
+        private void lokaliDG_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Delete)
+            {
+                DeleteLokalDialog dialog = new DeleteLokalDialog(lokaliDG.SelectedItems);
+                dialog.ShowDialog();
+            }
+        }
+
+        private void tipoviDG_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Delete)
+            {
+                DeleteTipDialog dialog = new DeleteTipDialog(tipoviDG.SelectedItems);
+                dialog.ShowDialog();
+            }
+        }
+
+        private void etiketeDG_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Delete)
+            {
+                DeleteEtiketaDialog dialog = new DeleteEtiketaDialog(etiketeDG.SelectedItems);
+                dialog.ShowDialog();
+            }
+        }
     }
 }
-

@@ -43,28 +43,5 @@ namespace HCIZadatak.Validation
             }
         }
 
-        //private void daljebtn_Click(object sender, RoutedEventArgs e)
-        //{
-        //    noviLokal.NavigateToPage(2);
-        //}
-
-        private void Dalje_CanExecute(object sender, CanExecuteRoutedEventArgs e)
-        {
-            if (System.Windows.Controls.Validation.GetHasError(oznakatext))
-            {
-                e.CanExecute = false;
-            }
-            else
-            {
-                e.CanExecute = true;
-            }
-            e.Handled = true;
-        }
-
-        private void Dalje_Executed(object sender, ExecutedRoutedEventArgs e)
-        {
-            noviLokal.NavigateToPage(2);
-            e.Handled = true;
-        }
     }
 }

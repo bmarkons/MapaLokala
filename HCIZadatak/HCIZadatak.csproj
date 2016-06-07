@@ -91,11 +91,31 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="DeleteEtiketaDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DeleteLokalDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DeleteTipDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="EtiketaPodaci.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="EtiketeCheckList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HelpControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Help\HelpViewer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -120,6 +140,16 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="BooleanToVisibilityConverter.cs" />
+    <Compile Include="Commands\Commands.cs" />
+    <Compile Include="DeleteEtiketaDialog.xaml.cs">
+      <DependentUpon>DeleteEtiketaDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DeleteLokalDialog.xaml.cs">
+      <DependentUpon>DeleteLokalDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DeleteTipDialog.xaml.cs">
+      <DependentUpon>DeleteTipDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Entiteti\Etiketa.cs" />
     <Compile Include="Entiteti\Lokal.cs" />
     <Compile Include="Entiteti\Tip.cs" />
@@ -129,6 +159,14 @@
     <Compile Include="EtiketeCheckList.xaml.cs">
       <DependentUpon>EtiketeCheckList.xaml</DependentUpon>
     </Compile>
+    <Compile Include="HelpControl.xaml.cs">
+      <DependentUpon>HelpControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Help\HelpProvider.cs" />
+    <Compile Include="Help\HelpViewer.xaml.cs">
+      <DependentUpon>HelpViewer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Help\JavaScriptControlHelpercs.cs" />
     <Compile Include="LokalPodaci.xaml.cs">
       <DependentUpon>LokalPodaci.xaml</DependentUpon>
     </Compile>
@@ -141,6 +179,7 @@
     <Compile Include="MapItem.xaml.cs">
       <DependentUpon>MapItem.xaml</DependentUpon>
     </Compile>
+    <Compile Include="NoNavigationFrame.cs" />
     <Compile Include="NovaEtiketaControl.xaml.cs">
       <DependentUpon>NovaEtiketaControl.xaml</DependentUpon>
     </Compile>
@@ -315,8 +354,16 @@
     <Resource Include="Images\newtag20x20.png" />
     <Resource Include="Images\delete.png" />
     <Resource Include="Images\edit.png" />
+    <Content Include="Help\Content\error.htm" />
+    <Resource Include="Help\Content\graph2.png" />
+    <Content Include="Help\Content\Ime.htm" />
+    <Content Include="Help\Content\Indeks.htm" />
+    <Content Include="Help\Content\index.htm" />
+    <Content Include="Help\Content\Prezime.htm" />
+    <Resource Include="Images\help32x32.png" />
     <Content Include="Images\nia300x300.svg" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

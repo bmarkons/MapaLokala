@@ -49,14 +49,32 @@ namespace HCIZadatak.Validation
             }
         }
 
-        private void daljebtn_Click(object sender, RoutedEventArgs e)
-        {
-            noviLokal.NavigateToPage(4);
-        }
+        //private void daljebtn_Click(object sender, RoutedEventArgs e)
+        //{
+        //    noviLokal.NavigateToPage(4);
+        //}
 
-        private void nazadbtn_Click(object sender, RoutedEventArgs e)
-        {
-            noviLokal.NavigateToPage(2);
-        }
+        //private void nazadbtn_Click(object sender, RoutedEventArgs e)
+        //{
+        //    noviLokal.NavigateToPage(2);
+        //}
+
+        //private void CommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        //{
+        //    e.CanExecute = true;
+        //}
+
+        //private void Nazad_Executed(object sender, ExecutedRoutedEventArgs e)
+        //{
+        //    noviLokal.NavigateToPage(2);
+        //    e.Handled = true;
+        //}
+
+        //private void Dalje_Executed(object sender, ExecutedRoutedEventArgs e)
+        //{
+        //    noviLokal.NavigateToPage(4);
+        //    e.Handled = true;
+
+        //}
     }
 }

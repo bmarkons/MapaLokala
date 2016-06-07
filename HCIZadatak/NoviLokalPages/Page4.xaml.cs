@@ -41,10 +41,10 @@ namespace HCIZadatak.Validation
             etiketeFrame.NavigationService.Navigate(new EtiketeCheckList(noviLokal.Novi));
         }
 
-        private void nazadbtn_Click(object sender, RoutedEventArgs e)
-        {
-            ((NoviLokal)App.Current.MainWindow.Content).NavigateToPage(3);
-        }
+        //private void nazadbtn_Click(object sender, RoutedEventArgs e)
+        //{
+        //    ((NoviLokal)App.Current.MainWindow.Content).NavigateToPage(3);
+        //}
 
         //private bool TipFilter(object item)
         //{
@@ -89,5 +89,11 @@ namespace HCIZadatak.Validation
 
             e.Handled = true;
         }
+
+        //private void Nazad_Executed(object sender, ExecutedRoutedEventArgs e)
+        //{
+        //    ((NoviLokal)App.Current.MainWindow.Content).NavigateToPage(3);
+        //    e.Handled = true;
+        //}
     }
 }

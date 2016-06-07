@@ -4,15 +4,19 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:HCIZadatak.Validation"
+      xmlns:cmd="clr-namespace:HCIZadatak.Commands"
+      xmlns:root="clr-namespace:HCIZadatak"
       mc:Ignorable="d" d:DesignWidth="606.767"
       Title="Page1" FontSize="20" Height="700" Width="400">
 
     <Grid>
-        <Grid.CommandBindings>
-            <CommandBinding Command="New" CanExecute="Dalje_CanExecute" Executed="Dalje_Executed" />
-        </Grid.CommandBindings>
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Height="382" Width="400" >
-            <Label x:Name="oznakalabel" Content="Oznaka lokala:" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <StackPanel Orientation="Horizontal">
+                <Label x:Name="oznakalabel" Content="Oznaka lokala:" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <root:HelpControl>
+                    <TextBlock Text="Oznaka lokala je obavezna i mora biti jedinstvena."/>
+                </root:HelpControl>
+            </StackPanel>
             <TextBox ToolTip="{StaticResource oznakaLokala}" x:Name="oznakatext" TextWrapping="Wrap"  >
                 <TextBox.Text>
                     <Binding Path="OznakaTxt" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
@@ -44,10 +48,5 @@
             <Label x:Name="opislabel" Content="Opis lokala:"/>
             <TextBox ToolTip="{StaticResource opisLokala}" x:Name="opistext" Height="200" TextWrapping="Wrap" Text="{Binding Path=OpisTxt,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
         </StackPanel>
-        <Grid VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="400" Margin="0,0,0,30">
-            <Button ToolTip="{StaticResource nastaviLokal}" x:Name="daljebtn" Content="&gt;&gt;"  Width="80" FontSize="20" Command="New" HorizontalAlignment="Right" />
-        </Grid>
-
-
     </Grid>
 </Page>

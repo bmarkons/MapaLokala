@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="HCIZadatak.HelpControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HCIZadatak"
+             mc:Ignorable="d" 
+             d:DesignHeight="50" d:DesignWidth="50" Height="32" Width="32" Visibility="{Binding HelpVisibility, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource myBoolToVisibilityConverter}}">
+    <UserControl.Template>
+        <ControlTemplate TargetType="{x:Type local:HelpControl}">
+            <StackPanel Orientation="Vertical">
+                <Grid Background="Transparent">
+                    <Image Name="helpImg" Source="./Images/help32x32.png" />
+                    <Popup Name="helpPopup" IsOpen="{Binding ElementName=helpImg,Path=IsMouseOver,Mode=OneWay}">
+                        <Border Background="#f68383" Padding="10">
+                            <ContentPresenter Name="cp"/>
+                        </Border>
+                    </Popup>
+                </Grid>
+            </StackPanel>
+        </ControlTemplate>
+    </UserControl.Template>
+</UserControl>

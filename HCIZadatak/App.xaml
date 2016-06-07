@@ -5,28 +5,31 @@
              xmlns:system="clr-namespace:System;assembly=mscorlib"
              StartupUri="MainWindow.xaml" Exit="Application_Exit" Startup="Application_Startup">
     <Application.Resources>
+        <local:BooleanToVisibilityConverter x:Key="myBoolToVisibilityConverter" />
         <ControlTemplate x:Key="SimpleExpanderButtonTemp" TargetType="{x:Type ToggleButton}">
             <Border x:Name="ExpanderButtonBorder"
                     Background="{TemplateBinding Background}"
                     BorderBrush="{TemplateBinding BorderBrush}"
                     BorderThickness="{TemplateBinding BorderThickness}"
-                    Padding="{TemplateBinding Padding}" >
-                <Grid>
+                    Padding="{TemplateBinding Padding}" KeyboardNavigation.IsTabStop="False">
+                <Grid KeyboardNavigation.IsTabStop="False">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
+                        <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                     <Rectangle Fill="Transparent"
-                               Grid.ColumnSpan="2"/>
+                               Grid.ColumnSpan="2" KeyboardNavigation.IsTabStop="False"/>
                     <Ellipse x:Name="Circle"
-                    	Grid.Column="0"
-                    	Stroke="#FF42AAAA"
-                    	Width="50"
-                    	Height="50"
-                    	HorizontalAlignment="Center"
-                    	VerticalAlignment="Center"
-                             Fill="#FF42AAAA"
-                             />
+                    	    Grid.Column="0"
+                    	    Stroke="#FF42AAAA"
+                    	    Width="50"
+                    	    Height="50"
+                    	    HorizontalAlignment="Center"
+                    	    VerticalAlignment="Center"
+                            Fill="#FF42AAAA"
+                            KeyboardNavigation.IsTabStop="False"
+                            />
                     <Path x:Name="Sign"
                     	Grid.Column="0"
                     	Data="M 0,20 H 40 M 20,0 V 40 Z"
@@ -37,15 +40,21 @@
                     	HorizontalAlignment="Center"
                     	VerticalAlignment="Center"
                     	RenderTransformOrigin="0.5,0.3"
+                          KeyboardNavigation.IsTabStop="False"
                           >
                         <Path.RenderTransform>
                             <RotateTransform Angle="0"/>
                         </Path.RenderTransform>
                     </Path>
+                    
                     <ContentPresenter x:Name="HeaderContent"
                                       Grid.Column="1"
                                       Margin="4,0,0,0"
-                                      ContentSource="Content"/>
+                                      ContentSource="Content"
+                                      KeyboardNavigation.IsTabStop="False"/>
+                    <local:HelpControl>
+                        <TextBlock>Dugme za prikaz i skrivanje kontrole. (CTRL + Q)</TextBlock>
+                    </local:HelpControl>
                 </Grid>
             </Border>
             <ControlTemplate.Triggers>
@@ -110,7 +119,7 @@
         </ControlTemplate>
         <ControlTemplate x:Key="SimpleExpanderTemp"
                          TargetType="{x:Type Expander}" >
-            <DockPanel>
+            <DockPanel KeyboardNavigation.IsTabStop="False">
                 <ToggleButton x:Name="ExpanderButton"
                               DockPanel.Dock="Top"
                               Template="{StaticResource SimpleExpanderButtonTemp}"
@@ -119,15 +128,18 @@
                               OverridesDefaultStyle="True"
                               Width="60"
                               HorizontalAlignment="Left"
-                              Padding="1.5,0">
+                              Padding="1.5,0"
+                              KeyboardNavigation.IsTabStop="False"
+                              >
                 </ToggleButton>
                 <ContentPresenter x:Name="ExpanderContent"
                                   Visibility="Collapsed"
-                                  DockPanel.Dock="Bottom">
+                                  DockPanel.Dock="Bottom"
+                                  KeyboardNavigation.IsTabStop="False">
                     <!--Pri izbacivanju animacije, ovo ukloniti-->
-                    <ContentPresenter.LayoutTransform>
+                    <!--<ContentPresenter.LayoutTransform>
                         <ScaleTransform ScaleY="0"/>
-                    </ContentPresenter.LayoutTransform>
+                    </ContentPresenter.LayoutTransform>-->
                 </ContentPresenter>
             </DockPanel>
             <ControlTemplate.Triggers>
@@ -137,7 +149,7 @@
                             Value="Visible"/>
                 </Trigger>
                 <!--Pri izbacivanju animacije, ovo ukloniti-->
-                <Trigger Property="IsExpanded" Value="True">
+                <!--<Trigger Property="IsExpanded" Value="True">
                     <Trigger.EnterActions>
                         <BeginStoryboard>
                             <Storyboard>
@@ -160,10 +172,10 @@
                             </Storyboard>
                         </BeginStoryboard>
                     </Trigger.ExitActions>
-                </Trigger>
+                </Trigger>-->
             </ControlTemplate.Triggers>
         </ControlTemplate>
-        
+
         <!--Tooltips-->
         <system:String x:Key="detaljniPrikaz">Klinkite za detaljniji prikaz</system:String>
         <system:String x:Key="izmeni">Izmenite podatke</system:String>
@@ -213,6 +225,8 @@
         <system:String x:Key="obustaviDodavanjeEtikete">Obustavite dodavanje etikete</system:String>
         <system:String x:Key="zavrsiDodavanjeEtikete">Završite dodavanje etikete</system:String>
 
+        <system:String x:Key="helpPretragaTipa">Pronađite željeni tip lokala na osnovu imena ili oznake, kucanjem u polje za pretragu. (CTRL + S)</system:String>
+        <system:String x:Key="helpPretragaEtikete">Pronađite željenu etiketu na osnovu njene oznake, kucanjem u polje za pretragu. (CTRL + S)</system:String>
 
     </Application.Resources>
 </Application>

@@ -7,8 +7,12 @@
              xmlns:xtd="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
              xmlns:dateslider="clr-namespace:Andora.UserControlLibrary;assembly=Andora.UserControlLibrary"
              xmlns:converters="clr-namespace:Andora.UserControlLibrary.Converters;assembly=Andora.UserControlLibrary"
-             mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="500" FontSize="15" FontFamily="Segoe UI Semibold" >
+             xmlns:cmd="clr-namespace:HCIZadatak.Commands"
+             xmlns:l="clr-namespace:HCIZadatak.Help"
+             xmlns:root="clr-namespace:HCIZadatak"
+             mc:Ignorable="d"
+             d:DesignHeight="300" d:DesignWidth="500" FontSize="15" FontFamily="Segoe UI Semibold">
+
     <Grid Name="mapaGrid" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
 
         <ScrollViewer VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Name="mapaView" 
@@ -28,23 +32,57 @@
                 AllowDrop="True"
                 Drop="canvas_Drop"
                 DragEnter="canvas_DragEnter"
-                />
-        <Expander Name="mainExpander" Template="{StaticResource SimpleExpanderTemp}" Margin="10,10,10,0">
+                >
+            <Border Canvas.Top="40" Canvas.Right="200" Name="demo" Background="#e11616" Padding="10" Visibility="{Binding HelpVisibility, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource myBoolToVisibilityConverter}}">
+                <StackPanel Orientation="Vertical">
+                    <MediaElement IsMuted="True" Source="dragndrop.gif" Width="250" Height="130"/>
+                    <Button Margin="10" Padding="10" Background="Wheat" Content="Pokreni DEMO!" HorizontalAlignment="Center" Height="50" Command="cmd:Commands.Demo"/>
+                    <root:HelpControl>
+                        <TextBlock>
+                            Demo možete pokrenuti prečicom CTRL + D.
+                        </TextBlock>
+                    </root:HelpControl>
+                </StackPanel>
+            </Border>
+        </Canvas>
+        <Expander Name="mainExpander" KeyboardNavigation.IsTabStop="False" Template="{StaticResource SimpleExpanderTemp}" Margin="10,10,10,0">
             <StackPanel Orientation="Horizontal" Name="ExpanderPanel">
                 <Border CornerRadius="5,5,5,5" BorderThickness="10,10,10,10" BorderBrush="#076350" HorizontalAlignment="Left" Margin="0,10,0,20">
                     <DockPanel Background="#076350" Width="385">
                         <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="5,5,5,5">
-                            <Button Name="novilokalbtn" Margin="0,0,10,0" Padding="5,1,5,1"  Click="novilokalbtn_Click" Background="Transparent" ToolTip="{StaticResource dodajLokal}">
+                            <Button Name="novilokalbtn" Margin="0,0,10,0" Padding="5,1,5,1" Command="cmd:Commands.NoviLokal" Background="Transparent" ToolTip="{StaticResource dodajLokal}">
                                 <Image Width="48" Height="48" Source="../Images/newlokal.png"/>
                             </Button>
-                            <Button Name="novitipbtn" Margin="0,0,10,0" Padding="6" Click="novitipbtn_Click" Background="Transparent" ToolTip="{StaticResource dodajTip}">
+                            <Button Name="novitipbtn" Margin="0,0,10,0" Padding="6" Command="cmd:Commands.NoviTip" Background="Transparent" ToolTip="{StaticResource dodajTip}">
                                 <Image Width="48" Height="48" Source="../Images/newtip.png"/>
                             </Button>
-                            <Button Name="novaetiketabtn" Margin="0,0,10,0" Padding="5,1,5,1" Click="novaetiketabtn_Click" Background="Transparent" ToolTip="{StaticResource dodajEtiketu}">
+                            <Button Name="novaetiketabtn" Margin="0,0,10,0" Padding="5,1,5,1" Command="cmd:Commands.NovaEtiketa" Background="Transparent" ToolTip="{StaticResource dodajEtiketu}">
                                 <Image Width="48" Height="48" Source="../Images/newtag.png"/>
                             </Button>
+                            <root:HelpControl>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Image Margin="5" Grid.Row="0" Grid.Column="0" Width="30" Height="30" Source="../Images/newlokal.png"/>
+                                    <Image Margin="5" Grid.Row="1" Grid.Column="0" Width="30" Height="30" Source="../Images/newtip.png"/>
+                                    <Image Margin="5" Grid.Row="2" Grid.Column="0" Width="30" Height="30" Source="../Images/newtag.png"/>
+
+                                    <TextBlock VerticalAlignment="Center" Grid.Row="0" Grid.Column="1" Text="Dodajte novi lokal (CTRL + L)"/>
+                                    <TextBlock VerticalAlignment="Center" Grid.Row="1" Grid.Column="1" Text="Dodajte novi tip (CTRL + T)"/>
+                                    <TextBlock VerticalAlignment="Center" Grid.Row="2" Grid.Column="1" Text="Dodajte novu etiketu (CTRL + E)"/>
+
+                                </Grid>
+                            </root:HelpControl>
                         </StackPanel>
-                        <TabControl Margin="2,2,2,2" BorderThickness="0" Padding="0" VerticalAlignment="Stretch" SelectionChanged="TabControl_SelectionChanged">
+                        <TabControl Name="tabControl" Margin="2,2,2,2" BorderThickness="0" Padding="0" VerticalAlignment="Stretch" SelectionChanged="TabControl_SelectionChanged">
                             <TabControl.Resources>
                                 <Style TargetType="TabItem">
                                     <Setter Property="Template">
@@ -85,6 +123,8 @@
                                         <StackPanel DockPanel.Dock="Bottom" Height="30" Background="#FF42AAAA" Margin="0"/>
                                         <DataGrid Name="lokaliDG" 
                                                   CanUserAddRows="false" 
+                                                  CanUserReorderColumns="False"
+                                                  CanUserDeleteRows="False"
                                                   SelectionUnit="FullRow" 
                                                   AutoGenerateColumns="False"
                                                   GridLinesVisibility="None" 
@@ -92,14 +132,17 @@
                                                   BorderBrush="Transparent" 
                                                   SelectionChanged="dataGrid_SelectionChanged"
                                                   PreviewMouseLeftButtonDown="lokaliDG_PreviewMouseLeftButtonDown"
-                                                  MouseMove="lokaliDG_MouseMove">
-
+                                                  MouseMove="lokaliDG_MouseMove"
+                                                  PreviewKeyDown="lokaliDG_PreviewKeyDown">
+                                            <DataGrid.InputBindings>
+                                                <KeyBinding Key="Delete" Command="Delete" />
+                                            </DataGrid.InputBindings>
                                             <DataGrid.RowStyle>
                                                 <Style TargetType="DataGridRow">
                                                     <Setter Property="Background" Value="#d3ece9"/>
                                                     <Setter Property="BorderThickness" Value="0,0,0,2"/>
                                                     <Setter Property="BorderBrush" Value="Azure"/>
-                                                    <Setter Property="ToolTip" Value="{StaticResource detaljniPrikaz}"/>
+                                                    <!--<Setter Property="ToolTip" Value="{StaticResource detaljniPrikaz}"/>-->
                                                 </Style>
                                             </DataGrid.RowStyle>
                                             <DataGrid.CellStyle>
@@ -111,66 +154,6 @@
                                                 <DataGridTextColumn Header="Oznaka lokala" Binding="{Binding OznakaTxt,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" MinWidth="130"/>
                                                 <DataGridTextColumn Header="Ime lokala" Binding="{Binding ImeTxt,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" MinWidth="180"/>
                                             </DataGrid.Columns>
-                                            <!--<DataGrid.RowDetailsTemplate>
-                                    <DataTemplate>
-                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
-                                            <Image Source="{Binding Ikona,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Margin="10" Height="100"/>
-                                            <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                                                <StackPanel Orientation="Horizontal">
-                                                    <Label Content="Opis:" FontWeight="Bold"/>
-                                                    <TextBox Text="{Binding OpisTxt,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" MinWidth="200" VerticalAlignment="Center" HorizontalAlignment="Stretch" TextWrapping="Wrap" />
-                                                </StackPanel>
-                                                <Border BorderBrush="Black" BorderThickness="0,0,0,2">
-                                                    <StackPanel Orientation="Horizontal">
-                                                        <Label Content="Etikete:" FontWeight="Bold"/>
-                                                        <ListView ItemsSource="{Binding Etikete}">
-                                                            <ListView.ItemsPanel>
-                                                                <ItemsPanelTemplate>
-                                                                    <StackPanel Orientation="Horizontal"></StackPanel>
-                                                                </ItemsPanelTemplate>
-                                                            </ListView.ItemsPanel>
-                                                        </ListView>
-                                                    </StackPanel>
-                                                </Border>
-                                                <StackPanel Orientation="Horizontal">
-                                                    <StackPanel Orientation="Vertical" Margin="10,0,0,0">
-                                                        <CheckBox Content="Rezervacija" VerticalContentAlignment="Center" Height="30" IsChecked="{Binding Path=Rezervacije,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
-                                                        <CheckBox Content="Dozvoljeno pušenje" VerticalContentAlignment="Center" Height="30" IsChecked="{Binding Path=Pusenje,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
-                                                        <CheckBox Content="Dostupno za invalide" VerticalContentAlignment="Center" Height="30" IsChecked="{Binding Path=Hendikep,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
-                                                    </StackPanel>
-                                                    <StackPanel Orientation="Vertical" Margin="10,0,0,0">
-                                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
-                                                            <Label Width="130" Content="Rang cena:"/>
-                                                            <ComboBox Width="120" HorizontalAlignment="Right" ItemsSource="{Binding Rang_cena}" SelectedItem="{Binding Cena}"></ComboBox>
-                                                        </StackPanel>
-                                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
-                                                            <Label Width="130" Content="Služenje alkohola:"/>
-                                                            <ComboBox Width="120" HorizontalAlignment="Right" ItemsSource="{Binding Sluzenje_alkohola}" SelectedItem="{Binding Alkohol}"></ComboBox>
-                                                        </StackPanel>
-                                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
-                                                            <Label Width="130" Content="Otvoren:"/>
-                                                            <DatePicker Width="120" HorizontalAlignment="Right" Text="{Binding Path=Datum,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"></DatePicker>
-                                                        </StackPanel>
-                                                    </StackPanel>
-                                                    <StackPanel Orientation="Vertical" Margin="10,0,0,0">
-                                                        <StackPanel Orientation="Horizontal">
-                                                            <Label Content="Kapacitet:"/>
-                                                            <xtd:IntegerUpDown Value="{Binding Path=Kapacitet,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Minimum="0"></xtd:IntegerUpDown>
-                                                        </StackPanel>
-                                                        <StackPanel Orientation="Horizontal">
-                                                            <Label Content="Tip lokala:"/>
-                                                            <Label Content="{Binding Tip,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Foreground="GreenYellow"/>
-                                                        </StackPanel>
-                                                        <StackPanel Orientation="Horizontal">
-                                                            <Label Content="Etikete:"/>
-                                                            <ListView ItemsSource="{Binding Etikete}"></ListView>
-                                                        </StackPanel>
-                                                    </StackPanel>
-                                                </StackPanel>
-                                            </StackPanel>
-                                        </StackPanel>
-                                    </DataTemplate>
-                                </DataGrid.RowDetailsTemplate>-->
                                         </DataGrid>
                                     </DockPanel>
                                     <Expander Name="expanderFilteri"  VerticalAlignment="Bottom" ExpandDirection="Up" Margin="0,0,0,3" FontSize="12" Expanded="ExpanderFilteri_Expanded" Collapsed="Expander_Collapsed">
@@ -268,9 +251,34 @@
                                         </Border>
                                     </Expander>
                                     <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="AliceBlue" Margin="3">
+                                        <root:HelpControl>
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition/>
+                                                    <RowDefinition/>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition/>
+                                                    <ColumnDefinition/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <Image Margin="5" Grid.Row="0" Grid.Column="0" Source="../Images/search.png" Width="30" Height="30"/>
+                                                <Image Margin="5" Grid.Row="1" Grid.Column="0" Source="../Images/filter.png" Width="30" Height="30"/>
+
+                                                <TextBlock VerticalAlignment="Center" Grid.Row="0" Grid.Column="1" Text="Pronađite željeni lokal kucanjem imena ili oznake u polje za pretragu."/>
+                                                <TextBlock VerticalAlignment="Center" Grid.Row="1" Grid.Column="1" Text="Kliknite na plavi filter za odabir kriterijuma filtriranja."/>
+                                            </Grid>
+                                        </root:HelpControl>
                                         <TextBox ToolTip="{StaticResource pretragaLokal}" Name="pretragaLokali" VerticalAlignment="Center" Width="150" Margin="4,0,4,0" TextChanged="pretraga_TextChanged"/>
                                         <Image Width="25" Height="25" VerticalAlignment="Center" Source="../Images/search.png"/>
                                     </StackPanel>
+                                    <root:HelpControl VerticalAlignment="Top" HorizontalAlignment="Right" Margin="20">
+                                        <DockPanel>
+                                            <TextBlock DockPanel.Dock="Top" Margin="5" Text="Kliknite na lokal za detaljniji prikaz."/>
+                                            <TextBlock DockPanel.Dock="Top" Margin="5" Text="Lokal se može preneti na mapu prevlačenjem:"/>
+                                            <MediaElement UnloadedBehavior="Manual" Source="dragndrop.gif"  LoadedBehavior="Play" Stretch="None"/>
+                                        </DockPanel>
+                                    </root:HelpControl>
                                 </Grid>
                             </TabItem>
 
@@ -285,13 +293,14 @@
                                 <Grid VerticalAlignment="Stretch">
                                     <DockPanel>
                                         <StackPanel DockPanel.Dock="Bottom" Height="30" Background="#FF42AAAA" Margin="0"/>
-                                        <DataGrid Name="tipoviDG" CanUserAddRows="false" SelectionUnit="FullRow" AutoGenerateColumns="False" GridLinesVisibility="None" RowHeaderWidth="0" BorderBrush="Transparent" SelectionChanged="dataGrid_SelectionChanged">
+                                        <DataGrid Name="tipoviDG" CanUserAddRows="false" SelectionUnit="FullRow" AutoGenerateColumns="False" GridLinesVisibility="None" RowHeaderWidth="0" BorderBrush="Transparent" SelectionChanged="dataGrid_SelectionChanged"
+                                                  PreviewKeyDown="tipoviDG_PreviewKeyDown">
                                             <DataGrid.RowStyle>
                                                 <Style TargetType="DataGridRow">
                                                     <Setter Property="Background" Value="#d3ece9"/>
                                                     <Setter Property="BorderThickness" Value="0,0,0,2"/>
                                                     <Setter Property="BorderBrush" Value="Azure"/>
-                                                    <Setter Property="ToolTip" Value="{StaticResource detaljniPrikaz}"/>
+                                                    <!--<Setter Property="ToolTip" Value="{StaticResource detaljniPrikaz}"/>-->
                                                 </Style>
                                             </DataGrid.RowStyle>
                                             <DataGrid.CellStyle>
@@ -306,9 +315,28 @@
                                         </DataGrid>
                                     </DockPanel>
                                     <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="AliceBlue" Margin="3">
+                                        <root:HelpControl>
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition/>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition/>
+                                                    <ColumnDefinition/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <Image Margin="15" Grid.Row="0" Grid.Column="0" Source="../Images/search.png" Width="30" Height="30"/>
+                                                <TextBlock VerticalAlignment="Center" Grid.Row="0" Grid.Column="1" Text="{StaticResource helpPretragaTipa}"/>
+                                            </Grid>
+                                        </root:HelpControl>
                                         <TextBox ToolTip="{StaticResource pretragaTipa}" Name="pretragaTipovi" VerticalAlignment="Center" Width="150" Margin="4,0,4,0" TextChanged="pretraga_TextChanged"/>
                                         <Image Width="25" Height="25" VerticalAlignment="Center" Source="../Images/search.png"/>
                                     </StackPanel>
+                                    <root:HelpControl VerticalAlignment="Top" HorizontalAlignment="Right" Margin="20">
+                                        <DockPanel>
+                                            <TextBlock DockPanel.Dock="Top" Margin="5" Text="Kliknite na tip za detaljniji prikaz."/>
+                                        </DockPanel>
+                                    </root:HelpControl>
                                 </Grid>
                             </TabItem>
 
@@ -323,42 +351,64 @@
                                 <DockPanel>
                                     <StackPanel Orientation="Vertical" DockPanel.Dock="Bottom" Height="30" Background="#FF42AAAA" Margin="0">
                                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="3,2,3,4" Background="AliceBlue">
+                                            <root:HelpControl>
+                                                <Grid>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition/>
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition/>
+                                                        <ColumnDefinition/>
+                                                    </Grid.ColumnDefinitions>
+
+                                                    <Image Margin="15" Grid.Row="0" Grid.Column="0" Source="../Images/search.png" Width="30" Height="30"/>
+                                                    <TextBlock VerticalAlignment="Center" Grid.Row="0" Grid.Column="1" Text="{StaticResource helpPretragaEtikete}"/>
+                                                </Grid>
+                                            </root:HelpControl>
                                             <TextBox ToolTip="{StaticResource pretragaEtikete}" Name="pretragaEtikete" VerticalAlignment="Center" Width="150" Margin="4,0,4,0" TextChanged="pretraga_TextChanged"/>
                                             <Image Width="25" Height="25" VerticalAlignment="Center" Source="../Images/search.png"/>
                                         </StackPanel>
                                     </StackPanel>
-                                    <DataGrid Name="etiketeDG" SelectionUnit="FullRow" AutoGenerateColumns="False" CanUserAddRows="false" GridLinesVisibility="None" RowHeaderWidth="0" BorderBrush="Transparent" SelectionChanged="dataGrid_SelectionChanged">
-                                        <DataGrid.RowStyle>
-                                            <Style TargetType="DataGridRow">
-                                                <Setter Property="Background" Value="#d3ece9"/>
-                                                <Setter Property="BorderThickness" Value="0,0,0,2"/>
-                                                <Setter Property="BorderBrush" Value="Azure"/>
-                                                <Setter Property="ToolTip" Value="{StaticResource detaljniPrikaz}"/>
-                                            </Style>
-                                        </DataGrid.RowStyle>
-                                        <DataGrid.CellStyle>
-                                            <Style TargetType="DataGridCell">
-                                                <Setter Property="BorderThickness" Value="0"/>
-                                            </Style>
-                                        </DataGrid.CellStyle>
-                                        <DataGrid.Columns>
-                                            <DataGridTextColumn Header="Oznaka etikete" Binding="{Binding Oznaka,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" MinWidth="130"/>
-                                            <DataGridTemplateColumn Header="Boja etikete" IsReadOnly="True" MinWidth="230">
-                                                <DataGridTemplateColumn.CellTemplate>
-                                                    <DataTemplate>
-                                                        <xtd:ColorPicker IsEnabled="False" BorderThickness="0" SelectedColor="{Binding Boja, UpdateSourceTrigger=PropertyChanged}">
-                                                            <xtd:ColorPicker.ButtonStyle>
-                                                                <Style TargetType="ToggleButton">
-                                                                    <Setter Property="Background" Value="Transparent"/>
-                                                                </Style>
-                                                            </xtd:ColorPicker.ButtonStyle>
-                                                        </xtd:ColorPicker>
-                                                    </DataTemplate>
-                                                </DataGridTemplateColumn.CellTemplate>
-                                            </DataGridTemplateColumn>
-                                            <!--<DataGridTextColumn Header="Opis etikete" Binding="{Binding Opis,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" MinWidth="120"/>-->
-                                        </DataGrid.Columns>
-                                    </DataGrid>
+                                    <Grid>
+                                        <DataGrid Name="etiketeDG" SelectionUnit="FullRow" AutoGenerateColumns="False" CanUserDeleteRows="False" CanUserAddRows="false" GridLinesVisibility="None" RowHeaderWidth="0" BorderBrush="Transparent" SelectionChanged="dataGrid_SelectionChanged"
+                                                  PreviewKeyDown="etiketeDG_PreviewKeyDown">
+                                            <DataGrid.RowStyle>
+                                                <Style TargetType="DataGridRow">
+                                                    <Setter Property="Background" Value="#d3ece9"/>
+                                                    <Setter Property="BorderThickness" Value="0,0,0,2"/>
+                                                    <Setter Property="BorderBrush" Value="Azure"/>
+                                                    <!--<Setter Property="ToolTip" Value="{StaticResource detaljniPrikaz}"/>-->
+                                                </Style>
+                                            </DataGrid.RowStyle>
+                                            <DataGrid.CellStyle>
+                                                <Style TargetType="DataGridCell">
+                                                    <Setter Property="BorderThickness" Value="0"/>
+                                                </Style>
+                                            </DataGrid.CellStyle>
+                                            <DataGrid.Columns>
+                                                <DataGridTextColumn Header="Oznaka etikete" Binding="{Binding Oznaka,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" MinWidth="130"/>
+                                                <DataGridTemplateColumn Header="Boja etikete" IsReadOnly="True" MinWidth="230">
+                                                    <DataGridTemplateColumn.CellTemplate>
+                                                        <DataTemplate>
+                                                            <xtd:ColorPicker IsEnabled="False" BorderThickness="0" SelectedColor="{Binding Boja, UpdateSourceTrigger=PropertyChanged}">
+                                                                <xtd:ColorPicker.ButtonStyle>
+                                                                    <Style TargetType="ToggleButton">
+                                                                        <Setter Property="Background" Value="Transparent"/>
+                                                                    </Style>
+                                                                </xtd:ColorPicker.ButtonStyle>
+                                                            </xtd:ColorPicker>
+                                                        </DataTemplate>
+                                                    </DataGridTemplateColumn.CellTemplate>
+                                                </DataGridTemplateColumn>
+                                                <!--<DataGridTextColumn Header="Opis etikete" Binding="{Binding Opis,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" MinWidth="120"/>-->
+                                            </DataGrid.Columns>
+                                        </DataGrid>
+                                        <root:HelpControl VerticalAlignment="Top" HorizontalAlignment="Right" Margin="10">
+                                            <DockPanel>
+                                                <TextBlock DockPanel.Dock="Top" Margin="5" Text="Kliknite na etiketu za detaljniji prikaz."/>
+                                            </DockPanel>
+                                        </root:HelpControl>
+                                    </Grid>
                                 </DockPanel>
                             </TabItem>
                         </TabControl>

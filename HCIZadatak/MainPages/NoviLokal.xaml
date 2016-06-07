@@ -3,9 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:cmd="clr-namespace:HCIZadatak.Commands"
              xmlns:local="clr-namespace:HCIZadatak.Validation"
+             xmlns:beha="clr-namespace:HCIZadatak"
+             xmlns:l="clr-namespace:HCIZadatak.Help"
              mc:Ignorable="d" 
-             d:DesignHeight="700" FontSize="20" Width="1395.444" FontFamily="Segoe UI Semibold" Background="#3e9482">
+             d:DesignHeight="700" FontSize="20" Width="1395.444" FontFamily="Segoe UI Semibold" Background="#3e9482" l:HelpProvider.HelpKey="lokal">
 
     <UserControl.Resources>
         <Storyboard x:Key="MouseEnter1">
@@ -337,6 +340,11 @@
         </EventTrigger>
 
     </UserControl.Triggers>
+    <UserControl.CommandBindings>
+        <CommandBinding Command="cmd:Commands.GoBack" CanExecute="CommandGoBack_CanExecute" Executed="CommandGoBack_Executed"/>
+        <CommandBinding Command="cmd:Commands.Back" CanExecute="Nazad_CanExecute" Executed="Nazad_Executed"/>
+        <CommandBinding Command="cmd:Commands.Next" CanExecute="Dalje_CanExecute" Executed="Dalje_Executed"/>
+    </UserControl.CommandBindings>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="8*"/>
@@ -345,9 +353,29 @@
         <Border BorderBrush="Black" BorderThickness="0,0,2,0" >
             <Grid>
                 <!--<Frame Grid.Column="0" x:Name="frame" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Source="/HCIZadatak;component/NoviLokalPages/GuidePage.xaml"/>-->
-                <TextBlock Name="title"  Text="Dodavanje novog lokala" HorizontalAlignment="Center" VerticalAlignment="Top" Width="330" Margin="0,20,0,0" FontSize="30"/>
-                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Height="364" Width="250"  >
-                    <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Oznaka lokala" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5" PreviewMouseDown="textBlock_PreviewMouseDown">
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Name="title" Text="Dodavanje novog lokala" HorizontalAlignment="Center" VerticalAlignment="Top" Width="330" Margin="0,20,0,0" FontSize="30"/>
+                    <beha:HelpControl >
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Text="Unesite nabrojane podatke za lokal."/>
+                            <TextBlock>
+                                Navigacija između stranica za unos podataka vrši se klikom na stavke levo ili pomoću dugmadi: <Bold>&lt;&lt;, &gt;&gt;</Bold>
+                            </TextBlock>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="../Images/quit.png" Width="30" Height="30"/>
+                                <TextBlock Text=" - Odustanak od unosa."/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="../Images/done.png" Width="30" Height="30"/>
+                                <TextBlock Text=" - Dugme za potvrdu i završetak unosa (vidljivo ukoliko su uneti oznaka i tip lokala)."/>
+                            </StackPanel>
+
+
+                        </StackPanel>
+                    </beha:HelpControl>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Height="364" Width="250" >
+                    <TextBlock  x:Name="textBlock1" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Oznaka lokala" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5" PreviewMouseDown="textBlock_PreviewMouseDown" FontFamily="Segoe UI">
                         <TextBlock.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
@@ -357,7 +385,7 @@
                             </TransformGroup>
                         </TextBlock.RenderTransform>
                     </TextBlock>
-                    <TextBlock RenderTransformOrigin="0.5,0.5" x:Name="textBlock2" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Ime lokala" VerticalAlignment="Center" PreviewMouseDown="textBlock_PreviewMouseDown">
+                    <TextBlock RenderTransformOrigin="0.5,0.5" x:Name="textBlock2" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Ime lokala" VerticalAlignment="Center" PreviewMouseDown="textBlock_PreviewMouseDown" FontFamily="Segoe UI">
                         <TextBlock.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
@@ -367,7 +395,7 @@
                             </TransformGroup>
                         </TextBlock.RenderTransform>
                     </TextBlock>
-                    <TextBlock RenderTransformOrigin="0.5,0.5" x:Name="textBlock3" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Opis lokala" VerticalAlignment="Center" PreviewMouseDown="textBlock_PreviewMouseDown">
+                    <TextBlock RenderTransformOrigin="0.5,0.5" x:Name="textBlock3" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Opis lokala" VerticalAlignment="Center" PreviewMouseDown="textBlock_PreviewMouseDown" FontFamily="Segoe UI">
                         <TextBlock.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
@@ -377,7 +405,7 @@
                             </TransformGroup>
                         </TextBlock.RenderTransform>
                     </TextBlock>
-                    <TextBlock RenderTransformOrigin="0.5,0.5" x:Name="textBlock4" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Dostupnost za invalide" VerticalAlignment="Center" PreviewMouseDown="textBlock_PreviewMouseDown">
+                    <TextBlock RenderTransformOrigin="0.5,0.5" x:Name="textBlock4" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Dostupnost za invalide" VerticalAlignment="Center" PreviewMouseDown="textBlock_PreviewMouseDown" FontFamily="Segoe UI">
                         <TextBlock.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
@@ -387,7 +415,7 @@
                             </TransformGroup>
                         </TextBlock.RenderTransform>
                     </TextBlock>
-                    <TextBlock ToolTip="Unesi  lokala" RenderTransformOrigin="0.5,0.5" x:Name="textBlock5" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Dozvoljeno pušenje" VerticalAlignment="Center" PreviewMouseDown="textBlock_PreviewMouseDown">
+                    <TextBlock RenderTransformOrigin="0.5,0.5" x:Name="textBlock5" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Dozvoljeno pušenje" VerticalAlignment="Center" PreviewMouseDown="textBlock_PreviewMouseDown" FontFamily="Segoe UI">
                         <TextBlock.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
@@ -397,7 +425,7 @@
                             </TransformGroup>
                         </TextBlock.RenderTransform>
                     </TextBlock>
-                    <TextBlock RenderTransformOrigin="0.5,0.5" x:Name="textBlock6" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Mogućnost rezervacije" VerticalAlignment="Center" PreviewMouseDown="textBlock_PreviewMouseDown">
+                    <TextBlock RenderTransformOrigin="0.5,0.5" x:Name="textBlock6" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Mogućnost rezervacije" VerticalAlignment="Center" PreviewMouseDown="textBlock_PreviewMouseDown" FontFamily="Segoe UI">
                         <TextBlock.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
@@ -407,7 +435,7 @@
                             </TransformGroup>
                         </TextBlock.RenderTransform>
                     </TextBlock>
-                    <TextBlock RenderTransformOrigin="0.5,0.5" x:Name="textBlock7" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Rang cena" VerticalAlignment="Center" PreviewMouseDown="textBlock_PreviewMouseDown">
+                    <TextBlock RenderTransformOrigin="0.5,0.5" x:Name="textBlock7" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Rang cena" VerticalAlignment="Center" PreviewMouseDown="textBlock_PreviewMouseDown" FontFamily="Segoe UI">
                         <TextBlock.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
@@ -417,7 +445,7 @@
                             </TransformGroup>
                         </TextBlock.RenderTransform>
                     </TextBlock>
-                    <TextBlock RenderTransformOrigin="0.5,0.5" x:Name="textBlock8" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Služenje alkohola" VerticalAlignment="Center" PreviewMouseDown="textBlock_PreviewMouseDown">
+                    <TextBlock RenderTransformOrigin="0.5,0.5" x:Name="textBlock8" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Služenje alkohola" VerticalAlignment="Center" PreviewMouseDown="textBlock_PreviewMouseDown" FontFamily="Segoe UI">
                         <TextBlock.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
@@ -427,7 +455,7 @@
                             </TransformGroup>
                         </TextBlock.RenderTransform>
                     </TextBlock>
-                    <TextBlock RenderTransformOrigin="0.5,0.5" x:Name="textBlock9" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Kapacitet lokala" VerticalAlignment="Center" PreviewMouseDown="textBlock_PreviewMouseDown">
+                    <TextBlock RenderTransformOrigin="0.5,0.5" x:Name="textBlock9" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Kapacitet lokala" VerticalAlignment="Center" PreviewMouseDown="textBlock_PreviewMouseDown" FontFamily="Segoe UI">
                         <TextBlock.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
@@ -437,7 +465,7 @@
                             </TransformGroup>
                         </TextBlock.RenderTransform>
                     </TextBlock>
-                    <TextBlock RenderTransformOrigin="0.5,0.5" x:Name="textBlock10" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Datum otvaranja lokala" VerticalAlignment="Center" PreviewMouseDown="textBlock_PreviewMouseDown">
+                    <TextBlock RenderTransformOrigin="0.5,0.5" x:Name="textBlock10" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Datum otvaranja lokala" VerticalAlignment="Center" PreviewMouseDown="textBlock_PreviewMouseDown" FontFamily="Segoe UI">
                         <TextBlock.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
@@ -447,7 +475,7 @@
                             </TransformGroup>
                         </TextBlock.RenderTransform>
                     </TextBlock>
-                    <TextBlock RenderTransformOrigin="0.5,0.5" x:Name="textBlock11" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Ikonica lokala" VerticalAlignment="Center" PreviewMouseDown="textBlock_PreviewMouseDown">
+                    <TextBlock RenderTransformOrigin="0.5,0.5" x:Name="textBlock11" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Ikonica lokala" VerticalAlignment="Center" PreviewMouseDown="textBlock_PreviewMouseDown" FontFamily="Segoe UI">
                         <TextBlock.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
@@ -457,7 +485,7 @@
                             </TransformGroup>
                         </TextBlock.RenderTransform>
                     </TextBlock>
-                    <TextBlock RenderTransformOrigin="0.5,0.5" x:Name="textBlock12" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Tip lokala" VerticalAlignment="Center" PreviewMouseDown="textBlock_PreviewMouseDown">
+                    <TextBlock RenderTransformOrigin="0.5,0.5" x:Name="textBlock12" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Tip lokala" VerticalAlignment="Center" PreviewMouseDown="textBlock_PreviewMouseDown" FontFamily="Segoe UI">
                         <TextBlock.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
@@ -467,7 +495,7 @@
                             </TransformGroup>
                         </TextBlock.RenderTransform>
                     </TextBlock>
-                    <TextBlock RenderTransformOrigin="0.5,0.5" x:Name="textBlock13" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Tagujte lokal" VerticalAlignment="Center" PreviewMouseDown="textBlock_PreviewMouseDown">
+                    <TextBlock RenderTransformOrigin="0.5,0.5" x:Name="textBlock13" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Tagujte lokal" VerticalAlignment="Center" PreviewMouseDown="textBlock_PreviewMouseDown" FontFamily="Segoe UI">
                         <TextBlock.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
@@ -483,7 +511,7 @@
                     <Grid.CommandBindings>
                         <CommandBinding Command="New" CanExecute="Zavrsi_CanExecute" Executed="Zavrsi_Executed" />
                     </Grid.CommandBindings>
-                    <Button x:Name="odustanibtn" ToolTip="{StaticResource obustaviDodavanjeLokala}" HorizontalAlignment="Left" Width="60" Click="odustanibtn_Click"  BorderThickness="0" Background="Wheat" >
+                    <Button x:Name="odustanibtn" Command="cmd:Commands.GoBack" ToolTip="{StaticResource obustaviDodavanjeLokala}" HorizontalAlignment="Left" Width="60"  BorderThickness="0" Background="Wheat" >
                         <Image Source="../Images/quit.png" Height="48" Width="48"/>
                     </Button>
                     <Button x:Name="zavrsibtn" ToolTip="{StaticResource zavrsiDodavanjeLokala}" Style="{StaticResource ButtonEnabledStyle}" HorizontalAlignment="Right" VerticalAlignment="Top" Width="60" Command="New" >
@@ -493,7 +521,13 @@
                 </Grid>
             </Grid>
         </Border>
-        <Frame Grid.Column="1" x:Name="frame1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" NavigationUIVisibility="Hidden" Background="#56988b"/>
+        <DockPanel Grid.Column="1" Background="#56988b">
+            <Grid DockPanel.Dock="Bottom" VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="400" Margin="0,0,0,30">
+                <Button ToolTip="{StaticResource nastaviLokal}" x:Name="daljebtn" Content="&gt;&gt;"  Width="80" FontSize="20" HorizontalAlignment="Right" Command="cmd:Commands.Next"/>
+                <Button ToolTip="{StaticResource vratiLokal}" x:Name="nazadbtn" Content="&lt;&lt;" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Command="cmd:Commands.Back"/>
+            </Grid>
+            <Frame beha:NoNavigationFrame.Disable="True" Grid.Column="1" x:Name="frame1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" NavigationUIVisibility="Hidden"/>
+        </DockPanel>
 
     </Grid>
 </UserControl>
